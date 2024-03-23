@@ -1,0 +1,10 @@
+body.t-inverted {
+  background-color: black;
+}
+
+.t-inverted #container,
+.t-inverted #page,
+.t-inverted #ui-fixed,
+.t-inverted .c-glyph-tooltip {
+  filter: invert(100%);
+}

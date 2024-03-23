@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="icon.png">
+  <meta name="description" content="This game is based on the game #Antimatter Dimensions#.">
+  <meta name="keywords" content="jiaozi increment, 饺子增量">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>饺子增量</title>
+  <link rel="stylesheet" type="text/css" href="./stylesheets/ad-slider-component.css">
+  <link rel="stylesheet" href="./stylesheets/styles.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/fontawesome/css/all.css">
+</head>
+
+<body>
+  <div id="browser-warning">
+    Your browser is not supported.
+    <br>
+    Please update to a newer browser.
+  </div>
+  <div id="loading"></div>
+  <div id="ui"></div>
+  <div id="background-animations">
+    <div class="videocontainer videocontainer--background">
+      <video autoplay muted loop id="stars">
+        <source src="images/stars-bg.webm" type="video/webm">
+      </video>
+    </div>
+    <div id="snow" style="display: none;"></div>
+  </div>
+  <div id="performance-stats" class="c-performance-stats" style="display: none;"></div>
+  <script>
+  // We use an IE only document variable to check here to force it to show the browser warning.
+  // For some reason, IE really does *not* want to cooperate, even when you have a file as a <script> that you load
+  // in the body.
+  // Other browsers will be checked whenever window.onload is ran.
+  if (document.documentMode) {
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("browser-warning").style.display = "flex";
+  }
+  window.addEventListener("error", function(e) {
+    console.warn(`${e.message}\n(at: ${e.filename}:${e.lineno}:${e.colno})
+    `);
+  })
+  
+  </script>
+  <script src="./main.js" type="module"></script>
+</body>
+
+</html>

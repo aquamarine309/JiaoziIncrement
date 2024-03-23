@@ -1,0 +1,118 @@
+import { DC } from "../constants.js"
+
+function softCap(value, cap, pow) {
+  if (value instanceof Decimal) {
+    if (value.gt(cap)) {
+      const _cap = Decimal.pLog10(cap);
+      return Decimal.pow(10, value.pLog10() * pow + _cap * (1 - pow));
+    }
+    return value;
+  }
+  if (value > cap) {
+    return Math.pow(value - cap, pow) + cap;
+  }
+  return value;
+}
+
+export const collections = [
+  {
+    id: 0,
+    key: 'iteration',
+    rarity: "common",
+    description() {
+      return $t("C_1")
+    },
+    effectFn: amount => Decimal.pow(amount, 1.05).times(2).add(1).powEffectOf(SteamerUpgrade.commonPower),
+    formatEffect: value => formatX(value, 2, 3)
+  },
+  {
+    id: 1,
+    key: 'dragon',
+    rarity: 'common',
+    description() {
+      return $t("C_2")
+    },
+    effectFn: amount => {
+      amount = softCap(amount, 1e7, 0.7);
+      amount = softCap(amount, 1e8, 0.5);
+      amount = softCap(amount, 1e12, 0.2);
+      return softCap(Decimal.pow(5, Math.pow(amount, 0.6)).powEffectOf(SteamerUpgrade.commonPower), DC.E18000, 0.3);
+    },
+    formatEffect: value => `/${format(value, 2, 3)}`
+  },
+  {
+    id: 2,
+    key: 'antimatter',
+    rarity: 'uncommon',
+    description() {
+      return $t("C_3")
+    },
+    effectFn: amount => Decimal.pow(amount, 0.6).times(9).times(Decimal.pow(15, Math.pow(Math.log10(amount / 1e9 + 1), 2))).add(1),
+    formatEffect: value => formatX(value, 2, 3)
+  },
+  {
+    id: 3,
+    key: 'cat',
+    rarity: 'uncommon',
+    description() {
+      return $t("C_4")
+    },
+    effectFn: amount => {
+      if (amount > 1500) amount = Math.sqrt(amount - 1500) * 2 + 1500;
+      amount = softCap(amount, 5e5, 0.2);
+      return Math.pow(amount, 0.3) + 1;
+    },
+    formatEffect: value => `+${quantify($t("wra"), value, 2, 2)}/${$t("stu")}`
+  },
+  {
+    id: 4,
+    key: "golden",
+    rarity: 'rare',
+    description() { return $t("C_5") },
+    effectFn: amount => Decimal.pow(amount, 0.25).times(0.12).add(1),
+    formatEffect: value => formatX(value, 2, 4),
+    cappedAmount: () => (1500 + NormalChallenge(8).reward.effectOrDefault(0)) * Task.wrapper.reward.effectOrDefault(1)
+  },
+  {
+    id: 5,
+    key: 'fast',
+    rarity: 'rare',
+    description() {
+      return $t("C_6")
+    },
+    effectFn: amount => Decimal.pow(amount, 0.25).times(0.04).add(1),
+    formatEffect: value => formatX(value, 2, 4),
+    cappedAmount: 2e5
+  },
+  {
+    id: 6,
+    key: 'garcinol',
+    rarity: 'epic',
+    description() { return $t("C_7") },
+    effectFn: amount => Decimal.pow(amount + 1, 0.5).times(0.01).add(0.99),
+    formatEffect: value => formatPow(value, 2, 3),
+    cappedAmount: () => 1200 * Task.steamer.reward.effectOrDefault(1)
+  },
+  {
+    id: 7,
+    key: "fire",
+    rarity: "epic",
+    description() {
+      return $t("C_8")
+    },
+    effectFn: amount => {
+      return softCap(Currency.money.value.pow(0.028).times(Math.pow(amount, 0.5)).add(1), DC.E1000, 0.3)
+    },
+    formatEffect: value => formatX(value, 2, 3)
+  },
+  {
+    id: 8,
+    key: 'adofai',
+    rarity: 'legendary',
+    description() {
+      return $t("C_9", [quantifyInt($t("jiaozi"), 50)])
+    },
+    effectFn: amount => Decimal.pow(10, Math.pow(softCap(amount, 1e10, 0.3), 0.2)),
+    formatEffect: value => `/${format(value, 2, 3)}`
+  }
+]

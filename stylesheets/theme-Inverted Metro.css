@@ -1,0 +1,21 @@
+body.t-inverted-metro {
+  background-color: black;
+}
+
+.t-inverted-metro #container,
+.t-inverted-metro #page,
+.t-inverted-metro #ui-fixed,
+.t-inverted-metro .c-glyph-tooltip {
+  filter: invert(100%);
+}
+
+.t-inverted-metro #realityanimbg {
+  filter: invert(1);
+}
+
+.t-inverted-metro #timetheorems,
+.t-inverted-metro .c-ttshop__save-load-text,
+.t-inverted-metro .minimize-arrow,
+.t-inverted-metro .ttshop-background {
+  color: #bbbbbb;
+}

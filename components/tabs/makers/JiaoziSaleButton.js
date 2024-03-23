@@ -1,0 +1,44 @@
+import PrimaryButton from '../../PrimaryButton.js'
+
+export default {
+  name: 'JiaoziSaleButton',
+  components:  {
+    PrimaryButton
+  },
+  data() {
+    return {
+      text: '',
+      info: '',
+      available: true
+    }
+  },
+  methods: {
+    update() {
+      this.isAvailable = Sale.isAvailable
+      const willGainMoney = gainedMoney()
+      if (!this.isAvailable) {
+        this.text = $t("saleDisabled")
+        this.info = Sale.unavailableText
+      } else {
+        this.text = $t("saleTip", [quantify($t("money"), willGainMoney, 2, 2)]);
+        if (NormalChallenge(2).isCompleted) this.info = $t("autoMoney");
+        else if (player.maxResetJiaozi.eq(0)) this.info = $t("noSale");
+        else this.info = $t("mostSale", [quantify($t("money"), player.maxResetJiaozi, 2, 1)]);
+      }
+    },
+    sale() {
+      saleReset()
+    }
+  },
+  template: `
+    <PrimaryButton
+    :enabled='isAvailable'
+    @click='sale'
+    class='o-sale-btn'
+    >
+      {{ text }}
+      <br>
+      ({{ info }})
+    </PrimaryButton>
+  `
+}

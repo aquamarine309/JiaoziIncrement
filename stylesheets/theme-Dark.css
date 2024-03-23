@@ -1,0 +1,10 @@
+body.t-dark {
+  color: #888888;
+  background-image: url("../images/dark-bg.png");
+  background-position: center;
+}
+
+input.t-dark {
+  background-color: #455a64;
+  border: 0.1rem solid black;
+}
