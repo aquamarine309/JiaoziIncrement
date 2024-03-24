@@ -21,9 +21,9 @@ export default {
         "c-modal__confirmation-toggle__checkbox--active": !this.setting
       };
     },
-    tooltipText() {
-      return `${this.setting ? "Disable" : "Reenable"} the ${this.confirmation.name} confirmation`;
-    },
+    dontShow() {
+      return $t("dontShow")
+    }
   },
   created() {
     this.setting = this.confirmation.option;
@@ -34,21 +34,20 @@ export default {
       this.confirmation.option = this.setting;
     }
   },
-  template: `<div
-class="c-modal__confirmation-toggle"
-@click="toggle"
->
-<div :class="confirmationClass">
-<span
-v-if="!setting"
-class="fas fa-check"
-/>
-<div class="c-modal__confirmation-toggle__tooltip">
-{{ tooltipText }}
-</div>
-</div>
-<span class="c-modal__confirmation-toggle__text">
-不再显示次消息
-</span>
-</div>`
+  template: `
+  <div
+    class="c-modal__confirmation-toggle"
+    @click="toggle"
+  >
+    <div :class="confirmationClass">
+      <span
+        v-if="!setting"
+        class="fas fa-check"
+      />
+    </div>
+    <span class="c-modal__confirmation-toggle__text">
+      {{ dontShow }}
+    </span>
+  </div>
+  `
 }

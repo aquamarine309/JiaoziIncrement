@@ -204,7 +204,7 @@ export const tabs = [
         key: "upgrades",
         name: "simUpgs",
         symbol: "<i class='fas fa-arrow-up'></i>",
-        compoment: "SimulationUpgradesTab",
+        component: "SimulationUpgradesTab",
         id: 2,
         hidable: true,
         condition: () => SimulationMilestone.upgrades.isReached

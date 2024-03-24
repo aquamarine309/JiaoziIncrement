@@ -4,7 +4,7 @@ export const tasks = {
   mixtures: {
     id: 1,
     key: "mixtures",
-    descriptionTemp: value => `拥有 ${format(value)} 个蘸料瓶`,
+    descriptionTemp: value => $t("takeaway_mixtures", [format(value)]),
     goal: count => {
       return DC.E50.times(DC.E25.pow(count))
     },
@@ -23,7 +23,7 @@ export const tasks = {
   wrapper: {
     id: 2,
     key: "wrapper",
-    descriptionTemp: value => `拥有 ${format(value, 2)} 个饺子皮`,
+    descriptionTemp: value => $t("takeaway_wrapper", [format(value, 2)]),
     goal: count => 1600 + 240 * count,
     howMany: () => (Wrapper.totalAmount - 1600) / 240,
     percents: (goal, lastGoal = 0) => (Wrapper.totalAmount - lastGoal) / (goal - lastGoal),
@@ -36,7 +36,7 @@ export const tasks = {
   steamer: {
     id: 3,
     key: "steamer",
-    descriptionTemp: value => `拥有 ${format(value)} 个蒸笼币`,
+    descriptionTemp: value => $t("takeaway_steamer", [format(value)]),
     goal: count => DC.E190.times(DC.E20.pow(count)),
     howMany: () => (Currency.steamerCoins.exponent - 190) / 20,
     percents: (goal, lastGoal = DC.D1) => Currency.steamerCoins.value.div(lastGoal).pLog10() / goal.div(lastGoal).log10(),
@@ -49,7 +49,7 @@ export const tasks = {
   collections: {
     id: 4,
     key: "collections",
-    descriptionTemp: value => `激活小于${formatInt(4)}个收集饺子时达到 ${format(value)} 个饺子`,
+    descriptionTemp: value => $t("takeaway_collections", [formatInt(4), format(value)]),
     goal: count => DC.E30000.times(DC.E5000.pow(count)),
     howMany: () => (Currency.jiaozi.exponent - 30000) / 5000,
     percents: (goal, lastGoal = DC.D1) => {

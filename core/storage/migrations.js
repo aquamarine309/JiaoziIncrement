@@ -99,6 +99,13 @@ export const migrations = {
       if (player.cores.gte(5)) {
         player.challenge.normal.completedBits = 510;
       }
+    },
+    8: player => {
+      if (typeof player.simulation.upgrades.review[0] === "number") return;
+      
+      delete player.simulation.upgrades.review.activeId;
+      delete player.simulation.upgrades.review.purchases;
+      delete player.simulation.upgrades.preview;
     }
   },
   

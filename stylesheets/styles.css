@@ -5083,7 +5083,7 @@ padding: 0.3rem;
 
 /* AwayProgressEntry */
 .c-modal-away-progress__jiaozi {
-color: var(--color-antimatter);
+color: var(--color-accent);
 }
 
 .t-dark .c-modal-away-progress__jiaozi,
@@ -5112,6 +5112,10 @@ color: var(--color-steamer);
 .c-modal-away-progress__simulations,
 .c-modal-away-progress__cores {
   color: var(--color-simulation);
+}
+
+.c-modal-away-progress__energy {
+  animation: a-energy-glow 15s infinite;
 }
 
 .c-modal-away-progress__disabled b,
@@ -5616,7 +5620,7 @@ align-items: center;
 }
 
 .o-achievement__tooltip {
-  width: 16rem;
+  width: 20rem;
   position: absolute;
   bottom: 10.2rem;
   z-index: 2;
@@ -5629,7 +5633,7 @@ align-items: center;
   padding: 0.4rem;
   transition-duration: 0.3s;
   pointer-events: none;
-  left: -3.1rem;
+  left: -5.5rem;
 }
 
 .o-achievement__tooltip::after {
@@ -5876,7 +5880,7 @@ align-items: center;
 .l-achievement-grid__row {
   display: flex;
   flex-direction: row;
-  margin-left: 5rem;
+  margin-left: 1rem;
 }
 
 .c-achievement-grid__row--completed {
@@ -6600,3 +6604,29 @@ width: 62rem;
   cursor: pointer;
 }
 
+.c-energy-text {
+  font-size: 1.3rem;
+}
+
+@keyframes a-energy-glow {
+  0% {
+    color: var(--color-text);
+  }
+  20% {
+    color: var(--color-money);
+  }
+  40% {
+    color: var(--color-collection);
+  }
+  60% {
+    color: var(--color-steamer);
+  }
+  80% {
+    color: var(--color-simulation);
+  }
+}
+
+.c-energy-amount {
+  font-size: 1.8rem;
+  animation: a-energy-glow 15s infinite;
+}

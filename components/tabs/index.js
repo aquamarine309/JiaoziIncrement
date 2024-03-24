@@ -10,6 +10,7 @@ import OptionsVisualTab from "./options-visual/OptionsVisualTab.js";
 import OptionsGameplayTab from "./options-gameplay/OptionsGameplayTab.js";
 import PastPrestigeRunsTab from "./past-prestige-runs/PastPrestigeRunsTab.js";
 import SimulationMilestonesTab from "./simulation-milestones/SimulationMilestonesTab.js";
+import SimulationUpgradesTab from "./simulation-upgrades/SimulationUpgradesTab.js";
 import StatisticsTab from "./statistics/StatisticsTab.js";
 import SteamerUpgradesTab from "./steamer-upgrades/SteamerUpgradesTab.js";
 import TasksTab from "./tasks/TasksTab.js";
@@ -29,7 +30,8 @@ const TabComponents = {
   TasksTab,
   NormalAchievementsTab,
   BranchesTab,
-  SimulationMilestonesTab
+  SimulationMilestonesTab,
+  SimulationUpgradesTab
 }
 
 export default TabComponents

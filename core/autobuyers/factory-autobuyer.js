@@ -47,7 +47,7 @@ export class FactoryAutobuyerState extends IntervaledAutobuyerState {
   }
 
   static get entryCount() { return 9; }
-  static get autobuyerGroupName() { return "蘸料工厂"; }
+  static get autobuyerGroupName() { return $t("factory"); }
   static get isActive() { return player.auto.factories.isActive; }
   static set isActive(value) { player.auto.factories.isActive = value; }
 }

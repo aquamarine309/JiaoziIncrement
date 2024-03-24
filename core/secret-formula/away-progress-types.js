@@ -49,5 +49,11 @@ export const awayProgressTypes = [
     reference: ["simulations"],
     isUnlocked: () => PlayerProgress.simulationUnlocked(),
     awayOption: "simulations"
+  },
+  {
+    name: "energy",
+    reference: ["simulation", "energy"],
+    isUnlocked: () => SimulationMilestone.upgrades.isReached,
+    awayOption: "energy"
   }
 ];

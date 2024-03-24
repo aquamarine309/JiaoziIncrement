@@ -27,37 +27,44 @@ export default {
     };
   },
   computed: {
-  nothingHappened() {
-return Theme.current().name === "S9";
-},
+    nothingHappened() {
+      return Theme.current()
+        .name === "S9";
+    },
     offlineStats() {
       return AwayProgressTypes.appearsInAwayModal;
     },
     headerText() {
-      const timeDisplay = TimeSpan.fromSeconds(this.seconds).toString();
+      const timeDisplay = TimeSpan.fromSeconds(this.seconds)
+        .toString();
       if (this.nothingHappened || !this.somethingHappened) {
-        return `在你离开的${timeDisplay}里，什么都没发生……`;
+        return $t("away_header_nothing", [timeDisplay]);
       }
-      return `在你离开的${timeDisplay}里: `;
+      return $t("away_header", [timeDisplay]);
+    },
+    tip() {
+      return $t("away_tip");
     }
   },
-  template: `<ModalWrapper class="c-modal-away-progress">
-<div class="c-modal-away-progress__header">
-{{ headerText }}
-</div>
-<div
-v-if="!nothingHappened"
-class="c-modal-away-progress__resources c-modal--short"
->
-<AwayProgressEntry
-v-for="name of offlineStats"
-:key="name"
-:name="name"
-:player-before="playerBefore"
-:player-after="playerAfter"
-@something-happened="somethingHappened = true"
-/>
-</div>
-<span v-if="!nothingHappened && somethingHappened">小贴士: 点击某个条目可以在以后不显示。</span>
-</ModalWrapper>`
+  template: `
+  <ModalWrapper class="c-modal-away-progress">
+    <div class="c-modal-away-progress__header">
+      {{ headerText }}
+    </div>
+    <div
+      v-if="!nothingHappened"
+      class="c-modal-away-progress__resources c-modal--short"
+    >
+      <AwayProgressEntry
+        v-for="name of offlineStats"
+        :key="name"
+        :name="name"
+        :player-before="playerBefore"
+        :player-after="playerAfter"
+        @something-happened="somethingHappened = true"
+      />
+    </div>
+    <span v-if="!nothingHappened && somethingHappened">{{ tip }}</span>
+  </ModalWrapper>
+  `
 }

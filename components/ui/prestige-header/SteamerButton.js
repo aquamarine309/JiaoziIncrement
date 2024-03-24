@@ -118,15 +118,16 @@ export default {
       <b>
         {{ $t("steamerToGain") }}
         <span :style="amountStyle">{{ format(gainedSC, 2) }}</span>
-        <span>{{ pluralize($t("sc"), gainedSC) }}</span>
+        <span v-if="showSCRate">{{ $t("sc_min") }}</span>
+        <span v-else>{{ pluralize($t("sc"), gainedSC) }}</span>
       </b>
       <template v-if="showSCRate">
         <br>
-        {{ $t("currentAdj") }}: {{ format(currentSCRate, 2) }} {{ $t("sc_min", null, true) }}/{{ $t("min") }}
+        {{ $t("currentAdj") }}: {{ format(currentSCRate, 2) }} {{ $t("sc_min") }}/{{ $t("min") }}
         <br>
-        {{ $t("peak") }}: {{ format(peakSCRate, 2) }} {{ $t("sc", null, true) }}/{{ $t("min") }}
+        {{ $t("peak") }}: {{ format(peakSCRate, 2) }} {{ $t("sc_min") }}/{{ $t("min") }}
         <br>
-        {{ $t("atPeak", [quantify($t("sc"), peakSCRateVal, 2)]) }}
+        {{ $t("atPeak", [format(peakSCRateVal, 2) + " " + $t("sc_min")]) }}
       </template>
       <div v-else />
     </template>

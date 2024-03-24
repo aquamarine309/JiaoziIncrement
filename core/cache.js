@@ -68,7 +68,9 @@ export const GameCache = {
 
   factoryCommonMultiplier: new Lazy(() => factoryCommonMultiplier()),
   
-  collectionPresets: new Lazy(() => player.collectionPresets.map(cp => new CollectionPreset(cp)).compact())
+  collectionPresets: new Lazy(() => player.collectionPresets.map(cp => new CollectionPreset(cp)).compact()),
+  
+  totalEnergyMult: new Lazy(() => totalEnergyMult())
 };
 
 GameCache.makerFinalMultipliers.invalidate = function() {

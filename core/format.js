@@ -213,3 +213,8 @@ window.$t = function $t(key, values, piural) {
   if (piural) return pluralize(base, 0, void 0, "");
   return base;
 }
+
+window.addScape = function addScape(items) {
+  if (Languages.current.name === "zh-CN") return items.join("");
+  return items.join(" ");
+}

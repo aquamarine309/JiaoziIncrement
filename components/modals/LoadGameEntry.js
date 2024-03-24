@@ -21,6 +21,21 @@ export default {
   computed: {
     isSelected() {
       return GameStorage.currentSlot === this.saveId;
+    },
+    save() {
+      return $t("save");
+    },
+    fileNameText() {
+      return $t("fileName");
+    },
+    dumpling() {
+      return $t("jiaozi", null, true);
+    },
+    loadText() {
+      return $t("load");
+    },
+    selected() {
+      return $t("selected");
     }
   },
   methods: {
@@ -38,14 +53,14 @@ export default {
   },
   template: `
   <div class="l-modal-options__save-record">
-    <h3>存档 #{{ saveId + 1 }}:<span v-if="isSelected"> (已选中)</span></h3>
-    <span v-if="fileName">存档名称: {{ fileName }}</span>
-    <span>饺子: {{ formatJiaozi(jiaozi) }}</span>
+    <h3>{{ save }} #{{ saveId + 1 }}:<span v-if="isSelected"> ({{ selected }})</span></h3>
+    <span v-if="fileName">{{ fileNameText }}: {{ fileName }}</span>
+    <span>{{ dumpling }}: {{ formatJiaozi(jiaozi) }}</span>
     <PrimaryButton
     class="o-primary-btn--width-medium"
     @click="load"
     >
-      加载
+      {{ loadText }}
     </PrimaryButton>
   </div>`
 }

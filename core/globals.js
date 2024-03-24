@@ -43,5 +43,6 @@ export * from "./languages.js";
 export * from "./simulation-milestones.js";
 export * from "./collection-presets.js";
 export * from "./advanced-simulation.js";
+export * from "./simulation-upgrades.js";
 
 export * from "./achievements/normal-achievement.js";

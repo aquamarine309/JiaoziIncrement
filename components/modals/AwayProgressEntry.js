@@ -64,6 +64,15 @@ export default {
     },
     isVeryLarge() {
       return Decimal.gt(this.before, Decimal.pow10(1e9));
+    },
+    awayExponent() {
+      return $t("away_exponent");
+    },
+    increasedFrom() {
+      return $t("increasedFrom")
+    },
+    to() {
+      return $t("away_to")
     }
   },
   methods: {
@@ -87,14 +96,16 @@ export default {
       this.item.option = !this.item.option;
     }
   },
-  template: `<div
-v-if="show"
-:class="classObject"
-@click="hideEntry"
->
-<span>
-<b>{{ formattedName }}</b><i v-if="isVeryLarge">的指数</i>从
-{{ formatBefore }} 增长到 {{ formatAfter }}
-</span>
-</div>`
+  template: `
+  <div
+    v-if="show"
+    :class="classObject"
+    @click="hideEntry"
+  >
+    <span>
+      <b>{{ formattedName }}</b><i v-if="isVeryLarge">{{ awayExponent }}</i>{{ increasedFrom }}
+      {{ formatBefore }} {{ to }} {{ formatAfter }}
+    </span>
+  </div>
+  `
 }

@@ -41,6 +41,7 @@ export function gameLoop(passDiff, options = {}) {
   GameCache.factoryCommonMultiplier.invalidate();
   GameCache.totalSCMult.invalidate();
   GameCache.totalCoresMult.invalidate();
+  GameCache.totalEnergyMult.invalidate();
   
   player.records.realTimePlayed += realDiff;
   player.records.totalTimePlayed += diff;
@@ -55,17 +56,20 @@ export function gameLoop(passDiff, options = {}) {
    
   DeltaTimeState.update(realDiff, diff);
   
-  preProductionGenerateSC(diff)
+  preProductionGenerateSC(diff);
   Autobuyers.tick();
   Tutorial.tutorialLoop();
   
-  SimulationAnimation.tick(realDiff)
-  Factories.tick(diff)
-  Makers.tick(diff)
+  SimulationAnimation.tick(realDiff);
+  Factories.tick(diff);
+  Makers.tick(diff);
   
+  if (SimulationMilestone.upgrades.isReached) {
+    Currency.energy.add(energyPerSecond().times(diff / 1000));
+  }
   
-  updatePrestigeRates()
-  applyAutoprestige(diff)
+  updatePrestigeRates();
+  applyAutoprestige(diff);
   
   EventHub.dispatch(GAME_EVENT.GAME_TICK_AFTER);
   GameUI.update();
@@ -74,7 +78,7 @@ export function gameLoop(passDiff, options = {}) {
 }
 
 window.onload = function() {
-  const supportedBrowser = browserCheck()
+  const supportedBrowser = browserCheck();
   GameUI.initialized = supportedBrowser;
   ui.view.initialized = supportedBrowser;
   setTimeout(() => {

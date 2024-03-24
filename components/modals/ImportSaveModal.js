@@ -81,6 +81,18 @@ export default {
       const ticks = GameStorage.maxOfflineTicks(durationInMs);
       return `After importing, will simulate ${formatInt(ticks)} ticks of duration
 ${TimeSpan.fromMilliseconds(durationInMs / ticks).toStringShort()} each.`;
+    },
+    importYourSave() {
+      return $t("importYourSave");
+    },
+    fileNameText() {
+      return $t("fileName");
+    },
+    dumpling() {
+      return $t("jiaozi", null, true);
+    },
+    importText() {
+      return $t("imp");
     }
   },
   mounted() {
@@ -118,64 +130,66 @@ ${TimeSpan.fromMilliseconds(durationInMs / ticks).toStringShort()} each.`;
       GameStorage.import(this.input);
     },
   },
-  template: `<ModalWrapperChoice
-:show-cancel="!inputIsValid"
-:show-confirm="false"
->
-<template #header>
-导入你的存档
-</template>
-<input
-ref="input"
-v-model="input"
-type="text"
-class="c-modal-input c-modal-import__input"
-@keyup.enter="importSave"
-@keyup.esc="emitClose"
->
-<div class="c-modal-import__save-info">
-<div v-if="inputIsSecret">
-???
-</div>
-<template v-else-if="inputIsValidSave">
-<div v-if="fileName">
-存档名称: {{ fileName }}
-</div>
-<div>饺子: {{ formatPostBreak(jiaozi, 2, 1) }}</div>
-
-<div class="c-modal-import__warning">
-(你当前的存档将会被覆盖！)
-</div>
-<br>
-<div>
-{{ lastOpened }}
-<div
-class="o-primary-btn"
-@click="changeOfflineSetting"
->
-离线进度: {{ offlineType }}
-</div>
-<span v-html="offlineDetails" />
-</div>
-</template>
-<div v-else-if="hasInput">
-存档无效:
-<br>
-{{ saveCheckString }}
-</div>
-<div
-v-if="player"
-class="c-modal-hard-reset-danger"
->
-</div>
-</div>
-
-<PrimaryButton
-v-if="inputIsValid"
-class="o-primary-btn--width-medium c-modal-message__okay-btn c-modal__confirm-btn"
-@click="importSave"
->
-导入
-</PrimaryButton>
-</ModalWrapperChoice>`
+  template: `
+  <ModalWrapperChoice
+    :show-cancel="!inputIsValid"
+    :show-confirm="false"
+  >
+    <template #header>
+      {{ importYourSave }}
+    </template>
+    <input
+    ref="input"
+    v-model="input"
+    type="text"
+    class="c-modal-input c-modal-import__input"
+    @keyup.enter="importSave"
+    @keyup.esc="emitClose"
+  >
+    <div class="c-modal-import__save-info">
+      <div v-if="inputIsSecret">
+        ???
+      </div>
+      <template v-else-if="inputIsValidSave">
+        <div v-if="fileName">
+          {{ fileNameText }}: {{ fileName }}
+        </div>
+        <div>{{ dumpling }}: {{ formatPostBreak(jiaozi, 2, 1) }}</div>
+        
+        <div class="c-modal-import__warning">
+          (你当前的存档将会被覆盖！)
+        </div>
+        <br>
+        <div>
+          {{ lastOpened }}
+          <div
+            class="o-primary-btn"
+            @click="changeOfflineSetting"
+          >
+            离线进度: {{ offlineType }}
+          </div>
+          <span v-html="offlineDetails" />
+        </div>
+      </template>
+      <div v-else-if="hasInput">
+        存档无效:
+        <br>
+        {{ saveCheckString }}
+      </div>
+      <div
+        v-if="player"
+        class="c-modal-hard-reset-danger"
+      >
+      </div>
+    </div>
+    
+    <PrimaryButton
+      v-if="inputIsValid"
+      class="o-primary-btn--width-medium c-modal-message__okay-btn c-modal__confirm-btn"
+      @click="importSave"
+    >
+      {{ importText }}
+    </PrimaryButton>
+  </ModalWrapperChoice>
+  `
 }

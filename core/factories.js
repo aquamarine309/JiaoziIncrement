@@ -9,9 +9,8 @@ export function toggleAllFactories() {
 
 export function factoryCommonMultiplier() {
   let multiplier = DC.D1;
-  multiplier = multiplier.timesEffectsOf(
-    Task.mixtures.reward,
-    SimulationMilestone.wrapperBoostFactories
+  multiplier = multiplier.timesEffectOf(
+    Task.mixtures.reward
   );
   return multiplier;
 }
@@ -39,7 +38,7 @@ class FactoryState {
   }
   
   get name() {
-    return `${this.displayName}${$t("scape")}${$t("factory")}`;
+    return `${this.displayName}${$t("scape")}${$t("factory_min")}`;
   }
   
    get data() { return this._getData()[this.tier - 1]; }
@@ -125,6 +124,9 @@ class FactoryState {
     const tier = this.tier;
     let mult = GameCache.factoryCommonMultiplier.value
     mult = mult.times(Decimal.pow(this.powerMultiplier, this.bought));
+    if (this.tier <= 4) {
+      mult = mult.timesEffectOf(SimulationMilestone.wrapperBoostFactories);
+    }
 
     return mult.clampMin(1);
   }

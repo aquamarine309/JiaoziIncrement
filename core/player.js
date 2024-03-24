@@ -1,5 +1,6 @@
 import { DC } from "./constants.js";
 import { deepmergeAll } from '../deepmerge.js';
+import { Languages } from "./languages.js";
 
 window.player = {
   jiaozi: DC.E1,
@@ -19,7 +20,7 @@ window.player = {
   maxResetJiaozi: DC.D0,
   money: DC.D0,
   break: false,
-  version: 7.5,
+  version: 7.6,
   wrapper: 0,
   stuffing: 0,
   simulationStuffing: 0,
@@ -118,11 +119,14 @@ window.player = {
   simulation: {
     upgrades: {
       review: {
-        activeId: 0,
-        purchases: 0
-      },
-      preview: 0
-    }
+        0: 0,
+        1: 0,
+        2: 0,
+        3: 0,
+        4: 0
+      }
+    },
+    energy: DC.D0
   },
   cores: DC.D0,
   simulations: DC.D0,
@@ -131,8 +135,7 @@ window.player = {
   options: {
     theme: 'Normal',
     notation: "Scientific",
-    //get language from current language
-    language: "",
+    language: Languages.base.name,
     updateCollectionSetAfterChallenge: true,
     notationDigits: {
       comma: 5,
@@ -185,7 +188,8 @@ window.player = {
       steamerCoins: true,
       steamerCount: true,
       simulationCoins: true,
-      simulations: true
+      simulations: true,
+      energy: true
     },
     multiplierTab: {
       currTab: 0,

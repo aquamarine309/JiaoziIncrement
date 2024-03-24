@@ -16,7 +16,7 @@ export const simulationMilestones = {
     id: 2,
     cores: 3,
     description: () => $t("SM_wrapperBoostFactories"),
-    effect: () => Wrapper.power.pow(0.002),
+    effect: () => Wrapper.power.pow(0.005),
     formatEffect: value => formatX(value, 2, 3)
   },
   keepChall: {

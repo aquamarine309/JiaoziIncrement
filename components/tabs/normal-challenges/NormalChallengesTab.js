@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     update() {
-      this.isUnlocked = player.records.thisSimulation.maxJiaozi.gte(this.unlockRequirement);
+      this.isUnlocked = player.records.thisSimulation.maxJiaozi.gte(this.unlockRequirement) || SimulationMilestone.qols.isReached;
     }
   },
   computed: {
