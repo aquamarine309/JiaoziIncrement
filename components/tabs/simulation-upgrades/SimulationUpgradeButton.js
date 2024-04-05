@@ -27,15 +27,20 @@ export default {
 	data() {
 		return {
 			isAvailable: true,
-			isBought: true
+			isBought: true,
+			timeToGain: 0
 		}
 	},
 	methods: {
 		update() {
 			this.isAvailable = this.upgrade.canBeBought;
 			this.isBought = this.upgrade.isBought;
+			if (this.rebuyable && !this.isAvailable && energyPerSecond().gt(0)) {
+			  this.timeToGain = this.upgrade.cost.minus(Currency.energy.value).div(energyPerSecond());
+			}
 		},
 		purchase() {
+		  if (this.isLocked) return;
 		  this.upgrade.purchase();
 		}
 	},
@@ -55,12 +60,21 @@ export default {
 	  },
 	  costName() {
 	    return $t(this.currency);
+	  },
+	  lockTooltip() {
+	    return `${formatInt(5)}小时后更新`
+	  },
+	  timeEstimate() {
+	    if (!this.rebuyable || this.isAvailable) return "点击以购买";
+	    if (energyPerSecond().lte(0) || this.timeToGain.gte(Decimal.NUMBER_MAX_VALUE)) return "Never affordable."
+	    return TimeSpan.fromSeconds(this.timeToGain.toNumber()).toStringShort();
 	  }
 	},
 	template: `
 	  <button
 	    :class="btnClass"
 	    @click="purchase"
+	    :ach-tooltip="timeEstimate"
 	  >
 	    <template v-if="!isLocked">
   	    <DescriptionDisplay :config="config" />
@@ -74,6 +88,7 @@ export default {
   	  <template v-else>
   	    <div
   	      class="l-lock-overlay"
+  	      :ach-tooltip="lockTooltip"
   	      v-if="isLocked"
 	      >
 	        <i class="fas fa-lock" />

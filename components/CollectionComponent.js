@@ -15,12 +15,16 @@ export default {
           `var(--color-rarity-${this.collection.rarity})`,
         "background-image": `url(${this.collection.isUnlocked ? (this.collection.url || unknownUrl) : unknownUrl})`
       }
+    },
+    effectTooltip() {
+      return `${this.collection.name}: ${this.collection.config.description()}`;
     }
   },
   template: `
     <div
-    class="c-collection-component"
-    :style="componentStyle"
+      class="c-collection-component"
+      :style="componentStyle"
+      :ach-tooltip="effectTooltip"
     />
   `
 }
