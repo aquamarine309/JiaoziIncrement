@@ -186,6 +186,9 @@ class FactoryState {
     if (this.tier === 1) {
       Tab.main.factory.show();
     }
+    if (this.tier === 4 && !PlayerProgress.simulationUnlocked()) {
+      Modal.message.show("你接到了几个外卖订单。请前往蒸笼界面查看。");
+    }
     return true;
   }
 
