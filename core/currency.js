@@ -203,7 +203,7 @@ Currency.jiaozi = new class extends DecimalCurrency {
   set value(value) {
     player.records.thisBigReset.maxJiaozi = player.records.thisBigReset.maxJiaozi.max(value);
     player.records.thisSteamer.maxJiaozi = player.records.thisSteamer.maxJiaozi.max(value);
-    player.records.thisSimulation.maxJiaozi = player.records.thisSteamer.maxJiaozi.max(value);
+    player.records.thisSimulation.maxJiaozi = player.records.thisSimulation.maxJiaozi.max(value);
     player.jiaozi = value;
   }
   
