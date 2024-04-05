@@ -2,7 +2,7 @@ export default {
   name: "ConcludeSimulationButton",
   methods: {
     concludeSimulation() {
-      concludeSimulationRequest(false);
+      concludeSimulationReset();
     }
   },
   template: `

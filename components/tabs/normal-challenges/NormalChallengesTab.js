@@ -25,7 +25,7 @@ export default {
       return NormalChallenges.all
     },
     unlockRequirement() {
-      return DC.E2100;
+      return NormalChallenges.requirement;
     }
   },
   template: `

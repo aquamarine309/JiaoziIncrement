@@ -24,16 +24,16 @@ export default {
   },
   methods: {
     update() {
-      this.shouldDisplay = player.break || !Player.canFixSteamer
+      this.shouldDisplay = player.break || !Player.canFixSteamer;
       if (!this.shouldDisplay) return;
-      this.jiaoziPerSecond = Maker(1).productionPerSecond
-      this.rate = this.jiaoziPerSecond.div(this.jiaozi)
+      this.jiaoziPerSecond = Maker(1).productionPerSecond;
+      this.rate = this.jiaoziPerSecond.div(this.jiaozi);
       this.jiaozi = Currency.jiaozi.value;
-      this.showRate = player.break && this.rate.gte(1.01)
-      this.money = Currency.money.value
-      this.hasSimulationButton = PlayerProgress.factoriesUnlocked()
-      this.simulationUnlocked = PlayerProgress.simulationUnlocked()
-      this.cores = Currency.cores.value
+      this.showRate = player.break && this.rate.gte(1.01);
+      this.money = Currency.money.value;
+      this.hasSimulationButton = PlayerProgress.factoriesUnlocked();
+      this.simulationUnlocked = PlayerProgress.simulationUnlocked();
+      this.cores = Currency.cores.value;
     },
   },
   template: `
@@ -43,12 +43,17 @@ export default {
     >
       <div>{{ $t("youHave") }} <span class="c-game-header__jiaozi">{{ format(jiaozi, 2, 1) }}</span> {{ pluralize($t("jiaozi"), jiaozi) }}{{ $t("stop") }}</div>
       <div class="c-game-header__simulation">
-        <div v-if="simulationUnlocked" class="o-simulation-header">
-          {{ $t("youHave") }} <span class="c-game-header__sn">{{ format(cores, 2) }}</span> {{ pluralize($t("core"), cores) }}{{ $t("stop") }}
+        <div
+          v-if="simulationUnlocked"
+          class="o-simulation-header"
+        >
+          {{ $t("youHave") }} 
+          <span class="c-game-header__sn">{{ format(cores, 2) }}</span> 
+          {{ pluralize($t("core"), cores) }}{{ $t("stop") }}
         </div>
         <div
-        v-if="hasSimulationButton"
-        class="c-simulation-container"
+          v-if="hasSimulationButton"
+          class="c-simulation-container"
         >
           <UnlockFactoryAndSimulationButton />
         </div>

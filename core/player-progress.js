@@ -12,7 +12,7 @@ export class PlayerProgress {
   }
   
   get isFactoriesUnlocked() {
-    return this._player.challenge.normal.completedBits === 510 || this.isSimulationUnlocked;
+    return this._player.challenge.normal.completedBits > 510 || this.isSimulationUnlocked;
   }
   
   get isTasksUnlocked() {

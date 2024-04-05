@@ -185,19 +185,11 @@ export const tabs = [
     condition: () => PlayerProgress.simulationUnlocked(),
     subtabs: [
       {
-        key: "branches",
-        name: "branches",
-        symbol: "<i class='fas fa-tree'></i>",
-        component: "BranchesTab",
-        id: 0,
-        hidable: true
-      },
-      {
         key: "milestones",
         name: "simulationMilestones",
         symbol: "<i class='fas fa-star'></i>",
         component: "SimulationMilestonesTab",
-        id: 1,
+        id: 0,
         hidable: true
       },
       {
@@ -205,7 +197,7 @@ export const tabs = [
         name: "simUpgs",
         symbol: "<i class='fas fa-arrow-up'></i>",
         component: "SimulationUpgradesTab",
-        id: 2,
+        id: 1,
         hidable: true,
         condition: () => SimulationMilestone.upgrades.isReached
       }

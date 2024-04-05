@@ -9,8 +9,9 @@ export function toggleAllFactories() {
 
 export function factoryCommonMultiplier() {
   let multiplier = DC.D1;
-  multiplier = multiplier.timesEffectOf(
-    Task.mixtures.reward
+  multiplier = multiplier.timesEffectsOf(
+    Task.mixtures.reward,
+    SimulationRebuyable.factoryBoost
   );
   return multiplier;
 }

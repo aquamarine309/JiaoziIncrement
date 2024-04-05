@@ -70,7 +70,11 @@ export const GameCache = {
   
   collectionPresets: new Lazy(() => player.collectionPresets.map(cp => new CollectionPreset(cp)).compact()),
   
-  totalEnergyMult: new Lazy(() => totalEnergyMult())
+  totalEnergyMult: new Lazy(() => totalEnergyMult()),
+  
+  totalSimulationRebuyablesBought: new Lazy(
+    () => SimulationRebuyableGroup.upgrades.reduce((a, u) => a + u.boughtAmount, 0)
+  )
 };
 
 GameCache.makerFinalMultipliers.invalidate = function() {

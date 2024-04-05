@@ -106,6 +106,10 @@ export const migrations = {
       delete player.simulation.upgrades.review.activeId;
       delete player.simulation.upgrades.review.purchases;
       delete player.simulation.upgrades.preview;
+    },
+    8.1: player => {
+      player.options.lastOpenSubtab[7] = 
+      Math.max(0, player.options.lastOpenSubtab[7] - 1);
     }
   },
   

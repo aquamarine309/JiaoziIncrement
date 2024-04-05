@@ -21,8 +21,8 @@ mergeIntoGlobal(Utils);
 import * as GameDB from "./core/secret-formula/index.js";
 mergeIntoGlobal(GameDB);
 
-import * as core from './core/globals.js'
-mergeIntoGlobal(core)
+import * as core from './core/globals.js';
+mergeIntoGlobal(core);
 
 import * as game from "./game.js";
 mergeIntoGlobal(game);

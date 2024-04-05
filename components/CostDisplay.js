@@ -21,6 +21,11 @@ export default {
       type: String,
       default: "cost",
       required: false
+    },
+    unit: {
+      type: String,
+      required: false,
+      default: "个"
     }
   },
   data() {
@@ -83,6 +88,6 @@ export default {
   },
   template: `<span v-if="isVisible">
 <br v-if="br">
-{{ $t(label) }} {{ quantify(name, cost, 0, 0, formatCost) }}
+{{ $t(label) }} {{ quantify(name, cost, 0, 0, formatCost, unit) }}
 </span>`
 }

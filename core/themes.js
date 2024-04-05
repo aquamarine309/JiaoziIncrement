@@ -81,7 +81,7 @@ Theme.secretThemeIndex = function(name) {
     "dba8336cd3224649d07952b00045a6ec3c8df277aa8a0a0e3e7c2aaa77f1fbb9",
     "73de8a7f9efa1cbffc80a8effc9891a799127cd204b3a8b023bea8f513ed4753",
     "f3a71114261b4af6517a53f89bf0c6b56bb81b6f0e931d0e0d71249eb196628c",
-    "4d1608c849f1a4968565d5019e500b9c3541f654c33ac9d096b610d27229499c"
+    "7d09a76a3364a6090a3634db31277f2fe8f7b11a378ff1d2212234f4d208c441"
   ];
   const sha = sha512_256(name.toUpperCase());
   return secretThemes.indexOf(sha);
@@ -148,7 +148,7 @@ export const Themes = {
     Theme.create("S9",              {                                           secret: true, }),
     Theme.create("S10",             { dark: true,  metro: true, animated: true, secret: true, }),
     Theme.create("S11",             { dark: true,               animated: true, secret: true, }),
-    Theme.create("S12",              {                                           secret: true, }),
+    Theme.create("S12",              {                                        secret: true, }),
     /* eslint-enable no-multi-spaces */
   ],
 

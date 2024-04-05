@@ -134,5 +134,9 @@ export const NormalChallenges = {
    */
   get completed() {
     return NormalChallenges.all.filter(c => c.isCompleted);
+  },
+  
+  get requirement() {
+    return DC.E2024;
   }
 };

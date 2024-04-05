@@ -43,7 +43,7 @@ export default {
       this.simulationTime = Time.thisSimulationRealTime.totalMinutes;
       this.first = !PlayerProgress.simulationUnlocked();
       this.canConclude = Player.canConclude;
-      this.allUnlocked = this.canConclude || Factory(8)
+      this.allUnlocked = this.canConclude || Factory(9)
         .isUnlocked;
       if (!this.allUnlocked) {
         const next = Factories.next();

@@ -19,7 +19,8 @@ export function makerCommonMultiplier() {
     SteamerUpgrade.timeBoost,
     NormalChallenge(6),
     MixtureTypes.sauses,
-    NormalChallenge(7).reward
+    NormalChallenge(7).reward,
+    SimulationRebuyable.makerBoost
   )
   return multiplier
 }

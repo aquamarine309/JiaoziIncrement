@@ -12,8 +12,9 @@ class LanguageState {
   
   format(key, values) {
     const result = this._resources[key];
-    return result.replace(/\%(\d+)\$s/g, function (match, index) {
-      return values[parseInt(index) - 1]
+    if (!values) return result;
+    return result.replace(/\$(\d+)/g, function (match, index) {
+      return values[parseInt(index) - 1];
     })
   }
   

@@ -20,7 +20,7 @@ window.player = {
   maxResetJiaozi: DC.D0,
   money: DC.D0,
   break: false,
-  version: 7.6,
+  version: 8.1,
   wrapper: 0,
   stuffing: 0,
   simulationStuffing: 0,
@@ -124,8 +124,10 @@ window.player = {
         2: 0,
         3: 0,
         4: 0
-      }
+      },
+      previewBits: 0,
     },
+    spentEnergy: DC.D0,
     energy: DC.D0
   },
   cores: DC.D0,

@@ -5,26 +5,28 @@ export function manualConcludeSimulationRequest() {
   concludeSimulationRequest();
 }
 
-export function concludeSimulationRequest() {
+export function concludeSimulationRequest(animation = true) {
   if (!Player.canConclude) return;
-  if (!PlayerProgress.simulationUnlocked()) {
+  if (!PlayerProgress.simulationUnlocked() && animation) {
     SimulationAnimation.start();
   } else {
-    concludeSimulationReset();
+    concludeSimulationReset(false);
   }
 }
 
-export function concludeSimulationReset() {
-  if (!Player.canConclude) return false;
+export function concludeSimulationReset(force = false) {
+  if (!Player.canConclude && !force) return false;
   EventHub.dispatch(GAME_EVENT.CONCLUDE_SIMULATION_BEFORE);
-  giveSimulationRewards();
+  if (Player.canConclude) giveSimulationRewards();
   simulationResetValues();
   SimulationAnimation.reverse();
   EventHub.dispatch(GAME_EVENT.CONCLUDE_SIMULATION_AFTER);
 }
 
 export function totalCoresMult() {
-  return DC.D1;
+  let multiplier = DC.D1;
+  multiplier = multiplier.timesEffectOf(SimulationRebuyable.coreBoost);
+  return multiplier;
 }
 
 export function gainedCores() {

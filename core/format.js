@@ -121,7 +121,9 @@ const PLURAL_HELPER = new Map([
 
 // Some terms require specific (or no) handling when plural. These terms should be added, in Word Case, to this Map.
 // Words will be added to this Map when a valid plural for it is found on being run through the pluralize function.
-const pluralDatabase = new Map([]);
+const pluralDatabase = new Map([
+  ["Energy", "Energy"]
+]);
 
 /**
  * A function that pluralizes a word based on a designated amount
@@ -133,7 +135,7 @@ const pluralDatabase = new Map([]);
  *                    plural form of the input {word}. If the {amount} is singular, return {word}
  */
 window.pluralize = function pluralize(word, amount, plural, unit = "个") {
-  if (Languages.current.name === "zh-CN") return `${unit + word}`;
+  if (Languages.current.name === "zh-CN") return `${unit}${word}`;
   
   if (word === undefined || amount === undefined) throw "[pluralize warn] Arguments must be defined";
 

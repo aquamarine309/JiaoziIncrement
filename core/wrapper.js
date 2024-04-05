@@ -20,7 +20,8 @@ export class Wrapper {
     let base = new Decimal(2).sqrt();
     base = base.timesEffectsOf(
       Collections.golden,
-      Achievement(35)
+      Achievement(35),
+      SimulationRebuyable.wrapperBoost
     );
     base = base.powEffectOf(NormalChallenge(5));
     base = base.powEffectOf(NormalChallenge(5).reward);

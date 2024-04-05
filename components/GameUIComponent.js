@@ -11,16 +11,6 @@ export default {
     BackgroundAnimations,
     ...TabComponents
   },
-  data() {
-    return {
-      jiaozi: new Decimal(0)
-    }
-  },
-  methods: {
-    update() {
-      this.jiaozi = player.jiaozi
-    }
-  },
   computed: {
     view() {
       return this.$viewModel
@@ -49,10 +39,10 @@ export default {
           />
         </Ui>
         <link
-        v-if="view.theme !== 'Normal'"
-        type="text/css"
-        rel="stylesheet"
-        :href="themeCss"
+          v-if="view.theme !== 'Normal'"
+          type="text/css"
+          rel="stylesheet"
+          :href="themeCss"
         >
       </div>
     <GameUiComponentFixed />
