@@ -42,7 +42,7 @@ export function gainedSimulations() {
 }
 
 function simulationTabChange(first) {
-  if (first) Tab.simulation.branches.show();
+  if (first) Tab.simulation.milestones.show();
 }
 
 function giveSimulationRewards() {
