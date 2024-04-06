@@ -20,23 +20,25 @@ export default {
       isAvailable: false,
       rate: new Decimal(0),
       name: '',
-      hasTutorial: false
+      hasTutorial: false,
+      currencyName: ""
     }
   },
   methods: {
     update() {
-      const maker = Maker(this.tier)
-      this.makers = maker.amount
-      this.multiplier = maker.multiplier
-      this.cost = maker.cost
-      this.isAffordable = maker.isAffordable && maker.isAvailable
-      this.isAvailable = maker.isAvailable
-      this.rate = maker.rate
-      this.name = maker.name
-      this.hasTutorial = (maker.tier === 1 && Tutorial.isActive(TUTORIAL_STATE.MAKER1))
+      const maker = Maker(this.tier);
+      this.makers = maker.amount;
+      this.multiplier = maker.multiplier;
+      this.cost = maker.cost;
+      this.isAffordable = maker.isAffordable && maker.isAvailable;
+      this.isAvailable = maker.isAvailable;
+      this.rate = maker.rate;
+      this.name = maker.name;
+      this.hasTutorial = (maker.tier === 1 && Tutorial.isActive(TUTORIAL_STATE.MAKER1));
+      this.currencyName = Makers.currencyName;
     },
     buySingle() {
-      buySingleMaker(this.tier)
+      buySingleMaker(this.tier);
     }
   },
   computed: {
@@ -54,7 +56,7 @@ export default {
       }
     },
     showRate() {
-      return this.rate.neq(0)
+      return this.rate.neq(0);
     }
   },
   template: `
@@ -82,7 +84,7 @@ export default {
         :class='btnClass'
         >
           <span v-if="isAvailable">
-            {{ quantify($t("jiaozi"), cost, 2, 2) }}
+            {{ quantify(currencyName, cost, 2, 2) }}
           </span>
           <span v-else>
             {{ $t("locked") }}

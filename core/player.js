@@ -20,7 +20,8 @@ window.player = {
   maxResetJiaozi: DC.D0,
   money: DC.D0,
   break: false,
-  version: 8.1,
+  makerCurrencyType: MAKER_CURRENCY.JIAOZI,
+  version: 8.105,
   wrapper: 0,
   stuffing: 0,
   simulationStuffing: 0,
@@ -126,6 +127,7 @@ window.player = {
         4: 0
       },
       previewBits: 0,
+      unlockedBits: 0
     },
     spentEnergy: DC.D0,
     energy: DC.D0
@@ -215,11 +217,6 @@ window.player = {
   seed: 1,
   bigResetCount: DC.D0,
   steamerUpgrades: new Set(),
-  requirementChecks: {
-    simulation: {
-      noGolden: true
-    }
-  },
   auto: {
     autobuyersOn: true,
     makers: {

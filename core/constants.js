@@ -258,3 +258,8 @@ window.PROGRESS_STAGE = {
   EARLY_BIG_RESET: 2,
   EARLY_STEAMER: 3
 };
+
+window.MAKER_CURRENCY = {
+  JIAOZI: 0,
+  MONEY: 1
+}

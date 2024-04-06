@@ -189,7 +189,7 @@ export const languages = {
       milestone: "里程碑",
       SM_qols: "终止模拟时保留所有蒸笼升级，解锁外卖、蒸笼币倍增的自动购买器，蒸笼后保留所有收集饺子。",
       nextAt: "下一个需要",
-      SM_wrapperBoostFactories: "饺子皮以较低的效果加成前四个蒸笼工厂。",
+      SM_wrapperBoostFactories: "饺子皮以较低的效果加成前四个蘸料工厂。",
       void: "空",
       excessCol: "收集饺子过多",
       save: "保存",
@@ -432,7 +432,8 @@ export const languages = {
       requirement: "需求",
       sa11_n: "彩虹之力",
       sa11_d: "解锁彩虹主题。",
-      placeholder: "Placeholder"
+      placeholder: "Placeholder",
+      concludeSimulation: "终止模拟"
     }
   },
   "en": {

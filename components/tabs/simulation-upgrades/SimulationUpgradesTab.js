@@ -9,7 +9,8 @@ export default {
 		return {
 			energy: new Decimal(0),
 			power: new Decimal(0),
-			totalRebuyables: 0
+			totalRebuyables: 0,
+			energyGained: new Decimal(0)
 		}
 	},
 	computed: {
@@ -47,6 +48,7 @@ export default {
 			this.energy = Currency.energy.value;
 			this.power = GameCache.totalEnergyMult.value;
 			this.totalRebuyables = SimulationRebuyableGroup.totalBought;
+			this.energyGained = format(player.simulation.spentEnergy.times(0.8), 2, 1);
 		},
 		reset() {
 		  resetAllSimulationUpgrades();
@@ -71,11 +73,10 @@ export default {
     	      class="c-reset-simulation-rebuyables"
     	      @click="reset"
 	        >
-	          终止模拟并重置所有模拟升级
+	          终止模拟并重置所有模拟升级(+{{ energyGained }} {{ $t("energy") }})
     	    </button>
 	        <p>重置升级时，你将保留{{ formatPercents(0.8) }}的饺子能量。</p>
-	        <p>"知新"升级需要完成解锁条件，完成后可用核心饺子购买。</p>
-	        <p>Shift点击或长按锁定的升级以查看升级效果和价格。</p>
+	        <p>"知新"升级需要用核心饺子购买。</p>
 	        <p>购买"知新"升级时，核心饺子的数量至少要比价格多{{ formatInt(15) }}，确保里程碑保持有效状态。</p>
 	      </div>
 	    </div>

@@ -1,7 +1,6 @@
 import CostDisplay from "../../CostDisplay.js";
 import HintText from "../../HintText.js";
 
-
 export default {
   name: "StuffingButton",
   components: {

@@ -1,3 +1,9 @@
 body.t-s12 {
   background: linear-gradient(to right, #f3e3d9, #d9f3e3, #e3d9f3);
 }
+.t-s12 .o-wrapper-btn,
+.t-s12 .o-stuffing-btn,
+.t-s12 .o-primary-btn--disabled {
+  background-color: #e3e3e3;
+  color: black;
+}

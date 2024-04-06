@@ -23,10 +23,10 @@ export default {
   methods: {
     update() {
       let maxTier = 0
-      if (PlayerProgress.collectionUnlocked()) maxTier += 4
-      if (PlayerProgress.steamerUnlocked()) maxTier += 1
-      if (PlayerProgress.hasBroken()) maxTier += 4
-      this.maxTier = Math.max(maxTier, Makers.maxTier)
+      if (PlayerProgress.collectionUnlocked()) maxTier += 4;
+      if (PlayerProgress.steamerUnlocked()) maxTier += 1;
+      if (PlayerProgress.hasBroken()) maxTier += 4;
+      this.maxTier = Math.max(maxTier, Makers.maxTier);
     }
   },
   template: `

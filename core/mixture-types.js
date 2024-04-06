@@ -14,7 +14,7 @@ class MixtureTypeState extends GameMechanicState {
   get amount() {
     let base = Currency.mixtures.value;
     if (base.gt(DC.E50)) base = base.pow(0.5).times(DC.E25);
-    if (base.gt(DC.E600)) base = base.pow(0.2).times(DC.E480);
+    if (base.gt(DC.E600)) base = base.pow(0.25).times(DC.E450);
     return base;
   }
   

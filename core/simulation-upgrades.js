@@ -58,7 +58,28 @@ class SimulationUpgradeState extends BitPurchasableMechanicState {
   }
   
   get requirement() {
-    return "5小时后更新";
+    return this.config.requirement();
+  }
+  
+  get isUnlocked() {
+    return (player.simulation.upgrades.unlockedBits & (1 << this.bitIndex)) !== 0;
+  }
+  
+  get isAvailableForPurchase() {
+    return this.isUnlocked;
+  }
+  
+  get canUnlock() {
+    return this.config.checkRequirement() && !this.isUnlocked;
+  }
+  
+  tryUnlock() {
+    if (!this.canUnlock) return;
+    this.unlock();
+  }
+  
+  unlock() {
+    player.simulation.upgrades.unlockedBits |= (1 << this.bitIndex);
   }
 }
 
