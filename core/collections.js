@@ -56,7 +56,6 @@ class CollectionState extends GameMechanicState {
   
   activate() {
     if (!this.canActivate) return;
-    if (this.id === 4) player.requirementChecks.simulation.noGolden = false;
     Tutorial.turnOffEffect(TUTORIAL_STATE.COLLECTION);
     player.colActiveBits |= (1 << this.id);
   }
