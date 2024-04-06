@@ -1,5 +1,4 @@
 import AutobuyersTab from "./autobuyers/AutobuyersTab.js";
-import BranchesTab from "./branches/BranchesTab.js";
 import CollectionsTab from './collections/CollectionsTab.js';
 import FactoriesTab from "./factories/FactoriesTab.js";
 import JiaoziMakersTab from './makers/JiaoziMakersTab.js';
@@ -9,6 +8,7 @@ import OptionsSavingTab from "./options-saving/OptionsSavingTab.js";
 import OptionsVisualTab from "./options-visual/OptionsVisualTab.js";
 import OptionsGameplayTab from "./options-gameplay/OptionsGameplayTab.js";
 import PastPrestigeRunsTab from "./past-prestige-runs/PastPrestigeRunsTab.js";
+import SecretAchievementsTab from "./secret-achievements/SecretAchievementsTab.js";
 import SimulationMilestonesTab from "./simulation-milestones/SimulationMilestonesTab.js";
 import SimulationUpgradesTab from "./simulation-upgrades/SimulationUpgradesTab.js";
 import StatisticsTab from "./statistics/StatisticsTab.js";
@@ -29,9 +29,9 @@ const TabComponents = {
   FactoriesTab,
   TasksTab,
   NormalAchievementsTab,
-  BranchesTab,
   SimulationMilestonesTab,
-  SimulationUpgradesTab
+  SimulationUpgradesTab,
+  SecretAchievementsTab
 }
 
-export default TabComponents
+export default TabComponents;

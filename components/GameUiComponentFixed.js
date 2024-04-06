@@ -41,7 +41,6 @@ export default {
     id="notification-container"
     class="l-notification-container"
     />
-    <HowToPlay />
     <Sidebar />
     <SaveTimer />
     <VersionButton />

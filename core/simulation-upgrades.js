@@ -41,6 +41,10 @@ class SimulationUpgradeState extends BitPurchasableMechanicState {
     return Currency.cores;
   }
   
+  get isAffordable() {
+    return this.currency.gte(this.cost + 15);
+  }
+  
   get bits() {
     return player.simulation.upgrades.previewBits;
   }
@@ -51,6 +55,10 @@ class SimulationUpgradeState extends BitPurchasableMechanicState {
   
   get bitIndex() {
     return this.id;
+  }
+  
+  get requirement() {
+    return "5小时后更新";
   }
 }
 

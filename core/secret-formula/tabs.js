@@ -169,10 +169,9 @@ export const tabs = [
         key: "secret",
         name: "secretAchs",
         symbol: "<i class='fas fa-question'></i>",
-        component: "SecretAchievementTab",
+        component: "SecretAchievementsTab",
         id: 1,
-        hidable: true,
-        condition: () => false
+        hidable: true
       }
     ]
   },

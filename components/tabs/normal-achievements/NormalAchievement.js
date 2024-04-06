@@ -131,14 +131,15 @@ export default {
         </div>
       </template>
     </div>
-    <div
-    class='o-achievement-star'
-    >
+    <div class='o-achievement-star'>
       <i
         class="fas fa-star-of-david o-star-big"
         v-if='hasReward'
       />
-      <i v-else class='fa fa-cogs o-star-small'/>
+      <i
+        v-else
+        class='fa fa-cogs o-star-small'
+      />
     </div>
     </div>
   </div>

@@ -45,4 +45,6 @@ export * from "./collection-presets.js";
 export * from "./advanced-simulation.js";
 export * from "./simulation-upgrades.js";
 
-export * from "./achievements/normal-achievement.js"; 
+export * from "./achievements/normal-achievement.js";
+export * from "./achievements/secret-achievement.js";
+export * from "./achievements/achievement-timer.js";

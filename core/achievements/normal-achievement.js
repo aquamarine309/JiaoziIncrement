@@ -83,10 +83,6 @@ export const Achievements = {
     return unlockedAchievements;
   },
 
-  get period() {
-    return GameCache.achievementPeriod.value;
-  },
-
   _power: new Lazy(() => {
     const unlockedRows = Achievements.allRows
       .countWhere(row => row.every(ach => ach.isUnlocked));

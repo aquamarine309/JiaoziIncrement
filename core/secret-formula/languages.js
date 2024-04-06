@@ -187,7 +187,7 @@ export const languages = {
       simulationMilestones: "模拟里程碑",
       SM_buyingMakerBoost: "购买制造器和工厂的倍数+$1。",
       milestone: "里程碑",
-      SM_qols: "终止模拟时保留所有蒸笼升级，解锁任务、蒸笼币倍增的自动购买器，蒸笼后保留所有收集饺子。",
+      SM_qols: "终止模拟时保留所有蒸笼升级，解锁外卖、蒸笼币倍增的自动购买器，蒸笼后保留所有收集饺子。",
       nextAt: "下一个需要",
       SM_wrapperBoostFactories: "饺子皮以较低的效果加成前四个蒸笼工厂。",
       void: "空",
@@ -428,7 +428,11 @@ export const languages = {
       takeaway_wrapper: "需要 $1 个饺子皮",
       takeaway_steamer: "需要 $1 蒸笼币",
       takeaway_collections: "激活小于 $1 个收集时达到 $1 饺子",
-      reviewTemp: "$2获得$1的加成"
+      reviewTemp: "$2获得 $1 的加成",
+      requirement: "需求",
+      sa11_n: "彩虹之力",
+      sa11_d: "解锁彩虹主题。",
+      placeholder: "Placeholder"
     }
   },
   "en": {
@@ -861,7 +865,11 @@ export const languages = {
       takeaway_wrapper: "Requires $1 Wrappers",
       takeaway_steamer: "Requires $1 Steamer Coins",
       takeaway_collections: "Requires $1 dumplings with less than $1 Collections",
-      reviewTemp: "Provide a $1 multplier to $2"
+      reviewTemp: "Provide a $1 multplier to $2",
+      requirement: "Requirement",
+      sa11_n: "Rainbow power",
+      sa11_d: "Unlock Rainbow theme.",
+      placeholder: "Placeholder"
     }
   }
 }

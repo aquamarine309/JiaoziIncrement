@@ -7,13 +7,13 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 1.6rem;
+  width: 0.6rem;
 }
 
 ::-webkit-scrollbar-thumb {
   background-clip: content-box;
   background-color: grey;
-  border: 0.2rem solid transparent;
+  border: 0.1rem solid transparent;
   border-radius: var(--var-border-radius, 0.5rem);
 }
 
@@ -26,6 +26,13 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* css vars */
@@ -5596,8 +5603,10 @@ align-items: center;
 }
 
 .o-achievement--hidden {
-  background-color: #555555;
+  background-color: #999999;
+  background-image: url("../images/achhidden.png");
   border-color: black;
+  background-size: cover;
 }
 
 .o-achievement:hover .o-achievement__tooltip {
@@ -6621,6 +6630,7 @@ width: 62rem;
   font-size: 1.8rem;
   animation: a-energy-glow 15s infinite;
   text-shadow: 0 0 0.2rem var(--color-text-inverted);
+  font-weight: bold;
 }
 
 .o-simulation-upgrade {
@@ -6702,8 +6712,9 @@ width: 62rem;
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
-  height: 12rem;
+  height: 15rem;
   margin: 0.5rem;
+  font-size: 1rem;
 }
 
 .c-simulation-block {
@@ -6725,12 +6736,16 @@ width: 62rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3.5rem;
+  flex-direction: column;
   color: var(--color-simulation);
   padding: auto;
   position: absolute;
   border-radius: var(--var-border-radius, 0.4rem);
   transition-duration: 0.2s;
+}
+
+.l-lock-overlay i {
+  font-size: 3.5rem;
 }
 
 .o-simulation-upgrade--available:hover .l-lock-overlay {

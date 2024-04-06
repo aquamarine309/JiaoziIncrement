@@ -11,7 +11,8 @@ class SecretAchievementState extends GameMechanicState {
   }
 
   get name() {
-    return this.config.name;
+    if (this.config.isPlaceholder) return "Placeholder";
+    return $t(`sa${this.id}_n`);
   }
 
   get row() {
