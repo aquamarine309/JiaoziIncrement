@@ -252,7 +252,7 @@ export const Makers = {
 export function buySingleMaker(tier) {
   const maker = Maker(tier);
   if (!maker.isAffordable || !maker.isAvailable) return;
-  Makers.currency.subtarct(maker.cost);
+  Makers.currency.subtract(maker.cost);
   maker.add(1, true);
   onBuyMaker(tier);
 }
