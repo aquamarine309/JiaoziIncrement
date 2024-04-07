@@ -74,13 +74,6 @@ export const migrations = {
         player.achievementBits[2] |= 8;
       }
       
-      //r38
-      //It's impossible to conclude the first simulation without "Pure Gold Dumpling"
-      if (simulationUnlocked || player.requirementChecks.simulation.noGolden) {
-        player.achievementBits[2]  &= ~128;
-        player.requirementChecks.simulation.noGolden = false;
-      }
-      
       player.options.languages = Languages.base.name;
       delete player.concludes;
       delete player.sauses;
