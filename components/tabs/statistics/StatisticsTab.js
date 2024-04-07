@@ -39,6 +39,7 @@ export default {
       },
       paperclips: 0,
       fullTimePlayed: 0,
+      buyMakerMult: new Decimal(0)
     };
   },
   computed: {
@@ -79,6 +80,7 @@ export default {
       this.realTimePlayed.setFrom(records.realTimePlayed);
       this.fullTimePlayed = TimeSpan.fromMilliseconds(records.previousRunRealTime + records.realTimePlayed);
       this.timeSinceCreation = Date.now() - player.records.gameCreatedTime;
+      this.buyMakerMult = Makers.buyOneMultiplier;
 
       const progress = PlayerProgress.current;
       
@@ -133,6 +135,9 @@ export default {
         <div>{{ $t("totalRealTime", [realTimePlayed]) }}</div>
         <div>
           {{ $t("saveCreatedStat", [startDate, saveAge]) }}
+        </div>
+        <div>
+          {{ $t("buyMakerMult", [formatX(buyMakerMult, 2, 3)]) }}
         </div>
       </div>
       <br>

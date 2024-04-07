@@ -232,6 +232,7 @@ export const Makers = {
       Collections.fast,
       SimulationMilestone.buyingMakerBoost
     );
+    multiplier = multiplier.powEffectOf(SimulationUpgrade.moneyMaker.effects.makerPow);
     return multiplier;
   },
   
@@ -251,7 +252,7 @@ export const Makers = {
 export function buySingleMaker(tier) {
   const maker = Maker(tier);
   if (!maker.isAffordable || !maker.isAvailable) return;
-  Makers.currency.minus(maker.cost);
+  Makers.currency.subtarct(maker.cost);
   maker.add(1, true);
   onBuyMaker(tier);
 }

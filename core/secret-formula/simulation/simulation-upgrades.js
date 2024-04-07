@@ -33,43 +33,46 @@ export const simulationUpgrades = {
       purpose: "maker",
       effectMult: 1e30,
       initialCost: 60,
-      costMult: 20
+      costMult: 15
     }),
     factoryBoost: rebuyable({
       id: 1,
       purpose: "factory",
       effectMult: 10,
-      initialCost: 200,
+      initialCost: 100,
       costMult: 35
     }),
     wrapperBoost: rebuyable({
       id: 2,
       purpose: "wrapper",
       effectMult: 1.23,
-      initialCost: 800,
-      costMult: 52
+      initialCost: 150,
+      costMult: 48
     }),
     coreBoost: rebuyable({
       id: 3,
       purpose: "core",
       effectMult: 1.8,
       initialCost: 1e3,
-      costMult: 75
+      costMult: 65
     }),
     energyBoost: rebuyable({
       id: 4,
       purpose: "energy",
       effectMult: 5,
       initialCost: 3.6e3,
-      costMult: 80
+      costMult: 72
     })
   },
   preview: {
     moneyMaker: {
       id: 0,
-      description: () => `你可以用饺子币购买制造器，每次重置后保留${formatInt(10)}个饺子币`,
+      description: () => `你可以用饺子币购买制造器，每次重置后保留${formatInt(10)}个饺子币，购买制造器的倍数${formatPow(1.5, 0, 1)}`,
       cost: 80,
-      effect: 10,
+      effects: {
+        startingMoney: 10,
+        makerPow: 1.5
+      },
       formatCost: value => format(value, 2),
       requirement: () => quantify($t("sc"), DC.E1000, 2),
       checkRequirement: () => Currency.steamerCoins.gt(DC.E1000)
@@ -79,8 +82,8 @@ export const simulationUpgrades = {
       description: "解锁更多模拟里程碑",
       cost: 400,
       formatCost: value => format(value, 2),
-      requirement: () => `购买"温故"升级 ${formatInt(10)} 次`,
-      checkRequirement: () => SimulationRebuyableGroup.totalBought >= 10
+      requirement: () => `购买"温故"升级 ${formatInt(6)} 次`,
+      checkRequirement: () => SimulationRebuyableGroup.totalBought >= 6
     },
     unlockColShop: {
       id: 2,
@@ -100,7 +103,7 @@ export const simulationUpgrades = {
     },
     unlockNewTask: {
       id: 4,
-      description: "解锁新的任务",
+      description: "解锁新的外卖订单",
       cost: 4e3,
       formatCost: value => format(value, 2),
       requirement: () => "五小时后更新",

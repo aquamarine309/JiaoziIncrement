@@ -432,8 +432,9 @@ export const languages = {
       requirement: "需求",
       sa11_n: "彩虹之力",
       sa11_d: "解锁彩虹主题。",
-      placeholder: "Placeholder",
-      concludeSimulation: "终止模拟"
+      placeholder: "待定",
+      concludeSimulation: "终止模拟",
+      buyMakerMult: "购买一个制造器的倍数: $1。"
     }
   },
   "en": {
@@ -870,7 +871,8 @@ export const languages = {
       requirement: "Requirement",
       sa11_n: "Rainbow power",
       sa11_d: "Unlock Rainbow theme.",
-      placeholder: "Placeholder"
+      placeholder: "Placeholder",
+      buyMakerMult: "Multiplier for buying a maker: $1."
     }
   }
 }

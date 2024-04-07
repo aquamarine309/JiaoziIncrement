@@ -233,7 +233,7 @@ Currency.money = new class extends DecimalCurrency {
   get startingValue() {
     return Effects.max(
       0,
-      SimulationUpgrade.moneyMaker
+      SimulationUpgrade.moneyMaker.effects.startingMoney
     ).toDecimal();
   }
 }()
