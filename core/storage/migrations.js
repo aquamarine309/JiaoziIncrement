@@ -3,7 +3,7 @@ import { deepmergeAll } from "../../deepmerge.js";
 export const migrations = {
   patches: {
     7.3: player => {
-      if (player.version > 8) return;
+      if (player.version === 4) return;
       if (player.concludes) {
         player.simulations = new Decimal(player.concludes);
       }
