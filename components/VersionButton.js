@@ -1,7 +1,7 @@
 export default {
   computed: {
     version() {
-      return `r${player.version}`
+      return `r${Player.deafultStart.version}`
     }
   },
   template: `

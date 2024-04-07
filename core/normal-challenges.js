@@ -20,7 +20,7 @@ class NormalChallengeState extends GameMechanicState {
   }
 
   get isUnlocked() {
-    return player.records.totalJiaozi.gte(DC.E2100)
+    return player.records.totalJiaozi.gte(NormalChallenges.requirement);
   }
 
   get isRunning() {
