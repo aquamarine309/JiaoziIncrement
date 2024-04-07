@@ -213,7 +213,6 @@ window.player = {
   initialSeed: Math.floor(Date.now() * Math.random() + 1),
   collectionPresets: [],
   backupTimer: 0,
-  version: 4,
   seed: 1,
   bigResetCount: DC.D0,
   steamerUpgrades: new Set(),
