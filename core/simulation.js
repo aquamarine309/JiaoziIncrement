@@ -114,4 +114,6 @@ function simulationUpdateStatistics() {
   player.maxResetJiaozi = DC.D0;
   resetChallengeStuff();
   resetCollectionsSelect();
+  GameCache.makerMultDecrease.invalidate();
+  GameCache.energyConversionEfficiency.invalidate();
 }

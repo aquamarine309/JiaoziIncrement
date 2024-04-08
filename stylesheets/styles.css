@@ -6797,6 +6797,10 @@ width: 62rem;
   background-color: rgba(255, 255, 255, 10%);
 }
 
+.c-reset-simulation-rebuyables:hover {
+  animation: a-energy-glow 15s infinite;
+}
+
 .c-simulation-block--container {
   width: 100%;
   display: flex;

@@ -101,13 +101,20 @@ export const SimulationRebuyableGroup = {
   }
 }
 
+export function getEnergyConversionEfficiency() {
+  return Effects.max(
+    0.8,
+    SimulationMilestone.energyRate
+  );
+}
+
 export function resetAllSimulationUpgrades() {
   for (let upgrade of SimulationRebuyableGroup.upgrades) {
     upgrade.boughtAmount = 0;
     upgrade.lastCost.invalidate();
   }
   GameCache.totalSimulationRebuyablesBought.invalidate();
-  Currency.energy.add(player.simulation.spentEnergy.times(0.8));
+  Currency.energy.add(player.simulation.spentEnergy.times(GameCache.energyConversionEfficiency.value));
   player.simulation.spentEnergy = DC.D0;
   concludeSimulationReset(true);
 }

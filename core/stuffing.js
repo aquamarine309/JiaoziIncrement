@@ -117,9 +117,12 @@ export function gainedCols() {
   const amount = Math.max(1, 4 * Math.sqrt((player.money.add(1).log10() - 50) * 0.08) + 1);
   let bulk = 1;
   if (Collections.cat.isEffectActive) bulk = Math.floor(amount * bulk);
-  bulk *= NormalChallenge(3).reward.effectOrDefault(1);
-  bulk *= SteamerUpgrade.collectionsMult.effectOrDefault(1);
-  bulk *= MixtureTypes.vinegar.effectOrDefault(1);
+  bulk *= Effects.product(
+    NormalChallenge(3).reward,
+    SteamerUpgrade.collectionsMult,
+    MixtureTypes.vinegar,
+    Achievement(36)
+  );
   return bulk;
 }
 

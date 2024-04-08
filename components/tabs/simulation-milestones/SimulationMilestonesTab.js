@@ -16,9 +16,10 @@ export default {
         {{ $t("simulationMilestone", [], true) }}
       </h1>
       <SimulationMilestoneSingle
-      v-for="milestone in milestones"
+      v-for="(milestone, index) in milestones"
       :milestone="milestone"
       :key="milestone.id"
+      :index="index"
       />
     </div>
   `

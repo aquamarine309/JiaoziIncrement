@@ -131,7 +131,10 @@ export const normalAchievements = [
     id: 36,
     get description() { return $t("ach36_d", [format(DC.D9_99999E999, 5)]) },
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    checkRequirement: () => Currency.steamerCoins.gte(DC.E1000)
+    checkRequirement: () => Currency.steamerCoins.gte(DC.E1000),
+    get reward() { return $t("ach36_r") },
+    effect: () => Math.sqrt(Currency.steamerCoins.value.add(1).log10()) + 1,
+    formatEffect: value => formatX(value, 2, 2)
   },
   {
     id: 37,

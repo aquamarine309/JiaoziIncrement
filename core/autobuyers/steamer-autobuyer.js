@@ -6,7 +6,7 @@ export class SteamerAutobuyerState extends AutobuyerState {
   }
 
   get name() {
-    return `蒸笼`;
+    return $t("steamer");
   }
 
   maxIntervalForFree() {}
@@ -28,7 +28,7 @@ export class SteamerAutobuyerState extends AutobuyerState {
   }
 
   get hasAdditionalModes() {
-    return false
+    return SimulationMilestone.qols2.isReached;
   }
 
   get increaseWithMult() {
@@ -83,7 +83,7 @@ export class SteamerAutobuyerState extends AutobuyerState {
   }
 
   get highestPrevPrestige() {
-    return player.records.thisSteamer.maxMoney;
+    return player.records.thisSimulation.maxSC;
   }
 
   get timeToNextTick() {

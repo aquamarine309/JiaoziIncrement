@@ -52,7 +52,7 @@ export const simulationUpgrades = {
     coreBoost: rebuyable({
       id: 3,
       purpose: "core",
-      effectMult: 1.8,
+      effectMult: 1.85,
       initialCost: 1e3,
       costMult: 65
     }),
@@ -67,11 +67,11 @@ export const simulationUpgrades = {
   preview: {
     moneyMaker: {
       id: 0,
-      description: () => `你可以用饺子币购买制造器，每次重置后保留${formatInt(10)}个饺子币，购买制造器的倍数${formatPow(1.5, 0, 1)}`,
+      description: () => `你可以用饺子币购买制造器，每次重置后保留${formatInt(10)}个饺子币，购买制造器的倍数${formatPow(2)}`,
       cost: 80,
       effects: {
         startingMoney: 10,
-        makerPow: 1.5
+        makerPow: 2
       },
       formatCost: value => format(value, 2),
       requirement: () => quantify($t("sc"), DC.E1000, 2),
@@ -80,7 +80,7 @@ export const simulationUpgrades = {
     moreMilestone: {
       id: 1,
       description: "解锁更多模拟里程碑",
-      cost: 400,
+      cost: 200,
       formatCost: value => format(value, 2),
       requirement: () => `购买"温故"升级 ${formatInt(6)} 次`,
       checkRequirement: () => SimulationRebuyableGroup.totalBought >= 6

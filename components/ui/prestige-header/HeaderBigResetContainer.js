@@ -110,8 +110,6 @@ export default {
       @click="bigReset"
       @mouseover="hover = true"
       @mouseleave="hover = false"
-      @touchstart="hover = true"
-      @touchend="hover = false"
     >
       <!-- Can Fix Steamer -->
       <template v-if="canSteamer">

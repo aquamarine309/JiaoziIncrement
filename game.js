@@ -68,6 +68,8 @@ export function gameLoop(passDiff, options = {}) {
     Currency.energy.add(energyPerSecond().times(diff / 1000));
   }
   
+  Factories.tryAutoUnlock();
+  
   updatePrestigeRates();
   applyAutoprestige(diff);
   

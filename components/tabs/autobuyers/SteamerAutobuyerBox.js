@@ -106,7 +106,7 @@ AUTO_STEAMER_MODE.X_HIGHEST,
       >
         <template #header>
           <div class="o-primary-btn c-autobuyer-box__mode-select c-autobuyer-box__mode-select-header">
-            {{ $t("currentSettings") }}
+            {{ $t("currentSetting") }}
             <br>
             {{ modeName(mode) }}
           </div>

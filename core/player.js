@@ -342,6 +342,10 @@ export const Player = {
   
   get canConclude() {
     return player.records.thisSimulation.maxSC.gte(this.concludeGoal);
+  },
+  
+  get makerMultDecrease() {
+    return GameCache.makerMultDecrease.value;
   }
 }
 

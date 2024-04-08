@@ -156,7 +156,7 @@ class FactoryState {
 
   get purchaseCap() {
     return Factories.capIncrease + (this.tier === 9
-      ? Number.MAX_VALUE
+      ? Number.MAX_SAFE_INTEGER
       : Factories.HARDCAP_PURCHASES);
   }
 
@@ -182,13 +182,14 @@ class FactoryState {
     if (this.isUnlocked) return true;
     if (!this.canUnlock) return false;
     this.isUnlocked = true;
-    EventHub.dispatch(GAME_EVENT.FACTORY_UNLOCKED, this.tier);
-    if (this.tier === 1) {
+    const simulationUnlocked = PlayerProgress.simulationUnlocked();
+    if (this.tier === 1 && !simulationUnlocked) {
       Tab.main.factory.show();
     }
-    if (this.tier === 4 && !PlayerProgress.simulationUnlocked()) {
-      Modal.message.show("你接到了几个外卖订单。请前往蒸笼界面查看。");
+    if (this.tier === 4 && !simulationUnlocked) {
+      Modal.message.show("你收到了几个外卖订单。请前往蒸笼界面查看。");
     }
+    EventHub.dispatch(GAME_EVENT.FACTORY_UNLOCKED, this.tier);
     return true;
   }
 
@@ -200,7 +201,7 @@ class FactoryState {
     Currency.steamerCoins.purchase(this.cost);
     
     this.amount = this.amount.plus(1);
-    this.bought += 1
+    ++this.bought;
     return true;
   }
 
@@ -220,7 +221,7 @@ class FactoryState {
 
     Currency.steamerCoins.purchase(costScaling.totalCost);
     this.amount = this.amount.plus(costScaling.purchases);
-    this.bought += costScaling.purchases
+    this.bought += costScaling.purchases;
 
     return true;
   }
@@ -285,10 +286,11 @@ export const Factories = {
       Factory(tier).produceFactories(Factory(tier - 1), diff / 2);
     }
     Factory(1).produceCurrency(Currency.mixtures, diff);
+    Makers.maxTierMaker.add(SimulationMilestone.factoryMaker.effectOrDefault(0));
   },
 
   tryAutoUnlock() {
-    if (Factory(9).isUnlocked) return;
+    if (!SimulationMilestone.qols2.isReached || Factory(9).isUnlocked) return;
     for (const factory of this.all) {
       // If we cannot unlock this one, we can't unlock the rest, either
       if (!factory.unlock()) break;

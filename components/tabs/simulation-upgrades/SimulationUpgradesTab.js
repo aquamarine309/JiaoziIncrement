@@ -10,7 +10,8 @@ export default {
 			energy: new Decimal(0),
 			power: new Decimal(0),
 			totalRebuyables: 0,
-			energyGained: new Decimal(0)
+			energyGained: new Decimal(0),
+			energyConversionEfficiency: 0
 		}
 	},
 	computed: {
@@ -49,6 +50,7 @@ export default {
 			this.power = GameCache.totalEnergyMult.value;
 			this.totalRebuyables = SimulationRebuyableGroup.totalBought;
 			this.energyGained = format(player.simulation.spentEnergy.times(0.8), 2, 1);
+			this.energyConversionEfficiency = GameCache.energyConversionEfficiency.value;
 		},
 		reset() {
 		  resetAllSimulationUpgrades();
@@ -75,7 +77,7 @@ export default {
 	        >
 	          终止模拟并重置所有模拟升级(+{{ energyGained }} {{ $t("energy") }})
     	    </button>
-	        <p>重置升级时，你将保留{{ formatPercents(0.8) }}的饺子能量。</p>
+	        <p>重置升级时，你将保留{{ formatPercents(energyConversionEfficiency) }}的饺子能量。</p>
 	        <p>"知新"升级需要用核心饺子购买。</p>
 	        <p>购买"知新"升级时，核心饺子的数量至少要比价格多{{ formatInt(15) }}，确保里程碑保持有效状态。</p>
 	      </div>

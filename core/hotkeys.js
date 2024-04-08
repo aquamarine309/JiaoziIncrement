@@ -62,7 +62,7 @@ export const shortcuts = [
     visible: true
   }, {
     name: "蒸笼",
-    keys: ["F"],
+    keys: ["f"],
     type: "bindRepeatableHotkey",
     function: () => steamerRequest(),
     visible: true

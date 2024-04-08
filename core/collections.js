@@ -135,40 +135,40 @@ export function random() {
  */
 export function collectionGenerator(options) {
   if (Player.isInNormalChallenge) return;
-  player.totalColls += options.bulk;
+  const bulk = options.bulk;
+  delete options.bulk;
+  
+  player.totalColls += bulk;
   if (player.break) return;
   
   let total = 0;
   for (const key in options) {
-    if (key === "bulk") continue;
     total += options[key] * Collections[key].length;
   };
   
-  if (options.bulk > 10) {
+  if (bulk > 10) {
     for (const key in options) {
-      if (key === "bulk") continue;
       const cols = Collections[key];
       for (const col of cols) {
-        col.add(options.bulk * options[key] * cols.length / total);
+        col.add(bulk * options[key] * cols.length / total);
       }
     };
     return;
   }
   
   let times = 0;
-  while (times < options.bulk) {
+  while (times < bulk) {
     const uniform = random();
-    let cur = 0;
+    let current = 0;
     gen: for (const key in options) {
-    if (key === "bulk") continue gen;
     const cols = Collections[key];
-    if ((uniform > cur) && (uniform < (cur + options[key] * cols.length / total))) {
+    if ((uniform > current) && (uniform < (current + options[key] * cols.length / total))) {
       const uniform2 = random();
       cols[Math.floor(cols.length * uniform2)].add();
       times++
       break gen;
     }
-      cur += options[key] * cols.length / total;
+      current += options[key] * cols.length / total;
     }
   }
 }

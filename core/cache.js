@@ -61,6 +61,8 @@ export const GameCache = {
   
   totalCoresMult: new Lazy(() => totalCoresMult()),
   
+  makerMultDecrease: new Lazy(() => SimulationMilestone.qols2.isReached ? 1.05 : 5),
+  
   makerCommonMultiplier: new Lazy(() => makerCommonMultiplier()),
   
   makerFinalMultipliers: Array.range(0, 10)
@@ -74,7 +76,9 @@ export const GameCache = {
   
   totalSimulationRebuyablesBought: new Lazy(
     () => SimulationRebuyableGroup.upgrades.reduce((a, u) => a + u.boughtAmount, 0)
-  )
+  ),
+  
+  energyConversionEfficiency: new Lazy(() => getEnergyConversionEfficiency())
 };
 
 GameCache.makerFinalMultipliers.invalidate = function() {

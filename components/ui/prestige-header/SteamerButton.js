@@ -95,8 +95,6 @@ export default {
     @click="steamer"
     @mouseover="hover = true"
     @mouseleave="hover = false"
-    @touchstart="hover = true"
-    @touchend="hover = false"
   >
     <!-- Cannot Steamer -->
     <template v-if="!canSteamer">

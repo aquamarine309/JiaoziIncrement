@@ -110,7 +110,7 @@ class MakerState {
     return new ExponentialCostScaling({
       baseCost: this.baseCost,
       baseIncrease: increase,
-      costScale: 5,
+      costScale: Player.makerMultDecrease,
       scalingCostThreshold: 1e50
     })
   }
@@ -147,7 +147,11 @@ class MakerState {
   }
   
   get rate() {
-    if (this.tier >= Makers.maxTier) return DC.D0;
+    if (this.tier > Makers.maxTier) return DC.D0;
+    if (this.tier === Makers.maxTier) {
+      return SimulationMilestone.factoryMaker
+      .effectOrDefault(0).div(this.amount.clampMin(1));
+    }
     return Maker(this.tier + 1).productionPerSecond.div(this.amount.clampMin(1)).div(2);
   }
   
@@ -186,6 +190,10 @@ export const Makers = {
   
   get maxTier() {
     return Math.min(Stuffing.amount + 1, this.totalTier);
+  },
+  
+  get maxTierMaker() {
+    return Maker(this.maxTier);
   },
   
   get totalTier() {
