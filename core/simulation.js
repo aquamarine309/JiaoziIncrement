@@ -66,6 +66,9 @@ function simulationResetValues() {
   Currency.mixtures.reset();
   Currency.steamerCoins.reset();
   resetTasks();
+  if (SimulationMilestone.qols2.isReached) {
+    player.tasks.collections = 1;
+  }
   Collections.fullReset();
   if (!SimulationMilestone.qols.isReached) {
     player.steamerUpgrades = new Set();
@@ -81,7 +84,6 @@ function simulationResetValues() {
   player.SCMultPurchases = 0;
   Currency.bigResetCount.reset();
   Currency.steamerCount.reset();
-  player.requirementChecks.simulation.noGolden = true;
 }
 
 function simulationUpdateStatistics() {

@@ -11,13 +11,13 @@ const rebuyable = props => {
   1e3,
   props.initialCost * props.costMult);
   props.effect = () => Decimal.pow(
-    props.effectMult,
+    props.effectMult * SimulationMilestone.reviewBoost.effectOrDefault(1),
     player.simulation.upgrades.review[props.id]
   );
   props.description = () => $t(
     "reviewTemp",
     [
-      formatX(props.effectMult, 2, 2),
+      formatX(props.effectMult * SimulationMilestone.reviewBoost.effectOrDefault(1), 2, 2),
       pluralize($t(props.purpose), 0, null, "")
     ]
   );

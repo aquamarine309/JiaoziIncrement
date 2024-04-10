@@ -15,12 +15,14 @@ export default {
       <h1 class="o-simulation-milestones-tab--title">
         {{ $t("simulationMilestone", [], true) }}
       </h1>
-      <SimulationMilestoneSingle
-      v-for="(milestone, index) in milestones"
-      :milestone="milestone"
-      :key="milestone.id"
-      :index="index"
-      />
+      <div class="o-simulation-milestone-singles">
+        <SimulationMilestoneSingle
+          v-for="(milestone, index) in milestones"
+          :milestone="milestone"
+          :key="milestone.id"
+          :index="index"
+        />
+      </div>
     </div>
   `
 }

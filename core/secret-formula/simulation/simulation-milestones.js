@@ -37,19 +37,37 @@ export const simulationMilestones = {
   qols2: {
     id: 11,
     cores: 32,
-    description: () => `解锁更多蒸笼自动购买器的模式，大幅降低制造器价格增速，自动解锁工厂。`
+    description: () => `解锁更多蒸笼自动购买器的模式，大幅降低制造器价格增速，自动解锁工厂，终止模拟后保留一次外卖${formatInt(4)}。`
   },
-  factoryMaker: {
+  energyRate: {
     id: 12,
     cores: 80,
+    description: () => `重置升级时的效率提升至${formatPercents(0.95)}。`,
+    effect: 0.95
+  },
+  reviewBoost: {
+    id: 13,
+    cores: 1e3,
+    description: () => `"温故"升级的底数增加${formatPercents(0.2)}。`,
+    effect: 1.2
+  },
+  reviewMaker: {
+    id: 14,
+    cores: 3e3,
+    description: () => `每个"温故"升级为购买一个制造器的乘数提供${formatX(1.2, 0, 1)}的倍数。`,
+    effect: () => Decimal.pow(1.2, SimulationRebuyableGroup.totalBought),
+    formatEffect: value => formatX(value, 0, 2)
+  },
+  factoryMaker: {
+    id: 15,
+    cores: 1e4,
     description: () => "微型蘸料工厂生产最高级制造器。",
     effect: () => Factory(1).productionPerSecond.minus(1).clampMin(0),
     formatEffect: value => `${format(value, 2)}每秒`
   },
-  energyRate: {
-    id: 13,
-    cores: 300,
-    description: () => `重置升级时的效率提升至${formatPercents(0.95)}。`,
-    effect: 0.95
+  advancedSimulation: {
+    id: 16,
+    cores: 1e20,
+    description: () => "解锁进阶模拟。"
   }
 }

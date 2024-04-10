@@ -6504,12 +6504,28 @@ width: 62rem;
   border-radius: var(--var-border-radius, 0.5rem);
   margin: 1%;
   padding: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
   -webkit-user-select: none;
   user-select: none;
 }
 
 .o-simulation-milestone-container {
-  padding: 1rem 6rem;
+  padding: 1rem;
+  flex: 1 0 48%;
+  height: 14rem;
+}
+
+.o-simulation-milestone-singles {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .o-simulation-milestones-tab--title {
@@ -6521,41 +6537,61 @@ width: 62rem;
 
 .o-milestone-progress-bar {
   display: flex;
-  width: 32rem;
+  width: 80%;
   height: 4rem;
   position: relative;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(45deg, #a6a6a6, #868686);
-  border: var(--var-border-width, 0.2rem) solid var(--color-simulation);
+  background: linear-gradient(45deg, #d6d6d6, #cacaca);
+  border: var(--var-border-width, 0.2rem) solid #876F8F;
   border-radius: var(--var-border-radius, 0.5rem);
-    transition: box-shadow 0.5s;
+  transition: box-shadow 0.5s;
   cursor: pointer;
   margin: auto;
   overflow: hidden
+}
+
+@keyframes a-bar-filling-sweep {
+  0% {
+    width: 0;
+    left: 0;
+  }
+
+  10% {
+    width: 2rem;
+    left: 0;
+  }
+
+  90% {
+    width: 2rem;
+    left: calc(100% - 2rem);
+  }
+
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+
+.o-milestone-progress-bar--reached {
+  border-color: var(--color-simulation);
+  box-shadow: 0 0 0.6rem 0.1rem #B881C6;
 }
 
 .o-milestone-progress-bar--text {
   z-index: 2;
   font-size: 1.2rem;
   color: var(--color-text);
-  filter: drop-shadow(0.1rem 0.1rem 0.1rem var(--color-jiaozi));
-}
-
-.o-milestone-progress-bar:hover .o-milestone-progress-bar--text {
-  color: var(--color-text-inverted);
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem #FF6695);
 }
 
 .o-milestone-progress-bar--filling {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
+  background-color: #DCAEF2;
   opacity: 0.6;
-  background-color: var(--color-simulation);
-  top: 0;
-  box-shadow: 0 1rem 2rem var(--color-simulation);
-  border-radius: var(--var-border-radius, 0.5rem);
+  left: 0;
+  height: 100%;
+  border-radius: var(--var-border-radius, 0.4rem);
 }
 
 .c-collection-component {

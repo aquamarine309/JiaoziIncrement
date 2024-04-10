@@ -23,7 +23,7 @@ export default {
       return `修复蒸笼后，你将重置所有的饺子、饺子皮、饺子馅、饺子币、大重置次数和所有收集饺子。${info}`;
     },
     firstSteamerInfo() {
-      return `作为回报，你将获得一个蒸笼币(SC)。它可以用来购买多种升级，你可以在蒸笼标签页里面找到这些升级。`;
+      return `作为回报，你将获得一个蒸笼币。它可以用来购买多种升级，你可以在蒸笼标签页里面找到这些升级。`;
     },
     scGainInfo() {
       return `你将获得${quantify("蒸笼次数", this.gainedSteamerCoins, 2, 0)}
@@ -50,8 +50,7 @@ and ${quantify("蒸笼币", this.gainedSteamerCoins, 2, 0)}.`;
       steamerRequest();
       EventHub.ui.offAll(this);
       if (this.isFirstSteamer) {
-        setTimeout(() => Modal.message.show(`此动画将在每次手动修复蒸笼之后出现。如果
-如果要禁用它，在“选项”标签页中有一个设置。可以用于控制游戏的动画效果。`, {}, 3), 2000);
+        setTimeout(() => Modal.message.show(`此动画将在每次手动修复蒸笼之后出现。如果要禁用它，在“选项”标签页中有一个设置。可以用于控制游戏的动画效果。`, {}, 3), 2000);
       }
     }
   },

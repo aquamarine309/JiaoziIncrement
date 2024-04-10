@@ -42,7 +42,7 @@ export default {
     progressBarClass() {
       return {
         "o-milestone-progress-bar": true,
-        "o-milestone-progress-bar--reached": this.reached
+        "o-milestone-progress-bar--reached": this.isReached
       }
     },
     progressBarStyle() {
@@ -54,7 +54,13 @@ export default {
       return this.milestone.config;
     },
     descriptionTitle() {
-      return $t("reward_")
+      return $t("reward_");
+    },
+    info() {
+      if (this.isReached) {
+        return $t("reached");
+      }
+      return formatPercents(this.percents, 3);
     }
   },
   template: `
@@ -65,7 +71,7 @@ export default {
       <h2>{{ $t("milestone") }} {{ formatInt(index + 1) }}</h2>
       <div :class="progressBarClass">
         <div class="o-milestone-progress-bar--text">
-          {{ formatInt(cores) }}/{{ formatInt(requirement) }} {{ $t("cores") }}
+          {{ formatInt(cores) }}/{{ format(requirement, 2) }} {{ $t("cores") }} ({{ info }})
         </div>
         <div
           class="o-milestone-progress-bar--filling"
@@ -76,7 +82,7 @@ export default {
         :config="config"
         :title="descriptionTitle"
       />
-      <EffectDisplay :config="config" br />
+      <EffectDisplay :config="config" />
     </div>
   `
 }

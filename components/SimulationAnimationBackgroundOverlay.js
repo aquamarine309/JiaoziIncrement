@@ -39,7 +39,7 @@ export default {
       :key="index"
       >
         <i class="fas fa-exclamation-triangle" />
-        未知错误: 未找到 {{ error }}
+        正在删除 {{ error }}
       </div>
     </div>
     <div

@@ -150,7 +150,7 @@ class MakerState {
     if (this.tier > Makers.maxTier) return DC.D0;
     if (this.tier === Makers.maxTier) {
       return SimulationMilestone.factoryMaker
-      .effectOrDefault(0).div(this.amount.clampMin(1));
+      .effectOrDefault(DC.D0).div(this.amount.clampMin(1));
     }
     return Maker(this.tier + 1).productionPerSecond.div(this.amount.clampMin(1)).div(2);
   }

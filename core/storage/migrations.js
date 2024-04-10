@@ -2,8 +2,15 @@ import { deepmergeAll } from "../../deepmerge.js";
 
 export const migrations = {
   patches: {
+    2.1: player => {
+      console.log(player)
+      player.makers.push({
+        amount: 0,
+        bought: 0
+      });
+      player.auto.makers.all.push(Player.defaultStart.auto.makers.all[8]);
+    },
     7.3: player => {
-      if (player.version === 4) return;
       if (player.concludes) {
         player.simulations = new Decimal(player.concludes);
       }

@@ -32,7 +32,7 @@ export default {
       return result;
     },
     showComponent() {
-      return this.activeBits > 0;
+      return this.activeCollections.length > 0;
     },
     voidText() {
       return $t("void");

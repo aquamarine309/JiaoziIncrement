@@ -66,6 +66,7 @@ export const languages = {
       brokenSteamer: "蒸笼破损",
       cannotSteamerReset: "你无法进行收集重置",
       reach: "到达",
+      reached: "已到达",
       sc: "蒸笼币",
       scs: "蒸笼币",
       nc: "挑战",
@@ -182,7 +183,7 @@ export const languages = {
       C_6: "增加购买制造器的加成。",
       C_7: "出售时获得更多的饺子币。",
       C_8: "饺子出售不再有软下限，制造器可获得基于当前饺子币数量的加成。",
-      C_9: "解锁下一级制造器，出售的需求降低至$1，同时降低饺子馅的初始价格。",
+      C_9: "解锁下一级制造器，出售的需求降低至 $1，同时降低饺子馅的初始价格。",
       simulationMilestone: "模拟里程碑",
       simulationMilestones: "模拟里程碑",
       SM_buyingMakerBoost: "购买制造器和工厂的倍数+$1。",
@@ -506,6 +507,7 @@ export const languages = {
       brokenSteamer: "Steamer is Broken",
       cannotSteamerReset: "You can't perform the Steamer Reset",
       reach: "Reach",
+      reached: "Reached",
       sc: "Steamer Coin",
       scs: "Steamer Coins",
       nc: "Challenge",
@@ -878,4 +880,3 @@ export const languages = {
     }
   }
 }
-
