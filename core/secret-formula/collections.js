@@ -59,7 +59,7 @@ export const collections = [
       return $t("C_4")
     },
     effectFn: x => {
-      let amount;
+      let amount = x;
       if (amount > 1500) amount = Math.sqrt(x - 1500) * 2 + 1500;
       amount = softCap(amount, 5e5, 0.4);
       return Math.pow(amount, 0.3) + 1;
