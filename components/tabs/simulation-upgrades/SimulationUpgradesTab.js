@@ -49,8 +49,8 @@ export default {
 			this.energy = Currency.energy.value;
 			this.power = GameCache.totalEnergyMult.value;
 			this.totalRebuyables = SimulationRebuyableGroup.totalBought;
-			this.energyGained = format(player.simulation.spentEnergy.times(0.8), 2, 1);
 			this.energyConversionEfficiency = GameCache.energyConversionEfficiency.value;
+			this.energyGained = format(player.simulation.spentEnergy.times(this.energyConversionEfficiency), 2, 1);
 		},
 		reset() {
 		  resetAllSimulationUpgrades();
@@ -61,7 +61,7 @@ export default {
 	    <div class="c-simulation-block--container">
 	      <div class="c-simulation-block">
 	        <div class="c-energy-text">
-    	      {{ youHave }} <span class="c-energy-amount"> {{ format(energy, 2)     }} </span> {{ jouleOfEnergy }}{{ stop }}
+    	      {{ youHave }} <span class="c-energy-amount"> {{ format(energy, 2) }} </span> {{ jouleOfEnergy }}{{ stop }}
   	      </div>
   	      <div>
     	      {{ powerInfo }}

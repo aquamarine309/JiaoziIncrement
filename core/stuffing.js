@@ -9,29 +9,29 @@ export class Stuffing {
     if (this.canBigReset) return DC.E50;
     if (this.canBigReset && this.simulationStuffingUnlocked) return DC.E1000.pow(this.amount - this.bigResetAmount).times(DC.E150);
     let cost = new Decimal([3e3, 1e7, 8e13, 1e20, 1e32, 1e46, 1e68, 1e150][this.amount]);
-    cost = cost.dividedByEffectOf(Collections.adofai)
-    cost = cost.timesEffectOf(NormalChallenge(3))
-    return cost
+    cost = cost.dividedByEffectOf(Collections.adofai);
+    cost = cost.timesEffectOf(NormalChallenge(3));
+    return cost;
   }
   
   /**@type {Number} */
   static get amount() {
-    return player.stuffing
+    return player.stuffing;
   }
   
   static set amount(value) {
-    player.stuffing = value
+    player.stuffing = value;
   }
   
   static get cap() {
     if (NormalChallenge(6).isRunning) return 2;
     let cap = 4;
-    if (Collections.adofai.isEffectActive) cap++
+    if (Collections.adofai.isEffectActive) ++cap;
     if (NormalChallenge(7).isRunning) return cap;
-    if (SteamerUpgrade.nextMaker1.isEffectActive) cap++
-    if (SteamerUpgrade.nextMaker2.isEffectActive) cap++
-    if (SteamerUpgrade.nextMaker3.isEffectActive) cap++
-    if (SteamerUpgrade.nextMaker4.isEffectActive) cap++
+    if (SteamerUpgrade.nextMaker1.isEffectActive) ++cap;
+    if (SteamerUpgrade.nextMaker2.isEffectActive) ++cap;
+    if (SteamerUpgrade.nextMaker3.isEffectActive) ++cap;
+    if (SteamerUpgrade.nextMaker4.isEffectActive) ++cap;
     return cap;
   }
   
@@ -53,8 +53,8 @@ export class Stuffing {
   }
   
   static unlockedText() {
-    if (this.amount >= this.cap) return '已达到上限';
-    return '已锁定';
+    if (this.amount >= this.cap) return $t("capped");
+    return $t("locked");
   }
   
   static get isSatisfied() {
@@ -144,7 +144,7 @@ function bigReset() {
       bulk
     })
   }
-  if (player.needResetCols || (Collections.activeAmount > Collections.maxActiveAmount)) {
+  if (player.needResetCols || Collections.activeAmount > Collections.maxActiveAmount) {
     resetCollectionsSelect();
   }
   Currency.jiaozi.reset();

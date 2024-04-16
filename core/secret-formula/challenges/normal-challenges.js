@@ -62,7 +62,7 @@ export const normalChallenges = [
     id: 7,
     description: () => $t("chall7", [formatInt(1)]),
     reward: {
-      description: () => `本次蒸笼的时间加成制造器的效率`,
+      description: () => `本次蒸笼的时间加成制造器`,
       effect: () => Decimal.pow(Time.thisSteamer.totalSeconds, 5).clampMin(1),
       formatEffect: value => formatX(value, 2, 3)
     }

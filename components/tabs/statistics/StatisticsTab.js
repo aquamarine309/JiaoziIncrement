@@ -39,7 +39,8 @@ export default {
       },
       paperclips: 0,
       fullTimePlayed: 0,
-      buyMakerMult: new Decimal(0)
+      buyMakerMult: new Decimal(0),
+      baoMult: new Decimal(0)
     };
   },
   computed: {
@@ -81,6 +82,7 @@ export default {
       this.fullTimePlayed = TimeSpan.fromMilliseconds(records.previousRunRealTime + records.realTimePlayed);
       this.timeSinceCreation = Date.now() - player.records.gameCreatedTime;
       this.buyMakerMult = Makers.buyOneMultiplier;
+      this.baoMult = getMakeJiaoziMultiplier();
 
       const progress = PlayerProgress.current;
       
@@ -124,9 +126,6 @@ export default {
   template: `
   <div class="c-stats-tab">
     <div>
-      <PrimaryButton onclick="Modal.catchup.show(0)">
-        {{ $t("openCatchup") }}
-      </PrimaryButton>
       <div class="c-stats-tab-title c-stats-tab-general">
         {{ $t("general") }}
       </div>
@@ -138,6 +137,9 @@ export default {
         </div>
         <div>
           {{ $t("buyMakerMult", [formatX(buyMakerMult, 2, 3)]) }}
+        </div>
+        <div>
+          {{ $t("baoMult", [formatX(baoMult, 2, 2)]) }}
         </div>
       </div>
       <br>

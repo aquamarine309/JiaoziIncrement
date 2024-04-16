@@ -281,6 +281,10 @@ export const languages = {
       scMultiplier: "蒸笼币倍增器",
       currentSetting: "▼ 当前设置: ▼",
       dynamicAmount: "动态数值",
+      autoConcludeSimulation: "自动终止模拟",
+      simulation_x_highest: "基于最高核心饺子数量的倍数",
+      simulation_time: "间隔一定的秒数",
+      simulation_amount: "到达一定的核心饺子",
       autofixSteamer: "自动修复蒸笼",
       steamer_x_highest: "基于最高蒸笼币数量的倍数",
       steamer_time: "间隔一定的秒数",
@@ -434,9 +438,15 @@ export const languages = {
       requirement: "需求",
       sa11_n: "彩虹之力",
       sa11_d: "解锁彩虹主题。",
+      sa12_n: "当你不知道重置层选什么颜色时be like:",
+      sa12_d: "只用稀有的收集终止模拟。",
+      sa13_n: "自动自动器",
+      sa13_d: "关闭所有自动购买器后进入挑战3。",
       placeholder: "待定",
       concludeSimulation: "终止模拟",
-      buyMakerMult: "购买一个制造器的倍数: $1。"
+      buyMakerMult: "购买一个制造器的倍数: $1。",
+      baoMult: "包饺砸的倍数: $1。",
+      softCapped: "软上限"
     }
   },
   "en": {
@@ -724,6 +734,10 @@ export const languages = {
       scMultiplier: "Steamer Coin Multiplier",
       currentSetting: "▼ Current Setting: ▼",
       dynamicAmount: "Dynamic amount",
+      autoConcludeSimulation: "Simulation Autoconcluder",
+      simulation_x_highest: "X times highest CrD",
+      simulation_time: "Seconds between Simulations",
+      simulation_amount: "Conclude at X CrD",
       autofixSteamer: "Steamer Autofixer",
       steamer_x_highest: "X times highest SC",
       steamer_time: "Seconds between Steamers",
@@ -875,8 +889,14 @@ export const languages = {
       requirement: "Requirement",
       sa11_n: "Rainbow power",
       sa11_d: "Unlock Rainbow theme.",
+      sa12_n: "I don't know how to match colors",
+      sa12_d: "Only use rare collections to conclude the simulation.",
+      sa13_n: "Autoautoer",
+      sa13_d: "Start C3 with all the autobuyer disabled.",
       placeholder: "Placeholder",
-      buyMakerMult: "Multiplier for buying a maker: $1."
+      buyMakerMult: "Multiplier for buying a maker: $1.",
+      baoMult: "The dumplings by making dumplings: $1.",
+      softCapped: "Soft Capped"
     }
   }
 }

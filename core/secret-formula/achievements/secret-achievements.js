@@ -6,15 +6,19 @@ export const secretAchievements = [
   },
   {
     id: 12,
-    description: () => $t("placeholder"),
-    isPlaceholder: true,
-    checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER
+    description: () => $t("sa12_d"),
+    checkEvent: GAME_EVENT.CONCLUDE_SIMULATION_BEFORE,
+    checkRequirement: () => player.requirementChecks.simulation.allRare
   },
   {
     id: 13,
-    description: () => $t("placeholder"),
-    isPlaceholder: true,
-    checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER
+    description: () => $t("sa13_d"),
+    checkEvent: GAME_EVENT.NORMAL_CHALLENGE_START,
+    checkRequirement: id => (
+      id === 3 && 
+      !player.auto.autobuyersOn && 
+      Autobuyers.unlocked.every(a => !a.isActive)
+    )
   },
   {
     id: 14,

@@ -49,8 +49,11 @@ export default {
 			}
 		},
 		purchase() {
-		  if (this.isLocked) this.upgrade.tryUnlock();
-		  this.upgrade.purchase();
+		  if (this.isLocked) {
+		    this.upgrade.tryUnlock();
+		  } else {
+		    this.upgrade.purchase();
+		  }
 		}
 	},
 	computed: {

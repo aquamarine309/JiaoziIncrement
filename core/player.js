@@ -21,7 +21,7 @@ window.player = {
   money: DC.D0,
   break: false,
   makerCurrencyType: MAKER_CURRENCY.JIAOZI,
-  version: 8.105,
+  version: 8.11,
   wrapper: 0,
   stuffing: 0,
   simulationStuffing: 0,
@@ -47,6 +47,11 @@ window.player = {
   },
   achievementBits: Array.repeat(0, 17),
   secretAchievementBits: Array.repeat(0, 4),
+  requirementChecks: {
+    simulation: {
+      allRare: true
+    }
+  },
   records: {
     gameCreatedTime: Date.now(),
     fullGameCompletions: 0,
@@ -241,7 +246,7 @@ window.player = {
     sale: {
       cost: 1e150,
       interval: 15000,
-      mode: 0,
+      mode: AUTO_SALE_MODE.AMOUNT,
       amount: DC.D1,
       increaseWithMult: true,
       time: 1,
@@ -252,7 +257,7 @@ window.player = {
     bigReset: {
       cost: 1e250,
       interval: 15000,
-      mode: 0,
+      mode: AUTO_BIG_RESET_MODE.AMOUNT,
       amount: 1,
       increaseWithMult: true,
       time: 1,
@@ -262,7 +267,17 @@ window.player = {
     },
     steamer: {
       interval: 100,
-      mode: 0,
+      mode: AUTO_STEAMER_MODE.AMOUNT,
+      amount: DC.D1,
+      increaseWithMult: true,
+      time: 1,
+      xHighest: DC.D1,
+      isActive: false,
+      lastTick: 0
+    },
+    simulation: {
+      interval: 100,
+      mode: AUTO_SIMULATION_MODE.AMOUNT,
       amount: DC.D1,
       increaseWithMult: true,
       time: 1,

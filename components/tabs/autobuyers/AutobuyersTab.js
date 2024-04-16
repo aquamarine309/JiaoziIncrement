@@ -6,7 +6,8 @@ import SimpleAutobuyersMultiBox from "./SimpleAutobuyersMultiBox.js";
 import WrapperAutobuyerBox from "./WrapperAutobuyerBox.js";
 import StuffingAutobuyerBox from "./StuffingAutobuyerBox.js";
 import BigResetAutobuyerBox from "./BigResetAutobuyerBox.js"
-import SteamerAutobuyerBox from "./SteamerAutobuyerBox.js"
+import SteamerAutobuyerBox from "./SteamerAutobuyerBox.js";
+import SimulationAutobuyerBox from "./SimulationAutobuyerBox.js";
 
 export default {
   name: "AutobuyersTab",
@@ -19,7 +20,8 @@ export default {
     SimpleAutobuyersMultiBox,
     StuffingAutobuyerBox,
     BigResetAutobuyerBox,
-    SteamerAutobuyerBox
+    SteamerAutobuyerBox,
+    SimulationAutobuyerBox
   },
   data() {
     return {
@@ -62,6 +64,7 @@ export default {
       <br>
       <br>
     </div>
+    <SimulationAutobuyerBox class="c-simulation-pos" />
     <SteamerAutobuyerBox class="c-stamer-pos" />
     <BigResetAutobuyerBox class="c-big-reset-pos" />
     <SaleAutobuyerBox class="c-sale-pos" />

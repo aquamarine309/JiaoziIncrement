@@ -57,6 +57,9 @@ class CollectionState extends GameMechanicState {
   activate() {
     if (!this.canActivate) return;
     Tutorial.turnOffEffect(TUTORIAL_STATE.COLLECTION);
+    if (this.rarity !== "rare") {
+      player.requirementChecks.simulation.allRare = false;
+    }
     player.colActiveBits |= (1 << this.id);
   }
   
@@ -73,7 +76,10 @@ class CollectionState extends GameMechanicState {
   }
 }
 
-export const Collection = mapGameData(GameDatabase.collections, config => new CollectionState(config));
+export const Collection = mapGameData(
+  GameDatabase.collections,
+  config => new CollectionState(config)
+);
 
 export const Collections = {
   /**@type {CollectionState[]} */
@@ -111,17 +117,19 @@ export const Collections = {
   epic: [],
   
   legendary: []
-}
+};
 
-for (const col of Collections.all) {
-  Collections[col.rarity].push(col)
-  Collections[col.key] = col
-}
+(function() {
+  for (const col of Collections.all) {
+    Collections[col.rarity].push(col);
+    Collections[col.key] = col;
+  }
+})();
 
 export function random() {
-  const state = xorshift32Update(player.seed)
-  player.seed = state
-  return state * 2.3283064365386963e-10 + 0.5
+  const state = xorshift32Update(player.seed);
+  player.seed = state;
+  return state * 2.3283064365386963e-10 + 0.5;
 }
 
 /**
@@ -160,14 +168,17 @@ export function collectionGenerator(options) {
   while (times < bulk) {
     const uniform = random();
     let current = 0;
-    gen: for (const key in options) {
-    const cols = Collections[key];
-    if ((uniform > current) && (uniform < (current + options[key] * cols.length / total))) {
-      const uniform2 = random();
-      cols[Math.floor(cols.length * uniform2)].add();
-      times++
-      break gen;
-    }
+    for (const key in options) {
+      const cols = Collections[key];
+      if (
+        uniform > current && 
+        uniform < (current + options[key] * cols.length / total)
+      ) {
+        const uniform2 = random();
+        cols[Math.floor(cols.length * uniform2)].add(1);
+        ++times;
+        break;
+      }
       current += options[key] * cols.length / total;
     }
   }

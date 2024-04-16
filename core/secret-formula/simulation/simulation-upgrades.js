@@ -31,46 +31,46 @@ export const simulationUpgrades = {
     makerBoost: rebuyable({
       id: 0,
       purpose: "maker",
-      effectMult: 1e30,
+      effectMult: 1e60,
       initialCost: 60,
-      costMult: 15
+      costMult: 12
     }),
     factoryBoost: rebuyable({
       id: 1,
       purpose: "factory",
-      effectMult: 10,
+      effectMult: 100,
       initialCost: 100,
-      costMult: 35
+      costMult: 20
     }),
     wrapperBoost: rebuyable({
       id: 2,
       purpose: "wrapper",
       effectMult: 1.23,
       initialCost: 150,
-      costMult: 48
+      costMult: 40
     }),
     coreBoost: rebuyable({
       id: 3,
       purpose: "core",
-      effectMult: 1.85,
+      effectMult: 2.5,
       initialCost: 1e3,
-      costMult: 65
+      costMult: 56
     }),
     energyBoost: rebuyable({
       id: 4,
       purpose: "energy",
       effectMult: 5,
       initialCost: 3.6e3,
-      costMult: 72
+      costMult: 64
     })
   },
   preview: {
     moneyMaker: {
       id: 0,
-      description: () => `你可以用饺子币购买制造器，每次重置后保留${formatInt(10)}个饺子币，购买制造器的倍数${formatPow(2)}`,
+      description: () => `你可以用饺子币购买制造器，每次重置后保留${formatInt(1)}个饺子制造器，购买制造器的倍数${formatPow(2)}`,
       cost: 80,
       effects: {
-        startingMoney: 10,
+        startingMaker: DC.D1,
         makerPow: 2
       },
       formatCost: value => format(value, 2),
@@ -88,15 +88,15 @@ export const simulationUpgrades = {
     unlockColShop: {
       id: 2,
       description: "解锁收集商店",
-      cost: 1e3,
+      cost: 1e5,
       formatCost: value => format(value, 2),
-      requirement: () => "五小时后更新",
+      requirement: () => "待定",
       checkRequirement: () => false
     },
     unlockNewMixture: {
       id: 3,
       description: "解锁更多蘸料",
-      cost: 3e3,
+      cost: 3e7,
       formatCost: value => format(value, 2),
       requirement: () => "五小时后更新",
       checkRequirement: () => false
@@ -104,7 +104,7 @@ export const simulationUpgrades = {
     unlockNewTask: {
       id: 4,
       description: "解锁新的外卖订单",
-      cost: 4e3,
+      cost: 4e10,
       formatCost: value => format(value, 2),
       requirement: () => "五小时后更新",
       checkRequirement: () => false

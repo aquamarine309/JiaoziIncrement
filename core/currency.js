@@ -229,13 +229,6 @@ Currency.money = new class extends DecimalCurrency {
     player.records.thisSimulation.maxMoney = player.records.thisSimulation.maxMoney.max(value);
     player.money = value;
   }
-  
-  get startingValue() {
-    return Effects.max(
-      0,
-      SimulationUpgrade.moneyMaker.effects.startingMoney
-    ).toDecimal();
-  }
 }()
 
 Currency.bigResetCount = new class extends DecimalCurrency {

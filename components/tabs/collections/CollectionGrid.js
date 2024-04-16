@@ -73,7 +73,10 @@ export default {
       if (Number.isFinite(this.cap)) {
         return `${base}/${format(this.cap, 2, under1000)}`;
       }
-      return base;
+      return `${base}/${$t("infinity")}`;
+    },
+    label() {
+      return this.config.softcap && this.amount >= this.config.softcap ? "softCapped" : "current" ;
     }
   },
   template: `
@@ -97,11 +100,12 @@ export default {
         </div>
           
           <DescriptionDisplay
-          :config='config'
+            :config='config'
           />
           <br>
           <EffectDisplay
-          :config='config'
+            :config='config'
+            :label="label"
           />
         <div class="o-collection-activate-btn-container">
           <div

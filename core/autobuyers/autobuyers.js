@@ -7,6 +7,7 @@ import { SteamerAutobuyerState } from "./steamer-autobuyer.js";
 import { SCMultAutobuyerState } from "./prestige-currency-multiplier-autobuyer.js";
 import { TaskAutobuyerState } from "./task-autobuyer.js";
 import { FactoryAutobuyerState } from "./factory-autobuyer.js";
+import { SimulationAutobuyerState } from "./simulation-autobuyer.js";
 
 export const Autobuyer = {
   maker: MakerAutobuyerState.createAccessor(),
@@ -17,7 +18,8 @@ export const Autobuyer = {
   steamer: new SteamerAutobuyerState(),
   scMult: new SCMultAutobuyerState(),
   task: TaskAutobuyerState.createAccessor(),
-  factory: FactoryAutobuyerState.createAccessor()
+  factory: FactoryAutobuyerState.createAccessor(),
+  simulation: new SimulationAutobuyerState()
 };
 export const Autobuyers = (function() {
   const makers = Autobuyer.maker.zeroIndexed;
@@ -26,6 +28,7 @@ export const Autobuyers = (function() {
     Autobuyer.stuffing,
     Autobuyer.bigReset,
     Autobuyer.steamer,
+    Autobuyer.simulation,
     Autobuyer.sale
   ];
 
@@ -65,12 +68,13 @@ export const Autobuyers = (function() {
       return [
         Autobuyer.sale,
         Autobuyer.bigReset,
-        Autobuyer.steamer
+        Autobuyer.steamer,
+        Autobuyer.simulation
       ].some(autobuyer => autobuyer.isUnlocked);
     },
 
     toggle() {
-      if (NormalChallenge(3).isRunning) return
+      if (NormalChallenge(3).isRunning) return;
       player.auto.autobuyersOn = !player.auto.autobuyersOn;
     },
 
@@ -105,3 +109,5 @@ export const Autobuyers = (function() {
 EventHub.logic.on(GAME_EVENT.SALE_AFTER, () => Autobuyers.resetTick(PRESTIGE_EVENT.SALE));
 EventHub.logic.on(GAME_EVENT.STUFFING_AFTER, () => Autobuyers.resetTick(PRESTIGE_EVENT.STUFFING));
 EventHub.logic.on(GAME_EVENT.BIG_RESET_AFTER, () => Autobuyers.resetTick(PRESTIGE_EVENT.BIG_RESET));
+EventHub.logic.on(GAME_EVENT.FIX_STEAMER_AFTER, () => Autobuyers.resetTick(PRESTIGE_EVENT.STEAMER));
+EventHub.logic.on(GAME_EVENT.CONCLUDE_SIMULATION_AFTER, () => Autobuyers.resetTick(PRESTIGE_EVENT.SIMULATION));

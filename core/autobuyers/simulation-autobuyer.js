@@ -1,24 +1,22 @@
-import { UpgradeableAutobuyerState } from "./autobuyer.js";
+import { AutobuyerState } from "./autobuyer.js";
 
-export class BigResetAutobuyerState extends UpgradeableAutobuyerState {
+export class SimulationAutobuyerState extends AutobuyerState {
   get data() {
-    return player.auto.bigReset;
+    return player.auto.simulation;
   }
 
   get name() {
-    return "collection";
+    return $t("simulation");
   }
 
+  maxIntervalForFree() {}
+  
   get isUnlocked() {
-    return this.canBeUpgraded;
-  }
-
-  get canBeUpgraded() {
-    return PlayerProgress.steamerUnlocked()
+    return SimulationMilestone.qols2.isReached;
   }
 
   get baseInterval() {
-    return Player.defaultStart.auto.bigReset.interval;
+    return Player.defaultStart.auto.simulation.interval;
   }
 
   get mode() {
@@ -30,7 +28,7 @@ export class BigResetAutobuyerState extends UpgradeableAutobuyerState {
   }
 
   get hasAdditionalModes() {
-    return true
+    return false;
   }
 
   get increaseWithMult() {
@@ -70,10 +68,6 @@ export class BigResetAutobuyerState extends UpgradeableAutobuyerState {
     this.data.xHighest = value;
   }
 
-  upgradeInterval(free) {
-    super.upgradeInterval(free);
-  }
-
   bumpAmount(mult) {
     if (this.isUnlocked && this.increaseWithMult) {
       this.amount = this.amount.times(mult);
@@ -81,40 +75,39 @@ export class BigResetAutobuyerState extends UpgradeableAutobuyerState {
   }
 
   get canTick() {
-    return Stuffing.bigResetCheck && super.canTick;
+    return Player.canFixSteamer && super.canTick;
   }
 
   get resetTickOn() {
-    return PRESTIGE_EVENT.STEAMER;
+    return null;
   }
 
   get highestPrevPrestige() {
-    return player.records.thisBigReset.maxMoney;
+    return player.records.thisSimulation.maxSC;
   }
 
   get timeToNextTick() {
-    return Math.clampMin(this.time - Time.thisBigResetRealTime.totalSeconds, 0);
+    return Math.clampMin(this.time - Time.thisSimulationRealTime.totalSeconds, 0);
   }
 
   get willReset() {
     switch (this.mode) {
-      case AUTO_BIG_RESET_MODE.AMOUNT:
-        return gainedCols() >= this.amount;
-      case AUTO_BIG_RESET_MODE.TIME:
-        return Time.thisBigResetRealTime.totalSeconds > this.time;
-      case AUTO_BIG_RESET_MODE.X_HIGHEST:
+      case AUTO_SIMULATION_MODE.AMOUNT:
+        return gainedCores().gte(this.amount);
+      case AUTO_SIMULATION_MODE.TIME:
+        return Time.thisSimulationRealTime.totalSeconds > this.time;
+      case AUTO_SIMULATION_MODE.X_HIGHEST:
       default:
-        return gainedMoney().gte(this.highestPrevPrestige.times(this.xHighest));
+        return gainedSteamerCoins().gte(this.highestPrevPrestige.times(this.xHighest));
     }
   }
 
   tick() {
-    super.tick();
-    if (this.willReset) requestBigReset();
+    if (this.willReset) concludeSimulationRequest();
   }
 
   reset() {
     super.reset();
-    this.mode = AUTO_BIG_RESET_MODE.AMOUNT;
+    this.mode = AUTO_SIMULATION_MODE.AMOUNT;
   }
 }

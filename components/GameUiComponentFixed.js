@@ -44,6 +44,7 @@ export default {
     <Sidebar />
     <SaveTimer />
     <VersionButton />
+    <HowToPlay />
     <PopupModal
     v-if="view.modal.current"
     :modal="view.modal.current"

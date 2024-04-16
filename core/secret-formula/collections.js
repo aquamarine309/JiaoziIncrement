@@ -18,7 +18,7 @@ export const collections = [
   {
     id: 0,
     key: 'iteration',
-    rarity: "common",
+    rarity: COLLEACTION_RARITY.COMMON,
     description() {
       return $t("C_1")
     },
@@ -28,22 +28,23 @@ export const collections = [
   {
     id: 1,
     key: 'dragon',
-    rarity: 'common',
+    rarity: COLLEACTION_RARITY.COMMON,
     description() {
       return $t("C_2")
     },
-    effectFn: amount => {
-      amount = softCap(amount, 1e7, 0.7);
+    effectFn: x => {
+      let amount = softCap(x, 1e7, 0.7);
       amount = softCap(amount, 1e8, 0.5);
       amount = softCap(amount, 1e12, 0.2);
       return softCap(Decimal.pow(5, Math.pow(amount, 0.6)).powEffectOf(SteamerUpgrade.commonPower), DC.E18000, 0.3);
     },
-    formatEffect: value => `/${format(value, 2, 3)}`
+    formatEffect: value => `/${format(value, 2, 3)}`,
+    softcap: 2.3078287797e11
   },
   {
     id: 2,
     key: 'antimatter',
-    rarity: 'uncommon',
+    rarity: COLLEACTION_RARITY.UNCOMMON,
     description() {
       return $t("C_3")
     },
@@ -53,21 +54,23 @@ export const collections = [
   {
     id: 3,
     key: 'cat',
-    rarity: 'uncommon',
+    rarity: COLLEACTION_RARITY.UNCOMMON,
     description() {
       return $t("C_4")
     },
-    effectFn: amount => {
-      if (amount > 1500) amount = Math.sqrt(amount - 1500) * 2 + 1500;
-      amount = softCap(amount, 5e5, 0.2);
+    effectFn: x => {
+      let amount;
+      if (amount > 1500) amount = Math.sqrt(x - 1500) * 2 + 1500;
+      amount = softCap(amount, 5e5, 0.4);
       return Math.pow(amount, 0.3) + 1;
     },
-    formatEffect: value => `+${quantify($t("wra"), value, 2, 2)}/${$t("stu")}`
+    formatEffect: value => `+${quantify($t("wra"), value, 2, 2)}/${$t("stu")}`,
+    softcap: 6.2125564e10
   },
   {
     id: 4,
     key: "golden",
-    rarity: 'rare',
+    rarity: COLLEACTION_RARITY.RARE,
     description() { return $t("C_5") },
     effectFn: amount => Decimal.pow(amount, 0.25).times(0.12).add(1),
     formatEffect: value => formatX(value, 2, 4),
@@ -76,7 +79,7 @@ export const collections = [
   {
     id: 5,
     key: 'fast',
-    rarity: 'rare',
+    rarity: COLLEACTION_RARITY.RARE,
     description() {
       return $t("C_6")
     },
@@ -87,7 +90,7 @@ export const collections = [
   {
     id: 6,
     key: 'garcinol',
-    rarity: 'epic',
+    rarity: COLLEACTION_RARITY.EPIC,
     description() { return $t("C_7") },
     effectFn: amount => Decimal.pow(amount + 1, 0.5).times(0.01).add(0.99),
     formatEffect: value => formatPow(value, 2, 3),
@@ -96,7 +99,7 @@ export const collections = [
   {
     id: 7,
     key: "fire",
-    rarity: "epic",
+    rarity: COLLEACTION_RARITY.EPIC,
     description() {
       return $t("C_8")
     },
@@ -108,11 +111,12 @@ export const collections = [
   {
     id: 8,
     key: 'adofai',
-    rarity: 'legendary',
+    rarity: COLLEACTION_RARITY.LEGENDARY,
     description() {
       return $t("C_9", [quantifyInt($t("jiaozi"), 50)])
     },
     effectFn: amount => Decimal.pow(10, Math.pow(softCap(amount, 1e10, 0.3), 0.2)),
+    softcap: 1e10,
     formatEffect: value => `/${format(value, 2, 3)}`
   }
 ]

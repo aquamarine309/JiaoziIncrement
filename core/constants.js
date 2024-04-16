@@ -28,6 +28,7 @@ export const DC = deepFreeze({
   D0_1:                 new Decimal("0.1"),
   D0_390895:            new Decimal("0.390895"),
   D0_4:                 new Decimal("0.4"),
+  D0_5:                 new Decimal("0.5"),
   D0_55:                new Decimal("0.55"),
   D0_8446303389034288:  new Decimal("0.8446303389034288"),
   D0_95:                new Decimal("0.95"),
@@ -222,6 +223,14 @@ export const DC = deepFreeze({
   E1E15:                new Decimal("1e1000000000000000"),
 });
 
+window.COLLEACTION_RARITY = {
+  COMMON: "common",
+  UNCOMMON: "uncommon",
+  RARE: "rare",
+  EPIC: "epic",
+  LEGENDARY: "legendary"
+};
+
 window.AUTOBUYER_MODE = {
   BUY_SINGLE: 1,
   BUY_MAX: 10,
@@ -240,6 +249,12 @@ window.AUTO_BIG_RESET_MODE = {
 };
 
 window.AUTO_STEAMER_MODE = {
+  AMOUNT: 0,
+  TIME: 1,
+  X_HIGHEST: 2
+};
+
+window.AUTO_SIMULATION_MODE = {
   AMOUNT: 0,
   TIME: 1,
   X_HIGHEST: 2

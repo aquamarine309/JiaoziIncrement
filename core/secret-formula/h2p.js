@@ -1,42 +1,54 @@
 import { DC } from "../constants.js";
 
-const abbreviations = [
-  {
-    name: "Steamer Coins",
-    abbr: "SC",
-    condition: () => PlayerProgress.steamerUnlocked()
-  },
-  {
-    name: "Core Dumpling",
-    abbr: "CrD",
-    condition: () => PlayerProgress.simulationUnlocked()
-  }
-]
-
-const abbreviationsText = function() {
-  const abbreviationsRows = [];
-  for (let i = 0; i < abbreviations.length; i++) {
-    if (abbreviations[i].condition()) {
-      abbreviationsRows.push(`- <b>${abbreviations[i].abbr}</b>: ${abbreviations[i].name}<br>`);
-    }
-  }
-  return abbreviationsRows.join("\n");
-}
-
 export const h2p = {
   tabs: [
     {
-      name: "Common Abbreviations",
+      name: "饺子制造器",
       isUnlocked: () => true,
       info: () => {
         return `
-          Many resources within the game may appear in an abbreviated format as text in order to save space. This How to
-          Play entry will update itself with additional entries for new resources as you encounter them for the first time.
-          <br>
-          ${abbreviationsText()}
+          <p>饺子制造器与反物质维度类似，一级饺子制造器生产饺子，高级制造器生产上一级制造器。饺子馅和其它升级可以增加饺子制造器的等级上限。</p>
+          <p><b>制造器的初始价格: ${[10, 1e4, 5e7, 2e14, 1e22, 1e34, 1e46, 1e55, 1e120].map(x => format(x)).join(", ")}</b>。</p>
+          <p><b>制造器的价格增速: ${[1.5, 4, 8, 16, 1e4, 1e9, 1e16, 1e25, 1e40].map(x => format(x, 0, 1)).join(", ")}</b>。</p>
         `
       },
-      tags: ["attreviation"]
+      tags: ["makers", "制造器", "dumplimg", "饺子"]
+    },
+    {
+      name: "饺子售出",
+      isUnlocked: () => true,
+      info: () => `
+        <p>饺子售出可把饺子换成饺子币。<p>
+        <p><code>${formatInt(1)}个饺子=${format(DC.D0_390895, 0, 6)}饺子币</code></p>
+        <p><b>饺子出售后将重置当前饺子。</b></p>
+        <p>饺子售出需要至少${format(1000)}个饺子。</p>
+        <p>当饺子没有达到最高出售饺子时，有效的饺子数量将${formatPow(0.85, 0, 1)}。</p>
+      `,
+      tags: ["sale", "sell", "sold", "售出", "出售"]
+    },
+    {
+      name: "饺子皮",
+      isUnlocked: () => true,
+      info: () => `
+        <p>饺子皮为制造器提供加成。</p>
+        <p><b>加成: <code>a<sup>n</sup></b></code>。</p>
+        <p><b>a</b>为饺子皮的基础值(默认值为<code>√${formatInt(2)}</code>)，<b>n</b>为饺子皮的数量。</p>
+        <p>饺子皮需要用饺子币购买，其价格为超指数增长，且当饺子皮数量大于${formatInt(100)}时，饺子皮的价格增速会进一步增加。</p>
+        <p>当饺子皮数量大于${formatInt(1000)}时，饺子皮的价格将会以非常快的速度增长。</p>
+      `,
+      tags: ["饺子皮", "wrappers", "皮"]
+    },
+    {
+      name: "饺子馅",
+      isUnlocked: () => true,
+      info: () => `
+        <p>饺子馅可以提高制造器的上限。初始上限为${formatInt(3)}，后续可以购买更多。</p>
+        <p>购买饺子馅后重置饺子和所有制造器。</p>
+        <p><b>饺子馅的价格: ${[3e3, 1e7, 8e13, 1e20, 1e32, 1e46, 1e68, 1e150].map(x => format(x)).join(", ")}</n>。</p>
+        <p>饺子馅达到上限后，可进行收集重置，收集重置后你可以获得收集饺子，并解锁一个新的标签页。</p>
+        <p>收集重置的需求始终为${format(1e50)}。</p>
+      `,
+      tags: ["饺子馅", "stuffings", "馅"]
     }
   ]
 };

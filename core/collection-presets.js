@@ -51,7 +51,7 @@ export const CollectionPresets = {
   },
   delete(preset) {
     const index = this.all.indexOf(preset);
-    if (index === -1) throw `Unexpected collection preset ${preset.name}.`
+    if (index === -1) throw `Unexpected collection preset ${preset.name}.`;
     player.collectionPresets.splice(index, 1);
     this.update();
   },

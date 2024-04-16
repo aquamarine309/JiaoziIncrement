@@ -146,7 +146,7 @@ export class MakerAutobuyerState extends UpgradeableAutobuyerState {
     this.data.isUnlocked = false;
     this.data.isBought = false;
     this.data.bulk = 1;
-    TabNotification.newAutobuyer.clearTrigger();
+    //TabNotification.newAutobuyer.clearTrigger();
   }
 
   static get entryCount() { return 9; }

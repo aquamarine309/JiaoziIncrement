@@ -42,9 +42,8 @@ export default {
         setProgress(Currency.steamerCoins.value, DC.E500, "终止模拟的进度");
       } else if (PlayerProgress.factoriesUnlocked()) {
         setProgress(Currency.money.value, Factories.next().moneyRequirement, $t("p_nextFactory"));
-      } else if (player.hasBroken) {
-        const text = `解锁挑战的进度`;
-        setProgress(player.jiaozi, DC.E2100, text);
+      } else if (PlayerProgress.hasBroken) {
+        setProgress(player.jiaozi, NormalChallenges.requirement, "解锁挑战的进度");
       } else if (PlayerProgress.collectionUnlocked()) {
         setProgress(Currency.jiaozi.value, Decimal.NUMBER_MAX_VALUE, "蒸笼进度");
       } else if (!Stuffing.canBigReset) {

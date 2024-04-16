@@ -47,6 +47,7 @@ class NormalChallengeState extends GameMechanicState {
     if (this.isRunning) return;
     steamerChall();
     player.challenge.normal.current = this.id;
+    EventHub.logic.dispatch(GAME_EVENT.NORMAL_CHALLENGE_START, this.id);
     if (this.id === 3) {
       player.auto.autobuyersOn = true;
       player.auto.wrapper.isActive = true;
@@ -65,7 +66,7 @@ class NormalChallengeState extends GameMechanicState {
     if (player.options.updateCollectionSetAfterChallenge) {
       this.activeBits = player.colActiveBits;
     };
-    EventHub.dispatch(GAME_EVENT.NORMAL_CHALLENGE_COMPLETED);
+    EventHub.logic.dispatch(GAME_EVENT.NORMAL_CHALLENGE_COMPLETED);
   }
 
   get isEffectActive() {

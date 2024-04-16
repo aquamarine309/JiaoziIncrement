@@ -1266,11 +1266,11 @@ br {
   }
   
   .o-maker-row:nth-child(odd) {
-    background-color: #905BDC88;
+    background: linear-gradient(to right, rgba(226, 161, 255, 0.5) 60%, rgba(226, 161, 255, 0.1));
   }
   
   .o-maker-row:nth-child(even) {
-    background-color: #2CFFC688;
+    background: linear-gradient(to right, rgba(44, 255, 249, 0.5) 60%, rgba(44, 255, 249, 0.1));
   }
   
   .o-maker-row {
@@ -5343,11 +5343,11 @@ height: 5.4rem;
 }
 
 .o-factory-row:nth-child(odd) {
-  background-color: #ff988888;
+  background: linear-gradient(to right, rgba(255, 152, 136, 0.5) 60%, rgba(255, 152, 136, 0.1));
 }
 
 .o-factory-row:nth-child(even) {
-  background-color: #607ACD88;
+  background: linear-gradient(to right, rgba(96, 122, 205, 0.5) 60%, rgba(96, 122, 205, 0.1));
 }
 
 .o-factory-row {
@@ -6507,7 +6507,7 @@ width: 62rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: column;
   -webkit-user-select: none;
   user-select: none;
@@ -6516,7 +6516,7 @@ width: 62rem;
 .o-simulation-milestone-container {
   padding: 1rem;
   flex: 1 0 48%;
-  height: 14rem;
+  height: 15rem;
 }
 
 .o-simulation-milestone-singles {
@@ -6575,20 +6575,20 @@ width: 62rem;
 
 .o-milestone-progress-bar--reached {
   border-color: var(--color-simulation);
-  box-shadow: 0 0 0.6rem 0.1rem #B881C6;
+  box-shadow: 0 0 0.6rem 0.1rem #D0A3DB;
 }
 
 .o-milestone-progress-bar--text {
   z-index: 2;
   font-size: 1.2rem;
-  color: var(--color-text);
+  color: white;
   filter: drop-shadow(0.1rem 0.1rem 0.1rem #FF6695);
 }
 
 .o-milestone-progress-bar--filling {
   position: absolute;
   background-color: #DCAEF2;
-  opacity: 0.6;
+  opacity: 0.5;
   left: 0;
   height: 100%;
   border-radius: var(--var-border-radius, 0.4rem);
@@ -6860,3 +6860,13 @@ width: 62rem;
   border-radius: var(--var-border-radius, 0.4rem);
   flex: 1;
 }
+
+code {
+  background-color: rgba(107, 141, 255, 0.5);
+  margin: 0.2rem;
+  padding: 0.2rem;
+  font-family: Typewriter, serif;
+  border-radius: 0.5rem;
+  color: white;
+}
+

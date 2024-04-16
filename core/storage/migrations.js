@@ -111,13 +111,16 @@ export const migrations = {
     8.1: player => {
       player.options.lastOpenSubtab[7] = 
       Math.max(0, player.options.lastOpenSubtab[7] - 1);
+    },
+    8.11: player => {
+      //RARE: (1 << 4) | (1 << 5)
+      player.requirementChecks.simulation.allRare = player.activeColBits === 48;
     }
   },
   
   prePatch(saveData) {
     saveData.version = saveData.version || 0;
   },
-  
   patch(saveData, maxVersion) {
     this.prePatch(saveData);
     // This adds all the undefined properties to the save which are in player.js

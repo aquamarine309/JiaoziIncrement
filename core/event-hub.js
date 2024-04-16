@@ -4,7 +4,7 @@ window.EventHub = class EventHub {
   }
 
   on(event, fn, target) {
-    if (!event) console.warn(target)
+    if (!event) console.warn(target);
     let handlers = this._handlers[event];
     if (handlers === undefined) {
       handlers = [];
@@ -21,7 +21,7 @@ window.EventHub = class EventHub {
   }
 
   dispatch(event, args) {
-    if (!event) console.warn(args)
+    if (!event) console.warn(args);
     const handlers = this._handlers[event];
     if (handlers === undefined) return;
     for (const handler of handlers) {
@@ -30,7 +30,7 @@ window.EventHub = class EventHub {
   }
 
   static dispatch(event, ...args) {
-    if (!event) console.warn(args)
+    if (!event) console.warn(args);
     EventHub.logic.dispatch(event, args);
     GameUI.dispatch(event, args);
   }
@@ -80,6 +80,7 @@ window.GAME_EVENT = {
   OFFLINE_CURRENCY_GAINED: "OFFLINE_CURRENCY_GAINED",
   STEAMER_UPGRADE_BOUGHT: "STEAMER_UPGRADE_BOUGHT",
   COMPLETE_TASK: "COMPLETE_TASK",
+  NORMAL_CHALLENGE_START: "NORMAL_CHALLENGE_START",
   NORMAL_CHALLENGE_COMPLETED: "NORMAL_CHALLENGE_COMPLETED",
   UPDATE_COLLECTION_PRESETS_AFTER: "UPDATE_COLLECTION_PRESETS_AFTER",
 

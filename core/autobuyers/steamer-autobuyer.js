@@ -95,7 +95,7 @@ export class SteamerAutobuyerState extends AutobuyerState {
       case AUTO_STEAMER_MODE.AMOUNT:
         return gainedSteamerCoins().gte(this.amount);
       case AUTO_STEAMER_MODE.TIME:
-        return Time.thisBigResetRealTime.totalSeconds > this.time;
+        return Time.thisSteamerRealTime.totalSeconds > this.time;
       case AUTO_STEAMER_MODE.X_HIGHEST:
       default:
         return gainedSteamerCoins().gte(this.highestPrevPrestige.times(this.xHighest));

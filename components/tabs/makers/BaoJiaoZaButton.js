@@ -1,4 +1,4 @@
-import PrimaryButton from '../../PrimaryButton.js'
+import PrimaryButton from '../../PrimaryButton.js';
 
 export default {
   name: 'BaoJiaoZaButton',
@@ -12,10 +12,10 @@ export default {
   },
   methods: {
     make() {
-      makeJiaozi()
+      makeJiaozi();
     },
     update() {
-      this.howMany = Maker(1).productionPerSecond.times(0.5).timesEffectOf(Collections.antimatter)
+      this.howMany = gainedMakeJiaozi();
     }
   },
   template: `

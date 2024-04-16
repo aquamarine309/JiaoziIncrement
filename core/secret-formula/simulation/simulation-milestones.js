@@ -37,7 +37,7 @@ export const simulationMilestones = {
   qols2: {
     id: 11,
     cores: 32,
-    description: () => `解锁更多蒸笼自动购买器的模式，大幅降低制造器价格增速，自动解锁工厂，终止模拟后保留一次外卖${formatInt(4)}。`
+    description: () => `解锁更多蒸笼自动购买器的模式，大幅降低制造器价格增速，自动解锁工厂，解锁自动终止模拟。终止模拟后保留一次外卖${formatInt(4)}。`
   },
   energyRate: {
     id: 12,
@@ -60,14 +60,25 @@ export const simulationMilestones = {
   },
   factoryMaker: {
     id: 15,
-    cores: 1e4,
+    cores: 5e3,
     description: () => "微型蘸料工厂生产最高级制造器。",
     effect: () => Factory(1).productionPerSecond.minus(1).clampMin(0),
     formatEffect: value => `${format(value, 2)}每秒`
   },
-  advancedSimulation: {
+  coreBoost: {
     id: 16,
+    cores: 1e4,
+    description: () => `基于前${formatInt(10)}次终止模拟的时间获得核心饺子和饺子能量的加成。(暂时无效)`
+  },
+  weakGainedColls: {
+    id: 17,
+    cores: 1e6,
+    description: () => `饺子收集可在获得前拥有${formatPercents(0.5)}的效果。(暂时无效)`,
+    effect: () => gainedCols() * 0.5
+  },
+  advancedSimulation: {
+    id: 18,
     cores: 1e20,
-    description: () => "解锁进阶模拟。"
+    description: () => "解锁进阶模拟。(暂时无效)"
   }
 }

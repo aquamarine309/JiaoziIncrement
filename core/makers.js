@@ -170,7 +170,7 @@ class MakerState {
   
   reset() {
     this.bought = 0;
-    this.amount = DC.D0;
+    this.amount = SimulationUpgrade.moneyMaker.effects.startingMaker.effectOrDefault(DC.D0);
   }
   
   static createAccessor() {
@@ -265,14 +265,18 @@ export function buySingleMaker(tier) {
   onBuyMaker(tier);
 }
 
-export function resetJiaozi() {
-  Currency.jiaozi.reset();
+export function getMakeJiaoziMultiplier() {
+  let multiplier = DC.D0_5;
+  multiplier = multiplier.timesEffectOf(Collections.antimatter);
+  return multiplier;
+}
+
+export function gainedMakeJiaozi() {
+  return Maker(1).productionPerSecond.times(getMakeJiaoziMultiplier());
 }
 
 export function makeJiaozi() {
-  const pps = Maker(1).productionPerSecond;
-  const tapJiaoziAmount = pps.times(0.5).timesEffectOf(Collections.antimatter);
-  Currency.jiaozi.add(tapJiaoziAmount);
+  Currency.jiaozi.add(gainedMakeJiaozi());
 }
 
 export function buyMaxMaker(tier, bulk = Infinity) {
