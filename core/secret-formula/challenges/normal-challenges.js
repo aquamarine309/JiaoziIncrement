@@ -55,7 +55,7 @@ export const normalChallenges = [
     cap: DC.D625P15,
     formatEffect: value => formatX(value, 2, 3),
     reward: {
-      description: "解锁饺子币倍增升级"
+      description: "解锁蒸笼币倍增升级"
     }
   },
   {

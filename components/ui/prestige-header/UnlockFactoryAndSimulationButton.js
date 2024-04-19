@@ -1,3 +1,8 @@
+function coreToSC(cores) {
+  const adjusted = cores.div(GameCache.totalCoresMult.value);
+  return Decimal.pow10((adjusted.log(5) + 0.609324) * 500);
+};
+
 export default {
   name: "UnlockFactoryAndSimulationButton",
   data() {
@@ -39,17 +44,16 @@ export default {
   methods: {
     update() {
       this.gainedCores = gainedCores();
-      this.nextCoreSC = this.coreToSC(this.gainedCores.add(1));
+      this.nextCoreSC = coreToSC(this.gainedCores.add(1));
       this.simulationTime = Time.thisSimulationRealTime.totalMinutes;
       this.first = !PlayerProgress.simulationUnlocked();
       this.canConclude = Player.canConclude;
-      this.allUnlocked = this.canConclude || Factory(9)
-        .isUnlocked;
+      this.allUnlocked = this.canConclude || Factory(8).isUnlocked;
       if (!this.allUnlocked) {
         const next = Factories.next();
         this.canUnlock = next.canUnlock;
         this.cost = next.moneyRequirement;
-      } else {
+      } else if (this.canUnlock) {
         this.canUnlock = false;
       }
     },
@@ -60,10 +64,6 @@ export default {
       } else {
         manualConcludeSimulationRequest();
       }
-    },
-    coreToSC(cores) {
-      const adjusted = cores.div(GameCache.totalCoresMult.value);
-      return Decimal.pow10((adjusted.log(5) + 0.609324) * 500);
     }
   },
   template: `
