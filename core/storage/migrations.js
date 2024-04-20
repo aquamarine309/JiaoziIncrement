@@ -3,7 +3,6 @@ import { deepmergeAll } from "../../deepmerge.js";
 export const migrations = {
   patches: {
     2.1: player => {
-      console.log(player)
       player.makers.push({
         amount: 0,
         bought: 0
@@ -115,9 +114,13 @@ export const migrations = {
     8.11: player => {
       //RARE: (1 << 4) | (1 << 5)
       player.requirementChecks.simulation.allRare = player.activeColBits === 48;
+    },
+    8.12: player => {
+      player.records.recentBigReset = Player.defaultStart.records.recentBigReset;
+      player.records.recentSteamer = Player.defaultStart.records.recentSteamer;
+      player.records.recentSimulation = Player.defaultStart.records.recentSimulation;
     }
   },
-  
   prePatch(saveData) {
     saveData.version = saveData.version || 0;
   },

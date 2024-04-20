@@ -48,7 +48,7 @@ export default {
       this.simulationTime = Time.thisSimulationRealTime.totalMinutes;
       this.first = !PlayerProgress.simulationUnlocked();
       this.canConclude = Player.canConclude;
-      this.allUnlocked = this.canConclude || Factory(8).isUnlocked;
+      this.allUnlocked = this.canConclude || Factory(8).isUnlocked || SimulationMilestone.qols2.isReached;
       if (!this.allUnlocked) {
         const next = Factories.next();
         this.canUnlock = next.canUnlock;

@@ -22,12 +22,12 @@ class FactoryState {
     this._getData = () => player.factories;
     const DISPLAY_NAMES = [null, 'micro', 'small', 'mediumSmall', 'medium', 'mediumLarge', 'large', 'giant', 'infinity', 'eternity'];
     this._displayName = DISPLAY_NAMES[tier];
-    this._unlockRequirement = [DC.E25000, DC.E30000, DC.E32000, DC.E36000, DC.E52000, DC.E80000, DC.E100000, DC.E120000, DC.E150000][tier - 1];
+    this._unlockRequirement = [DC.E20000, DC.E30000, DC.E32000, DC.E36000, DC.E52000, DC.E80000, DC.E100000, DC.E120000, DC.E150000][tier - 1];
     const COST_MULTS = [null, 1e3, 1e4, 1e7, 1e10, 1e14, 1e20, 1e25, 1e30, 1e45];
     this._costMultiplier = COST_MULTS[tier];
     const POWER_MULTS = [null, 10, 8, 6, 3, 3, 2, 2, 50, 50];
     this._powerMultiplier = POWER_MULTS[tier];
-    const BASE_COSTS = [null, DC.E90, DC.E110, DC.E125, DC.E150, DC.E220, DC.E280, DC.E385, DC.E465, DC.E550];
+    const BASE_COSTS = [null, DC.E80, DC.E110, DC.E125, DC.E150, DC.E220, DC.E280, DC.E385, DC.E465, DC.E550];
     this._baseCost = BASE_COSTS[tier];
   }
   get tier() { return this._tier; }

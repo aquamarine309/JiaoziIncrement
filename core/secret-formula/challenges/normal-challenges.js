@@ -25,7 +25,7 @@ export const normalChallenges = [
     effect: () => Decimal.pow(10, Decimal.pow(10, Wrapper.base.minus(1.1)).times(Decimal.pow(Math.min(Wrapper.totalAmount, 404), 0.95))),
     reward: {
       description: () => "基于饺子皮获得更多的收集饺子",
-      effect: () => Math.floor(Wrapper.totalAmount / 10 + 1),
+      effect: () => Math.floor(Wrapper.amount / 6 + 1),
       formatEffect: value => formatX(value, 2)
     }
   },

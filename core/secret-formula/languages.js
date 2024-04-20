@@ -446,7 +446,8 @@ export const languages = {
       concludeSimulation: "终止模拟",
       buyMakerMult: "购买一个制造器的倍数: $1。",
       baoMult: "包饺砸的倍数: $1。",
-      softCapped: "软上限"
+      softCapped: "软上限",
+      colShop: "收集商店"
     }
   },
   "en": {
@@ -896,7 +897,8 @@ export const languages = {
       placeholder: "Placeholder",
       buyMakerMult: "Multiplier for buying a maker: $1.",
       baoMult: "The dumplings by making dumplings: $1.",
-      softCapped: "Soft Capped"
+      softCapped: "Soft Capped",
+      colShop: "Collection Shop"
     }
   }
 }

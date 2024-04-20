@@ -2,14 +2,15 @@ import { DC } from "../../constants.js";
 
 const rebuyable = props => {
   props.cost = () => getHybridCostScaling(
-  SimulationRebuyableGroup.totalBought,
-  1e30,
-  props.initialCost,
-  props.costMult,
-  props.costMult / 10,
-  DC.E309,
-  1e3,
-  props.initialCost * props.costMult);
+    SimulationRebuyableGroup.totalBought,
+    1e30,
+    props.initialCost,
+    props.costMult,
+    props.costMult / 10,
+    DC.E309,
+    1e3,
+    props.initialCost * props.costMult
+  );
   props.effect = () => Decimal.pow(
     props.effectMult * SimulationMilestone.reviewBoost.effectOrDefault(1),
     player.simulation.upgrades.review[props.id]

@@ -60,7 +60,7 @@ export const CollectionPresets = {
     presets.push({
       name: $t("name"),
       activeBits: 0
-    })
+    });
     this.update();
   },
   update() {

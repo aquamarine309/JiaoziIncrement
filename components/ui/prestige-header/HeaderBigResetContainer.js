@@ -5,6 +5,7 @@ export default {
       showContainer: false,
       canBigReset: false,
       colAmount: 0,
+      extraAmount: 0,
       gainedCols: 0,
       showColRate: false,
       currentColRate: 0,
@@ -23,6 +24,7 @@ export default {
       this.showBtn = SteamerUpgrade.resetRequirement.isBought;
       this.canBigReset = Stuffing.bigResetCheck;
       this.colAmount = player.totalColls;
+      this.extraAmount = Collections.extraAmount;
       const _gainedCols = gainedCols();
       this.gainedCols = _gainedCols;
       this.currentColRate = _gainedCols / Math.clampMin(0.0005, Time.thisBigResetRealTime.totalMinutes);
@@ -100,7 +102,9 @@ export default {
   >
     <div class="c-big-reset-count">
       {{ $t("youHave") }}
-      <span class="c-game-header__brc-amount">{{ format(colAmount, 2) }}</span>
+      <span class="c-game-header__brc-amount">
+        {{ format(colAmount + extraAmount, 2) }}
+      </span>
       {{ pluralize($t("collection"), colAmount) }}
     </div>
     <button

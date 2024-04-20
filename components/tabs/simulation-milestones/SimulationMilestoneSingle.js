@@ -61,6 +61,9 @@ export default {
         return $t("reached");
       }
       return formatPercents(this.percents, 3);
+    },
+    key() {
+      return this.milestone.config.key;
     }
   },
   template: `
@@ -68,10 +71,10 @@ export default {
       class="o-simulation-milestone-container"
       v-if="isUnlocked"
     >
-      <h2>{{ $t("milestone") }} {{ formatInt(index + 1) }}</h2>
+      <h2>{{ key }}</h2>
       <div :class="progressBarClass">
         <div class="o-milestone-progress-bar--text">
-          {{ formatInt(cores) }}/{{ format(requirement, 2) }} {{ $t("cores") }} ({{ info }})
+          {{ format(cores, 2) }}/{{ format(requirement, 2) }} {{ $t("cores") }} ({{ info }})
         </div>
         <div
           class="o-milestone-progress-bar--filling"

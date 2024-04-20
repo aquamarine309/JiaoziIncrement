@@ -72,6 +72,7 @@ html {
   --color-prestige--accent: white;
   --color-background: white;
   --color-simulation: #d296ff;
+  --color-ending: #FBB368;
   --color-background-locked: #d6d6d6;
 }
 
@@ -173,8 +174,6 @@ html {
   --color-overlay: rgba(60, 60, 100, 50%);
 
   --color-prestige--accent: black;
-
-  --color-teresa--accent: black;
 }
 
 :root .t-s11 {
@@ -6870,3 +6869,22 @@ code {
   color: white;
 }
 
+.c-col-shop-tab {
+  flex-direction: column;
+  width: 90%;
+  margin: 1rem auto;
+  border: 0.1rem solid var(--color-collection);
+  border-radius: var(--var-border-radius, 0.5rem);
+  padding: 1rem;
+}
+
+.c-shop-info {
+  color: var(--color-collection);
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.c-ending-info {
+  color: var(--color-ending);
+  margin: 0.1rem;
+}

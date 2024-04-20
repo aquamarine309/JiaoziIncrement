@@ -8,7 +8,11 @@ export const secretAchievements = [
     id: 12,
     description: () => $t("sa12_d"),
     checkEvent: GAME_EVENT.CONCLUDE_SIMULATION_BEFORE,
-    checkRequirement: () => player.requirementChecks.simulation.allRare
+    checkRequirement: () => (
+      player.requirementChecks.simulation.allRare && 
+      Player.canConclude && 
+      Collections.rare.every(c => c.isActive)
+    )
   },
   {
     id: 13,

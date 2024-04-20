@@ -25,7 +25,7 @@ export default {
   methods: {
     update() {
       const collection = this.collection;
-      this.amount = collection.amount;
+      this.amount = collection.totalAmount;
       this.isActive = collection.isActive;
       this.canActivate = collection.canActivate;
       this.hasTutorial = Tutorial.isActive(TUTORIAL_STATE.COLLECTION);

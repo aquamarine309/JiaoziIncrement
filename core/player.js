@@ -21,7 +21,7 @@ window.player = {
   money: DC.D0,
   break: false,
   makerCurrencyType: MAKER_CURRENCY.JIAOZI,
-  version: 8.11,
+  version: 8.12,
   wrapper: 0,
   stuffing: 0,
   simulationStuffing: 0,
@@ -105,12 +105,24 @@ window.player = {
       time: Number.MAX_VALUE,
       realTime: Number.MAX_VALUE
     },
-    recentBigReset: Array.range(0, 10).map(() =>
-      [Number.MAX_VALUE, Number.MAX_VALUE, DC.D1, DC.D1, ""]),
-    recentSteamer: Array.range(0, 10).map(() =>
-      [Number.MAX_VALUE, Number.MAX_VALUE, DC.D1, DC.D1, "", DC.D0]),
-    recentSimulation: Array.range(0, 10).map(() =>
-      [Number.MAX_VALUE, Number.MAX_VALUE, DC.D1, DC.D1, "", DC.D0])
+    recentBigReset: Array.range(0, 10).map(() => ({
+      time: Number.MAX_VALUE,
+      realTime: Number.MAX_VALUE,
+      currency: 0,
+      count: DC.D0
+    })),
+    recentSteamer: Array.range(0, 10).map(() => ({
+      time: Number.MAX_VALUE,
+      realTime: Number.MAX_VALUE,
+      currency: DC.D0,
+      count: DC.D0
+    })),
+    recentSimulation: Array.range(0, 10).map(() => ({
+      time: Number.MAX_VALUE,
+      realTime: Number.MAX_VALUE,
+      currency: DC.D0,
+      count: DC.D0
+    }))
   },
   totalColls: 0,
   steamerCoins: DC.D0,

@@ -2,7 +2,7 @@ import { GameMechanicState } from "./game-mechanics/index.js";
 
 class CollectionState extends GameMechanicState {
     constructor(config) {
-    config.effect = () => config.effectFn(this.amount);
+    config.effect = () => config.effectFn(this.totalAmount);
     config.name = () => Theme.currentName().includes("Inverted") ? $t(`I_${config.key}_`) : $t(`_${config.key}_`);
     if (config.cappedAmount) config.cap = () => config.effectFn(this.cappedAmount);
     super(config);
@@ -33,6 +33,10 @@ class CollectionState extends GameMechanicState {
     return player.break ? player.totalColls / 9 : player.collections[this.id];
   }
   
+  get totalAmount() {
+    return this.amount + Collections.extraAmount / 9;
+  }
+  
   set amount(value) {
     player.collections[this.id] = value;
   }
@@ -48,7 +52,7 @@ class CollectionState extends GameMechanicState {
   get canActivate() {
     if (this.isActive) return false;
     if (!this.isUnlocked) return false;
-    if (this.amount <= 0) return false;
+    if (this.totalAmount <= 0) return false;
     if (NormalChallenge(5).isRunning && this.id >= 6 && this.id <= 8) return false;
     if (Collections.activeAmount >= Collections.maxActiveAmount) return false;
     return true;
@@ -57,7 +61,7 @@ class CollectionState extends GameMechanicState {
   activate() {
     if (!this.canActivate) return;
     Tutorial.turnOffEffect(TUTORIAL_STATE.COLLECTION);
-    if (this.rarity !== "rare") {
+    if (this.rarity !== COLLEACTION_RARITY.RARE) {
       player.requirementChecks.simulation.allRare = false;
     }
     player.colActiveBits |= (1 << this.id);
@@ -106,6 +110,10 @@ export const Collections = {
   fullReset() {
     this.all.forEach(v => v.amount = 0);
     player.totalColls = 0;
+  },
+  
+  get extraAmount() {
+    return SimulationMilestone.weakGainedColls.effectOrDefault(0);
   },
   
   common: [],

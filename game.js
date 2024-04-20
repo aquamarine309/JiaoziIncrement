@@ -268,13 +268,35 @@ function updatePrestigeRates() {
 }
 
 function applyAutoprestige(diff) {
-  Currency.money.add(NormalChallenge(2).reward.effectOrDefault(0))
+  Currency.money.add(NormalChallenge(2).reward.effectOrDefault(0));
 }
 
 export function resetChallengeStuff() {
-  player.postC7Tier = 1
+  player.postC7Tier = 1;
 }
 
 window.onblur = function() {
   GameKeyboard.stopSpins();
 };
+
+export function addSimulationTime(time, realTime, currency, count) {
+  player.records.recentSimulation.pop();
+  player.records.recentSimulation.unshift({
+    time,
+    realTime,
+    currency,
+    count
+  });
+}
+
+export function resetSimulationRuns() {
+  player.records.recentSimulation = Array.from(
+    { length: 10 },
+    () => ({
+      time: Number.MAX_VALUE,
+      realTime: Number.MAX_VALUE,
+      currency: name === PRESTIGE_NAME.BIG_RESET ? 0 : DC.D0,
+      count: DC.D0
+    })
+  );
+}
