@@ -39,14 +39,6 @@ export const tabs = [
         symbol: "<i class='fas fa-paper-plane'></i>",
         hidable: true,
         component: 'CollectionsTab'
-      },
-      {
-        key: "shop",
-        name: "colShop",
-        id: 1,
-        symbol: "<i class='fas fa-shop'></i>",
-        hidable: true,
-        component: "CollectionShopTab"
       }
     ]
   },

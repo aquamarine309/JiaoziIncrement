@@ -208,7 +208,7 @@ export const languages = {
       simUpgs: "模拟升级",
       expSave: "导出存档",
       impSave: "导入存档",
-      hardReset: "硬重置",
+      hardReset: "重置游戏",
       saveGame: "保存游戏",
       chooseSave: "选择存档",
       expAsFile: "导出文件存档",
@@ -898,7 +898,7 @@ export const languages = {
       buyMakerMult: "Multiplier for buying a maker: $1.",
       baoMult: "The dumplings by making dumplings: $1.",
       softCapped: "Soft Capped",
-      colShop: "Collection Shop"
+      colShop: "Collection Shop "
     }
   }
 }

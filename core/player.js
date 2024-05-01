@@ -21,7 +21,7 @@ window.player = {
   money: DC.D0,
   break: false,
   makerCurrencyType: MAKER_CURRENCY.JIAOZI,
-  version: 8.12,
+  version: 8.1201,
   wrapper: 0,
   stuffing: 0,
   simulationStuffing: 0,

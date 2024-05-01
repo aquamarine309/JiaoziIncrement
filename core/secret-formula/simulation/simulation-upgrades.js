@@ -1,4 +1,5 @@
 import { DC } from "../../constants.js";
+import wordShift from "../../word-shift.js";
 
 const rebuyable = props => {
   props.cost = () => getHybridCostScaling(
@@ -88,26 +89,26 @@ export const simulationUpgrades = {
     },
     unlockColShop: {
       id: 2,
-      description: "解锁收集商店",
-      cost: 1e5,
+      description: "Cannot read properties of undefined (reading 'description')",
+      cost: 1e100,
       formatCost: value => format(value, 2),
-      requirement: () => "待定",
-      checkRequirement: () => false
+      requirement: () => `拥有${format(1e18)}个收集饺子`,
+      checkRequirement: () => player.totalColls >= 1e18
     },
     unlockNewMixture: {
       id: 3,
-      description: "解锁更多蘸料",
+      description: "Cannot read properties of undefined (reading 'description')",
       cost: 3e7,
       formatCost: value => format(value, 2),
-      requirement: () => "五小时后更新",
+      requirement: () => `In ${formatInt(5)} ${wordShift.wordCycle(["hours", "days", "weeks"])}`,
       checkRequirement: () => false
     },
     unlockNewTask: {
       id: 4,
-      description: "解锁新的外卖订单",
+      description: "获得免费的A.Squared Eternity",
       cost: 4e10,
       formatCost: value => format(value, 2),
-      requirement: () => "五小时后更新",
+      requirement: () => `In ${formatInt(5)} ${wordShift.wordCycle(["months", "years", "centuries"])}`,
       checkRequirement: () => false
     }
   }

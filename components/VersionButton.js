@@ -4,11 +4,17 @@ export default {
       return `r${Player.defaultStart.version}`
     }
   },
+  methods: {
+    checkUpdate() {
+      checkUpdate();
+    }
+  },
   template: `
   <div
-class="o-version-btn"
->
-<span>{{ $t("version") }}: {{ version }}</span>
+    class="o-version-btn"
+    @click="checkUpdate"
+  >
+    <span>{{ $t("version") }}: {{ version }}</span>
 </div>
   `
 }

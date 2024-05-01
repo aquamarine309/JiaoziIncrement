@@ -9,6 +9,19 @@ if (GlobalErrorHandler.handled) {
 GlobalErrorHandler.cleanStart = true;
 
 let times = 0
+
+export function checkUpdate() {
+  fetch("./version.txt")
+  .then(response => response.text())
+  .then(text => {
+    if (text === `${Player.defaultStart.version}`) {
+      Modal.message.show("当前版本为最新版本！")
+    } else {
+      Modal.message.show(`发现新版本: r${text}，请刷新网页！`)
+    }
+  })
+}
+
 export function gameLoop(passDiff, options = {}) {
   PerformanceStats.start("Frame Time");
   PerformanceStats.start("Game Update");

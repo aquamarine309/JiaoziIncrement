@@ -34,7 +34,8 @@ export default {
 			power: new Decimal(0),
 			showTooltip: false,
 			isLocked: false,
-			canUnlock: false
+			canUnlock: false,
+			requirement: ""
 		}
 	},
 	methods: {
@@ -44,6 +45,7 @@ export default {
 			this.power = energyPerSecond();
 			this.isLocked = !this.rebuyable && !this.upgrade.isUnlocked;
 			this.canUnlock = this.upgrade.canUnlock;
+			this.requirement = this.upgrade.requirement;
 			if (this.rebuyable && !this.isAvailable && this.power.gt(0)) {
 			  this.timeToGain = this.upgrade.cost.minus(Currency.energy.value).div(this.power);
 			}
@@ -79,7 +81,7 @@ export default {
 	    return TimeSpan.fromSeconds(this.timeToGain.toNumber()).toStringShort();
 	  },
 	  requirementText() {
-	    return `${$t("requirement")}: ${this.upgrade.requirement}`
+	    return `${$t("requirement")}: ${this.requirement}`
 	  }
 	},
 	template: `

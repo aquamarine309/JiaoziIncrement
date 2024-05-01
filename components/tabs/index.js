@@ -1,5 +1,4 @@
 import AutobuyersTab from "./autobuyers/AutobuyersTab.js";
-import CollectionShopTab from "./collection-shop/CollectionShopTab.js";
 import CollectionsTab from './collections/CollectionsTab.js';
 import FactoriesTab from "./factories/FactoriesTab.js";
 import JiaoziMakersTab from './makers/JiaoziMakersTab.js';
@@ -32,8 +31,7 @@ const TabComponents = {
   NormalAchievementsTab,
   SimulationMilestonesTab,
   SimulationUpgradesTab,
-  SecretAchievementsTab,
-  CollectionShopTab
+  SecretAchievementsTab
 }
 
 export default TabComponents;

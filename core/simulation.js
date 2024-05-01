@@ -119,10 +119,10 @@ function simulationUpdateStatistics() {
   player.records.thisBigReset.maxMoney = DC.D0;
   player.maxResetJiaozi = DC.D0;
   resetChallengeStuff();
-  if (!SimulationMilestone.weakGainedColls.isReached || player.needResetCols) {
+  if (!SimulationMilestone.weakGainedColls.isReached || player.needResetCols || Collections.activeAmount >= 5) {
     resetCollectionsSelect();
   }
   GameCache.makerMultDecrease.invalidate();
-  GameCache.energyConversionEfficiency.invalidate();
+  GameCache.energyConversionEfficiency.invalidate();p
   player.requirementChecks.simulation.allRare = true;
 }
