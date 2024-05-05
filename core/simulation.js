@@ -123,6 +123,6 @@ function simulationUpdateStatistics() {
     resetCollectionsSelect();
   }
   GameCache.makerMultDecrease.invalidate();
-  GameCache.energyConversionEfficiency.invalidate();p
+  GameCache.energyConversionEfficiency.invalidate();
   player.requirementChecks.simulation.allRare = true;
 }
