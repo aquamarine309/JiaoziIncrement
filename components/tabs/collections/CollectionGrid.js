@@ -15,7 +15,11 @@ export default {
       isActive: false,
       canActivate: false,
       hasTutorial: false,
-      cap: 0
+      cap: 0,
+      amplificationUnlocked: false,
+      isAmplified: false,
+      amplificationPoints: 0,
+      canAmplify: false
     }
   },
   components: {
@@ -30,9 +34,16 @@ export default {
       this.canActivate = collection.canActivate;
       this.hasTutorial = Tutorial.isActive(TUTORIAL_STATE.COLLECTION);
       this.cap = collection.cappedAmount;
+      this.amplificationUnlocked = Collections.isAmplificationUnlocked;
+      this.amplificationPoints = collection.amplificationPoints;
+      this.isAmplified = collection.isAmplified;
+      this.canAmplify = collection.canAmplify;
     },
     activate() {
       this.collection.activate();
+    },
+    amplify() {
+      this.collection.amplify();
     }
   },
   computed: {
@@ -67,6 +78,12 @@ export default {
         "tutorial--glow": this.canActivate && this.hasTutorial,
       }
     },
+    amplifyBtn() {
+      return {
+        "o-amplify-btn": true,
+        "o-amplify-btn--disabled": !this.canAmplify
+      }
+    },
     amountText() {
       const under1000 = player.break ? 2 : 0;
       const base = format(this.amount, 2, under1000);
@@ -81,46 +98,57 @@ export default {
   },
   template: `
     <div
-    :class='gridClass'
-    @click.shift.exact='activate'
+      :class='gridClass'
+      @click.shift.exact='activate'
     >
       <div
-      :style='gridStyle'
-      class='o-collection-image'
+        :style='gridStyle'
+        class='o-collection-image'
       />
-       <div v-if='this.collection.isUnlocked'
+      <div v-if='this.collection.isUnlocked'
         :style='textStyle'
         class="o-collection-info"
-        >
-         <div class='o-collection-name'>
+      >
+        <div class='o-collection-name'>
           {{ collection.name }} ({{ collection.rarityName }})
         </div>
         <div>
           {{ $t("curAmount") }}: {{ amountText }}
         </div>
-          
-          <DescriptionDisplay
-            :config='config'
-          />
-          <br>
-          <EffectDisplay
-            :config='config'
-            :label="label"
-          />
+        <DescriptionDisplay
+          :config='config'
+        />
+        <EffectDisplay
+          :config='config'
+          :label="label"
+          br
+        />
         <div class="o-collection-activate-btn-container">
           <div
-          @click='activate'
-          :class='btnStyle'
+            @click='activate'
+            :class='btnStyle'
           >
             {{ $t("activate") }}
             <div
-            v-if="hasTutorial"
-            class="fas fa-circle-exclamation l-notification-icon"
+              v-if="hasTutorial"
+              class="fas fa-circle-exclamation l-notification-icon"
             />
+          </div>
+          <div
+            @click='amplify'
+            :class='amplifyBtn'
+            v-if="amplificationUnlocked"
+          >
+            {{ $t("amplify") }}
+            <br>
+            {{ formatInt(amplificationPoints)}} 增幅点数
           </div>
         </div>
       </div>
-      <div v-else class='o-collection-name--locked'>
+      <div
+        v-else
+        class='o-collection-name--locked'
+      >
         {{ $t("questions") }}
       </div>
     </div>

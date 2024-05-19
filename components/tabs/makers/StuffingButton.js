@@ -51,7 +51,7 @@ export default {
       this.canBigReset = Stuffing.amount === Stuffing.bigResetAmount;
       this.hasTutorial = Tutorial.isActive(TUTORIAL_STATE.STUFFING);
       this.colAmount = gainedCols();
-      const unlocked = PlayerProgress.collectionUnlocked;
+      const unlocked = PlayerProgress.collectionUnlocked();
       this.layerName = unlocked ? $t("bigReset")  : $t("_bigReset");
       this.collName = unlocked ? $t("collection") : $t("first_collection");
       if (!this.canBeBought) this.lockedText = Stuffing.lockedText;

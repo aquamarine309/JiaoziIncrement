@@ -12,11 +12,11 @@ export default {
       return Task.all
     }
   },
-	data() {
-		return {
-			isAuto: false
-		}
-	}, 
+  data() {
+    return {
+      isAuto: false
+    }
+  }, 
   methods: {
     update() {
       this.isAuto = SimulationMilestone.qols.isReached;

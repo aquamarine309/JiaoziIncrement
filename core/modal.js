@@ -14,6 +14,7 @@ import NotationModal from "../components/modals/options/NotationModal.js"
 import HiddenTabsModal from "../components/modals/options/hidden-tabs/HiddenTabsModal.js";
 import AwayProgressOptionsModal from "../components/modals/options/AwayProgressOptionsModal.js";
 import InfoDisplayOptionsModal from "../components/modals/options/InfoDisplayOptionsModal.js";
+import LoseMilestoneModal from "../components/modals/LoseMilestoneModal.js";
 
 let nextModalID = 0;
 export class Modal {
@@ -161,3 +162,4 @@ Modal.notation = new Modal(NotationModal);
 Modal.hiddenTabs = new Modal(HiddenTabsModal);
 Modal.awayProgressOptions = new Modal(AwayProgressOptionsModal);
 Modal.infoDisplayOptions = new Modal(InfoDisplayOptionsModal);
+Modal.loseMilestone = new Modal(LoseMilestoneModal);

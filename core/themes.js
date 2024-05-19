@@ -18,6 +18,8 @@ export const Theme = function Theme(name, config) {
   this.isDefault = function() {
     return name === "Normal";
   };
+  
+  this.isInverted = name.includes("Inverted");
 
   this.isAvailable = function() {
     if (!this.isSecret) return true;

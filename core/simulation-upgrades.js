@@ -81,6 +81,20 @@ class SimulationUpgradeState extends BitPurchasableMechanicState {
   unlock() {
     player.simulation.upgrades.unlockedBits |= (1 << this.bitIndex);
   }
+  
+  purchase() {
+    if (!this.canBeBought) return false;
+    if (SimulationMilestone.all.some(m => Currency.cores.value.minus(this.cost).lt(m.cores) && m.isReached)) {
+      Modal.loseMilestone.show({
+        purchase: () => {
+          super.purchase();
+          concludeSimulationReset(true);
+        }
+      })
+    } else {
+      super.purchase();
+    }
+  }
 }
 
 export const SimulationRebuyable = mapGameDataToObject(

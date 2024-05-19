@@ -15,7 +15,10 @@ export default {
       maxActiveAmount: 0,
       steamer: false,
       presets: [],
-      showPresets: false
+      showPresets: false,
+      amplificationUnlocked: false,
+      amplificationPoints: 0,
+      totalAmplificationPoints: 0
     }
   },
   methods: {
@@ -26,6 +29,9 @@ export default {
       this.maxActiveAmount = Collections.maxActiveAmount;
       this.steamer = PlayerProgress.steamerUnlocked();
       this.showPresets = PlayerProgress.simulationUnlocked();
+      this.amplificationUnlocked = Collections.isAmplificationUnlocked;
+      this.totalAmplificationPoints = Currency.amplificationPoints.value;
+      this.amplificationPoints = Collections.amplificationPointsLeft;
     },
     reset() {
       player.needResetCols = !player.needResetCols;
@@ -63,6 +69,7 @@ export default {
       <p>
         {{ $t("collInfo", [quantifyInt($t("collection"), maxActiveAmount), formatInt(activeAmount)]) }}
       </p>
+      <p v-if="amplificationUnlocked">你有 <span class="c-amplification-points-amount">{{ formatInt(amplificationPoints) }}</span> 个增幅点数 (共有 {{ formatInt(totalAmplificationPoints) }} 个)</p>
       <p v-if="!steamer">
         {{ $t("collSteamerTip", [inf]) }}
       </p>

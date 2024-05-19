@@ -1,7 +1,6 @@
 import NormalChallengeBox from "./NormalChallengeBox.js"
 import ChallengeGrid from "../../ChallengeGrid.js";
 import ChallengeTabHeader from "../../ChallengeTabHeader.js";
-import { DC } from "../../../core/constants.js";
 
 export default {
   name: "NormalChallengesTab",

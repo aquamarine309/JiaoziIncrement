@@ -10,7 +10,7 @@ window.player = {
       bought: 0
     }
   }),
-  factories: Array.range(1, 9).map(tier => {
+  factories: Array.range(1, 9).map(() => {
     return {
       amount: DC.D0,
       bought: 0,
@@ -21,12 +21,14 @@ window.player = {
   money: DC.D0,
   break: false,
   makerCurrencyType: MAKER_CURRENCY.JIAOZI,
-  version: 8.1202,
+  version: 8.13,
   wrapper: 0,
   stuffing: 0,
   simulationStuffing: 0,
   collections: Array.repeat(0, 9),
   colActiveBits: 0,
+  colAmplifiedBits: 0,
+  amplificationPoints: 0,
   needResetCols: false,
   tutorialState: 0,
   partSteamerCoins: 0,

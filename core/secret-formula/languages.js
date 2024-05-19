@@ -322,6 +322,7 @@ export const languages = {
       ticksDone: "游戏刻",
       timeLeft: "剩余时间",
       day_short: "天",
+      first_collection: "神秘的物品",
       ach11: "万恶之源",
       ach12: "酱紫玩？",
       ach13: "三重饺子积分",
@@ -447,7 +448,8 @@ export const languages = {
       buyMakerMult: "购买一个制造器的倍数: $1。",
       baoMult: "包饺砸的倍数: $1。",
       softCapped: "软上限",
-      colShop: "收集商店"
+      colShop: "收集商店",
+      amplify: "增幅"
     }
   },
   "en": {
@@ -508,6 +510,7 @@ export const languages = {
       reward_: "Reward:",
       next: "Next",
       capped: "Capped",
+      first_collection: "mysterious object",
       collection: "Dumpling Collection",
       collections: "Dumpling Collections",
       bigResetDes: "Top-tier Maker is unlocked. But you can perform the $2 to gain $1.",
@@ -898,7 +901,7 @@ export const languages = {
       buyMakerMult: "Multiplier for buying a maker: $1.",
       baoMult: "The dumplings by making dumplings: $1.",
       softCapped: "Soft Capped",
-      colShop: "Collection Shop "
+      amplify: "Amplify"
     }
   }
 }

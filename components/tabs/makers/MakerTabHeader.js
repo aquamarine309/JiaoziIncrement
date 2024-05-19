@@ -7,18 +7,18 @@ export default {
     JiaoziSaleButton,
     PrimaryButton
   },
-	data() {
-		return {
-			showToggleBtn: false,
-			currencyName: ""
-		}
-	},
+  data() {
+    return {
+      showToggleBtn: false,
+      currencyName: ""
+    }
+  },
   methods: {
     update() {
-			this.showToggleBtn = SimulationUpgrade.moneyMaker.isBought;
-			if (!this.showToggleBtn) return;
-			this.currencyName = Makers.currencyName;
-		},
+      this.showToggleBtn = SimulationUpgrade.moneyMaker.isBought;
+      if (!this.showToggleBtn) return;
+      this.currencyName = Makers.currencyName;
+    },
     maxAll() {
       maxAll();
     },

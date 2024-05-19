@@ -292,3 +292,11 @@ Currency.energy = new class extends DecimalCurrency {
     player.simulation.energy = value;
   }
 }
+
+Currency.amplificationPoints = new class extends NumberCurrency {
+  get value() { return player.amplificationPoints; }
+  
+  set value(value) {
+    player.amplificationPoints = value;
+  }
+}

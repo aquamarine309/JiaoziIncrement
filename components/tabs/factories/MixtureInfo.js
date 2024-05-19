@@ -1,4 +1,3 @@
-
 export default {
   name: "MixtureInfo",
   props: {
@@ -30,14 +29,14 @@ export default {
     }
   },
   template: `
-        <p>
-          {{ $t("mixtureInfo", [name, purpose]) }}
-          <span
-          class="o-mixture-type__accent"
-          :class="effectStyle"
-          >
-            {{ formatX( effectValue, 2, 3) }}
-          </span>
-        </p>
+  <p>
+    {{ $t("mixtureInfo", [name, purpose]) }}
+    <span
+      class="o-mixture-type__accent"
+      :class="effectStyle"
+    >
+      {{ formatX( effectValue, 2, 3) }}
+    </span>
+  </p>
   `
 }

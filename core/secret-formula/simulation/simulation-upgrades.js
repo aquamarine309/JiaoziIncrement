@@ -1,6 +1,8 @@
 import { DC } from "../../constants.js";
 import wordShift from "../../word-shift.js";
 
+const formatCost = value => format(value, 2);
+
 const rebuyable = props => {
   props.cost = () => getHybridCostScaling(
     SimulationRebuyableGroup.totalBought,
@@ -24,7 +26,7 @@ const rebuyable = props => {
     ]
   );
   props.formatEffect = value => formatX(value, 2, 2);
-  props.formatCost = value => format(value, 2, 0);
+  props.formatCost = formatCost;
   return props;
 };
 
@@ -75,7 +77,7 @@ export const simulationUpgrades = {
         startingMaker: DC.D1,
         makerPow: 2
       },
-      formatCost: value => format(value, 2),
+      formatCost,
       requirement: () => quantify($t("sc"), DC.E1000, 2),
       checkRequirement: () => Currency.steamerCoins.gt(DC.E1000)
     },
@@ -83,23 +85,23 @@ export const simulationUpgrades = {
       id: 1,
       description: "解锁更多模拟里程碑",
       cost: 200,
-      formatCost: value => format(value, 2),
+      formatCost,
       requirement: () => `购买"温故"升级 ${formatInt(6)} 次`,
       checkRequirement: () => SimulationRebuyableGroup.totalBought >= 6
     },
-    unlockColShop: {
+    unlockAmplifiedCollection: {
       id: 2,
-      description: "Cannot read properties of undefined (reading 'description')",
-      cost: 1e100,
-      formatCost: value => format(value, 2),
-      requirement: () => `拥有${format(1e18)}个收集饺子`,
+      description: "解锁增幅收集",
+      cost: 1e6,
+      formatCost,
+      requirement: () => `拥有 ${format(1e18)} 个收集饺子`,
       checkRequirement: () => player.totalColls >= 1e18
     },
     unlockNewMixture: {
       id: 3,
       description: "Cannot read properties of undefined (reading 'description')",
       cost: 3e7,
-      formatCost: value => format(value, 2),
+      formatCost,
       requirement: () => `In ${formatInt(5)} ${wordShift.wordCycle(["hours", "days", "weeks"])}`,
       checkRequirement: () => false
     },
@@ -107,7 +109,7 @@ export const simulationUpgrades = {
       id: 4,
       description: "获得免费的A.Squared Eternity",
       cost: 4e10,
-      formatCost: value => format(value, 2),
+      formatCost,
       requirement: () => `In ${formatInt(5)} ${wordShift.wordCycle(["months", "years", "centuries"])}`,
       checkRequirement: () => false
     }

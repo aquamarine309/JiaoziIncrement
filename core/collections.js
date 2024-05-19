@@ -1,11 +1,14 @@
 import { GameMechanicState } from "./game-mechanics/index.js";
+import { deepmergeAll } from "../deepmerge.js";
 
 class CollectionState extends GameMechanicState {
     constructor(config) {
-    config.effect = () => config.effectFn(this.totalAmount);
-    config.name = () => Theme.currentName().includes("Inverted") ? $t(`I_${config.key}_`) : $t(`_${config.key}_`);
-    if (config.cappedAmount) config.cap = () => config.effectFn(this.cappedAmount);
-    super(config);
+    const configCopy = deepmergeAll([{}, config]);
+    const effectFn = config.effectFn;
+    configCopy.effect = () => effectFn(this.totalAmount);
+    configCopy.name = () => Theme.currentName().isInverted ? $t(`I_${config.key}_`) : $t(`_${config.key}_`);
+    if (configCopy.cappedAmount) configCopy.cap = () => config.effectFn(this.cappedAmount);
+    super(configCopy);
   }
   
   get cappedAmount() {
@@ -58,6 +61,23 @@ class CollectionState extends GameMechanicState {
     return true;
   }
   
+  get amplificationPoints() {
+    return this.config.amplificationPoints;
+  }
+  
+  get isAmplified() {
+    return (player.colAmplifiedBits & (1 << this.id)) !== 0;
+  }
+  
+  get canAmplify() {
+    if (this.isAmplified) return false;
+    if (Collections.isAmplifyUnlocked) return false;
+    if (Currency.amplificationPoints.lt(this.amplificationPoints)) return;
+    if (this.isUnlocked) return false;
+    if (this.totalAmount <= 0) return false;
+    return true;
+  }
+  
   activate() {
     if (!this.canActivate) return;
     Tutorial.turnOffEffect(TUTORIAL_STATE.COLLECTION);
@@ -65,6 +85,11 @@ class CollectionState extends GameMechanicState {
       player.requirementChecks.simulation.allRare = false;
     }
     player.colActiveBits |= (1 << this.id);
+  }
+  
+  amplify() {
+    if (!this.canAmplify) return;
+    player.colAmplifiedBits |= (1 << this.id);
   }
   
   get rarity() {
@@ -90,7 +115,7 @@ export const Collections = {
   all: Collection,
   
   get isFullUnlocked() {
-    return this.all.every(c => c.isUnlocked);
+    return PlayerProgress.steamerUnlocked() || this.all.every(c => c.isUnlocked);
   },
   
   get activeAmount() {
@@ -105,6 +130,14 @@ export const Collections = {
     if (NormalChallenge(2).isCompleted) amount++
     amount += Task.collections.reward.effectOrDefault(0);
     return amount;
+  },
+  
+  get isAmplificationUnlocked() {
+    return SimulationUpgrade.unlockAmplifiedCollection.isBought;
+  },
+  
+  get amplificationPointsLeft() {
+    return Currency.amplificationPoints.value - this.all.filter(c => c.isAmplified).map(c => c.amplificationPoints).sum();
   },
   
   fullReset() {
