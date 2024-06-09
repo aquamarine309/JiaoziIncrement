@@ -1,5 +1,3 @@
-
-
 window.format = function format(value, places = 0, placesUnder1000 = 0) {
   return Notations.current.format(value, places, placesUnder1000, 3);
 };
@@ -211,16 +209,21 @@ window.makeEnumeration = function makeEnumeration(items) {
   return `${commaSeparated}${$t("en_comma")}${$t("scape")}${$t("and")}${$t("scape")}${last}`;
 };
 
+function replaceToZongzi(str) {
+  if (Languages.current.name === "zh-CN")  return str.replaceAll("饺子", "粽子").replaceAll("饺", "粽");
+  return str.replaceAll("Dumpling", "Zongzi").replaceAll("dumpling", "zongzi");
+}
+
 window.$t = function $t(key, values, piural) {
   const base = Languages.current.resources[key]?.(values);
   if (base === undefined) {
     throw new Error(`${key} is not supported in this language.`)
   }
-  if (piural) return pluralize(base, 0, void 0, "");
-  return base;
+  if (piural) return replaceToZongzi(pluralize(base, 0, void 0, ""));
+  return replaceToZongzi(base);
 }
 
 window.addScape = function addScape(items) {
   if (Languages.current.name === "zh-CN") return items.join("");
   return items.join(" ");
-}
+};

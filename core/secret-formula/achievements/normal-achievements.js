@@ -54,7 +54,7 @@ export const normalAchievements = [
   {
     id: 22,
     get description() { return $t("ach22_d") },
-    checkEvent: GAME_EVENT.BIG_RESET_BEFORE,
+    checkEvent: GAME_EVENT.BIG_RESET_AFTER,
     checkRequirement: () => Collections.isFullUnlocked
   },
   {
