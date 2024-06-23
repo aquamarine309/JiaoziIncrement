@@ -210,8 +210,8 @@ window.makeEnumeration = function makeEnumeration(items) {
 };
 
 function replaceToZongzi(str) {
-  if (Languages.current.name === "zh-CN")  return str.replaceAll("饺子", "粽子").replaceAll("饺", "粽");
-  return str.replaceAll("Dumpling", "Zongzi").replaceAll("dumpling", "zongzi");
+  if (Languages.current.name === "zh-CN")  return str.replaceAll("饺子", "？？").replaceAll("饺", "？");
+  return str.replaceAll("Dumpling", "??").replaceAll("dumpling", "??");
 }
 
 window.$t = function $t(key, values, piural) {

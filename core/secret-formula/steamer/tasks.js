@@ -58,7 +58,7 @@ export const tasks = {
     condition: () => Collections.activeAmount < 4,
     cap: 3,
     reward: {
-      description: "可同时激活更多饺子",
+      description: "可同时激活更多收集",
       effectFn: count => count,
       formatEffect: value => `+${formatInt(value)}`
     }
