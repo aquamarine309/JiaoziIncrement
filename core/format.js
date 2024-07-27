@@ -207,11 +207,6 @@ window.makeEnumeration = function makeEnumeration(items) {
   const commaSeparated = items.slice(0, items.length - 1).join(", ");
   const last = items[items.length - 1];
   return `${commaSeparated}${$t("en_comma")}${$t("scape")}${$t("and")}${$t("scape")}${last}`;
-};
-
-function replaceToZongzi(str) {
-  if (Languages.current.name === "zh-CN")  return str.replaceAll("饺子", "？？").replaceAll("饺", "？");
-  return str.replaceAll("Dumpling", "??").replaceAll("dumpling", "??");
 }
 
 window.$t = function $t(key, values, piural) {
@@ -219,8 +214,8 @@ window.$t = function $t(key, values, piural) {
   if (base === undefined) {
     throw new Error(`${key} is not supported in this language.`)
   }
-  if (piural) return replaceToZongzi(pluralize(base, 0, void 0, ""));
-  return replaceToZongzi(base);
+  if (piural) return pluralize(base, 0, void 0, "");
+  return base;
 }
 
 window.addScape = function addScape(items) {

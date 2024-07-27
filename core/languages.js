@@ -1,7 +1,7 @@
 class LanguageState {
   constructor(config) {
     this.name = config.name;
-    this.formattedName = config.formattedName
+    this.formattedName = config.formattedName;
     this._resources = config.resources;
     const resources = {};
     for (let key in this._resources) {
@@ -13,7 +13,7 @@ class LanguageState {
   format(key, values) {
     const result = this._resources[key];
     if (!values) return result;
-    return result.replace(/\$(\d+)/g, function (match, index) {
+    return result.replace(/\$(\d+)/g, function(_, index) {
       return values[parseInt(index) - 1];
     })
   }
@@ -24,7 +24,10 @@ class LanguageState {
   }
 }
 
-export const Language = mapGameDataToObject(GameDatabase.languages, config => new LanguageState(config));
+export const Language = mapGameDataToObject(
+  GameDatabase.languages,
+  config => new LanguageState(config)
+);
 
 export const Languages = {
   all: Language.all,
