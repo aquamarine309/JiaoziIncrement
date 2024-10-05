@@ -18,7 +18,7 @@ export const migrations = {
       const collectionUnlocked = player.bigResetCount.gt(0) || steamerUnlocked;
       let maxMakerTier = 0;
       if (!collectionUnlocked) {
-        maxMakerTier = Math.max(player.makers.findIndex(m => m.amount === 0), player.stuffing);
+        maxMakerTier = Math.max(player.makers.findIndex(m => m.amount.eq(0)), player.stuffing);
       } else if (!steamerUnlocked) {
         maxMakerTier = 4;
         

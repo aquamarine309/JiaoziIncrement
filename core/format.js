@@ -207,7 +207,7 @@ window.makeEnumeration = function makeEnumeration(items) {
   const commaSeparated = items.slice(0, items.length - 1).join(", ");
   const last = items[items.length - 1];
   return `${commaSeparated}${$t("en_comma")}${$t("scape")}${$t("and")}${$t("scape")}${last}`;
-}
+};
 
 window.$t = function $t(key, values, piural) {
   const base = Languages.current.resources[key]?.(values);

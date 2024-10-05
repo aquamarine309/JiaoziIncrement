@@ -107,7 +107,7 @@ class SteamerSCMultUpgrade extends GameMechanicState {
       this.purchase(purchases);
     }
     // Do not replace it with `if else` - it's specifically designed to process two sides of threshold separately
-    // (for example, we have 1e4000000 IP and no mult - first it will go to (but not including) 1e3000000 and then
+    // (for example, we have 1e4000000 SC and no mult - first it will go to (but not including) 1e3000000 and then
     // it will go in this part)
     if (this.hasIncreasedCost) {
       const availableSC = Currency.steamerCoins.value.clampMax(this.config.costCap);

@@ -70,6 +70,7 @@ export default {
         {{ $t("collInfo", [quantifyInt($t("collection"), maxActiveAmount), formatInt(activeAmount)]) }}
       </p>
       <p v-if="amplificationUnlocked">你有 <span class="c-amplification-points-amount">{{ formatInt(amplificationPoints) }}</span> 个增幅点数 (共有 {{ formatInt(totalAmplificationPoints) }} 个)</p>
+      <p v-if="amplificationUnlocked">(下个版本更新增幅点数的获取方法，请稍等)</p>
       <p v-if="!steamer">
         {{ $t("collSteamerTip", [inf]) }}
       </p>

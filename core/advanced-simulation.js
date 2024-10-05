@@ -5,7 +5,5 @@ export const AdvancedSimulation = {
   
   set isRunning(value) {
     player.advancedSimulation.isRunning = value;
-  },
-  
-  
+  }
 }

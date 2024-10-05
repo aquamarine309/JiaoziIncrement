@@ -27,7 +27,7 @@ export default {
         } else if (player.maxResetJiaozi.eq(0)) {
           this.info = $t("noSale");
         } else {
-          this.info = $t("mostSale", [quantify($t("jiaozi"), player.maxResetJiaozi, 2, 1)]);
+          this.info = $t("mostSale", [quantify($t("money"), player.maxResetJiaozi, 2, 1)]);
         }
       }
     },
