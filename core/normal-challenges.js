@@ -138,6 +138,6 @@ export const NormalChallenges = {
   },
   
   get requirement() {
-    return DC.E2024;
+    return DC.E_YEAR;
   }
 };
