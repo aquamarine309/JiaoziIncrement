@@ -9,7 +9,7 @@ class LanguageState {
     }
     this.resources = resources;
   }
-  
+
   format(key, values) {
     const result = this._resources[key];
     if (!values) return result;
@@ -17,7 +17,7 @@ class LanguageState {
       return values[parseInt(index) - 1];
     })
   }
-  
+
   setAsCurrent() {
     player.options.language = this.name;
     ui.view.language = this.name;
@@ -28,9 +28,9 @@ export const Language = mapGameDataToObject(GameDatabase.languages, config => ne
 
 export const Languages = {
   all: Language.all,
-  
+
   base: navigator.language === "zh-CN" ? Language["zh-CN"] : Language["en"],
-  
+
   find(name) {
     const language = Languages.all.find(l => l.name === name);
     return language === undefined ? this.base : language;

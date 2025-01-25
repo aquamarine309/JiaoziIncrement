@@ -1,6 +1,5 @@
 import { DC } from "./constants.js";
 
-
 /**
  * @abstract
  */
@@ -197,23 +196,23 @@ class DecimalCurrency extends Currency {
 window.DecimalCurrency = DecimalCurrency;
 
 Currency.jiaozi = new class extends DecimalCurrency {
-  
+
   get value() { return player.jiaozi; }
-  
+
   set value(value) {
     player.records.thisBigReset.maxJiaozi = player.records.thisBigReset.maxJiaozi.max(value);
     player.records.thisSteamer.maxJiaozi = player.records.thisSteamer.maxJiaozi.max(value);
     player.records.thisSimulation.maxJiaozi = player.records.thisSimulation.maxJiaozi.max(value);
     player.jiaozi = value;
   }
-  
+
   add(amount) {
     super.add(amount);
     if (amount.gt(0)) {
       player.records.totalJiaozi = player.records.totalJiaozi.add(amount);
     }
   }
-  
+
   get startingValue() {
     return DC.E1;
   }
@@ -222,7 +221,7 @@ Currency.jiaozi = new class extends DecimalCurrency {
 Currency.money = new class extends DecimalCurrency {
 
   get value() { return player.money; }
-  
+
   set value(value) {
     player.records.thisBigReset.maxMoney = player.records.thisBigReset.maxMoney.max(value);
     player.records.thisSteamer.maxMoney = player.records.thisSteamer.maxMoney.max(value);
@@ -235,7 +234,7 @@ Currency.bigResetCount = new class extends DecimalCurrency {
   get value() {
     return player.bigResetCount;
   }
-  
+
   set value(amount) {
     player.bigResetCount = amount;
   }
@@ -245,7 +244,7 @@ Currency.steamerCount = new class extends DecimalCurrency {
   get value() {
     return player.steamerCount;
   }
-  
+
   set value(amount) {
     player.steamerCount = amount;
   }
@@ -254,7 +253,7 @@ Currency.steamerCount = new class extends DecimalCurrency {
 Currency.steamerCoins = new class extends DecimalCurrency {
 
   get value() { return player.steamerCoins; }
-  
+
   set value(value) {
     player.steamerCoins = value;
     player.records.thisSimulation.maxSC = player.records.thisSimulation.maxSC.max(value);
@@ -263,7 +262,7 @@ Currency.steamerCoins = new class extends DecimalCurrency {
 
 Currency.mixtures = new class extends DecimalCurrency {
   get value() { return player.mixtures; }
-  
+
   set value(value) {
     player.mixtures = value;
   }
@@ -271,7 +270,7 @@ Currency.mixtures = new class extends DecimalCurrency {
 
 Currency.cores = new class extends DecimalCurrency {
   get value() { return player.cores; }
-  
+
   set value(value) {
     player.cores = value;
   }
@@ -279,7 +278,7 @@ Currency.cores = new class extends DecimalCurrency {
 
 Currency.simulations = new class extends DecimalCurrency {
   get value() { return player.simulations; }
-  
+
   set value(value) {
     player.simulations = value;
   }
@@ -287,7 +286,7 @@ Currency.simulations = new class extends DecimalCurrency {
 
 Currency.energy = new class extends DecimalCurrency {
   get value() { return player.simulation.energy; }
-  
+
   set value(value) {
     player.simulation.energy = value;
   }
@@ -295,7 +294,7 @@ Currency.energy = new class extends DecimalCurrency {
 
 Currency.amplificationPoints = new class extends NumberCurrency {
   get value() { return player.amplificationPoints; }
-  
+
   set value(value) {
     player.amplificationPoints = value;
   }

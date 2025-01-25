@@ -2,39 +2,39 @@ export class CollectionPreset {
   constructor(config) {
     this._config = config;
   }
-  
+
   get config() {
     return this._config;
   }
-  
+
   get activeBits() {
     return this.config.activeBits;
   }
-  
+
   set activeBits(value) {
     this.config.activeBits = value;
   }
-  
+
   get name() {
     return this.config.name;
   }
-  
+
   set name(name) {
     this.config.name = name;
   }
-  
+
   rename(name) {
     this.name = name;
   }
-  
+
   save() {
     this.import(player.colActiveBits);
   }
-  
+
   import(bits) {
     this.activeBits = Math.min(511, bits);
   }
-  
+
   load(slient = true) {
     if (player.colActiveBits > 0) return;
     const collections = []

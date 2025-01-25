@@ -11,7 +11,7 @@ class AchievementState extends GameMechanicState {
   }
 
   get name() {
-    return $t(`ach${this.id}`);
+    return $t(`achievement_${this.id}_name`);
   }
 
   get row() {

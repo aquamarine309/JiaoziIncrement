@@ -74,7 +74,7 @@ window.player = {
       bestColMin: 0,
       bestColMinValue: 0
     },
-    
+
     thisSteamer: {
       time: 0,
       realTime: 0,
@@ -330,54 +330,53 @@ window.player = {
 
 export const Player = {
   defaultStart: deepmergeAll([{}, player]),
-  
+
   get steamerGoal() {
     const challenge = this.normalChallenge
     return challenge === undefined ? Decimal.NUMBER_MAX_VALUE : challenge.goal;
   },
-  
+
   get canFixSteamer() {
     return player.records.thisSteamer.maxJiaozi.gte(this.steamerGoal);
   },
-  
+
   get allSteamerUpgradesBought() {
     return player.steamerUpgrades.size >= 16;
   },
-  
+
   get isInNormalChallenge() {
     return player.challenge.normal.current !== 0;
   },
-  
+
   get normalChallenge() {
     return NormalChallenge.current;
   },
-  
+
   get isInAnyChallenge() {
     return this.isInNormalChallenge;
   },
-  
+
   get anyChallenge() {
     return this.normalChallenge;
   },
-  
+
   get steamerLimit() {
     const challenge = this.normalChallenge
     return challenge === undefined ? Decimal.MAX_VALUE : challenge.goal;
   },
-  
+
   get concludeGoal() {
     return DC.E500;
   },
-  
+
   get canConclude() {
     return player.records.thisSimulation.maxSC.gte(this.concludeGoal);
   },
-  
+
   get makerMultDecrease() {
     return GameCache.makerMultDecrease.value;
   }
 }
-
 
 export function guardFromNaNValues(obj) {
   function isObject(ob) {

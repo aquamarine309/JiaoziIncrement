@@ -99,7 +99,7 @@ export const Time = {
   set thisBigReset(timespan) {
     this.toMilliseconds(timespan, value => player.records.thisBigReset.time = value);
   },
-  
+
   /**
    * @returns {TimeSpan}
    */
@@ -213,7 +213,7 @@ export const Time = {
   set bestSteamerRealTime(timespan) {
     this.toMilliseconds(timespan, value => player.records.bestSteamer.realTime = value);
   },
-  
+
   /**
    * @returns {TimeSpan}
    */
@@ -270,7 +270,7 @@ export const Time = {
   get worstChallenge() {
     return this.fromMilliseconds(() => GameCache.worstChallengeTime.value);
   },
-  
+
     /**
    * @return {TimeSpan}
    */

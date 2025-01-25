@@ -10,7 +10,7 @@ export class SteamerAutobuyerState extends AutobuyerState {
   }
 
   maxIntervalForFree() {}
-  
+
   get isUnlocked() {
     return SteamerUpgrade.unlockSteamerAuto.isBought;
   }

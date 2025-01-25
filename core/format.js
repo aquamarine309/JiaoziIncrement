@@ -138,7 +138,7 @@ const pluralDatabase = new Map([
  */
 window.pluralize = function pluralize(word, amount, plural, unit = "个") {
   if (Languages.current.name === "zh-CN") return `${unit}${word}`;
-  
+
   if (word === undefined || amount === undefined) throw "[pluralize warn] Arguments must be defined";
 
   if (isSingular(amount)) return word;

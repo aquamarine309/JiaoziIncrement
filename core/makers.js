@@ -8,7 +8,7 @@ export function dilatedValueOf(value) {
 
 export function makerCommonMultiplier() {
   let multiplier = DC.D1;
-  
+
   multiplier = multiplier.times(Achievements.power)
   multiplier = multiplier.times(Wrapper.power);
   multiplier = multiplier.timesEffectsOf(
@@ -27,11 +27,11 @@ export function makerCommonMultiplier() {
 
 export function getMakerFinalMultiplierUncached(tier) {
   if (tier < 1 || tier > 9) throw new Error(`Invalid Maker tier ${tier}`);
-  
+
   if (NormalChallenge(7).isRunning && player.postC7Tier !== tier) {
     return DC.D1;
   }
-  
+
   let multiplier = DC.D1;
 
   multiplier = applyMakerMultipliers(multiplier, tier);
@@ -40,7 +40,7 @@ export function getMakerFinalMultiplierUncached(tier) {
   if (NormalChallenge(8).isRunning) {
     multiplier = dilatedValueOf(multiplier);
   }
- 
+
   return multiplier;
 }
 
@@ -62,7 +62,6 @@ function applyMakerPowers(mult, tier) {
   return multiplier;
 }
 
-
 class MakerState {
   /**@param {Number} tier */
   constructor(tier) {
@@ -72,39 +71,39 @@ class MakerState {
     this._baseCost = baseCost[tier];
     this._baseIncrease = baseIncrease[tier];
   }
-  
+
   get name() {
     return $t("jMaker") + (this.tier === 1 ? "" : formatPow(this.tier));
   }
-  
+
   get baseCost() {
     return this._baseCost;
   }
-  
+
   get baseIncrease() {
     return this._baseIncrease;
   }
-  
+
   get tier() {
     return this._tier;
   }
-  
+
   get data() {
     return player.makers[this.tier - 1];
   }
-  
+
   get amount() {
     return this.data.amount;
   }
-  
+
   set amount(value) {
     this.data.amount = value;
   }
-  
+
   get productionPerSecond() {
     return this.amount.times(this.multiplier);
   }
-  
+
   get costScale() {
     let increase = this.baseIncrease;
     return new ExponentialCostScaling({
@@ -114,7 +113,7 @@ class MakerState {
       scalingCostThreshold: 1e50
     })
   }
-  
+
   tick(diff) {
     if (!this.isAvailable) return;
     if ((!player.break || Player.isInNormalChallenge) && Currency.jiaozi.gte(Player.steamerGoal)) return;
@@ -124,28 +123,28 @@ class MakerState {
       Maker(this.tier - 1).add(this.productionForDiff(diff / 2));
     }
   }
-  
+
   get bought() {
     return this.data.bought;
   }
-  
+
   set bought(value) {
     this.data.bought = value;
   }
-  
+
   get multiplier() {
     return GameCache.makerFinalMultipliers[this.tier].value;
   }
-  
+
   get cost() {
     return this.costScale.calculateCost(this.bought);
   }
-  
+
   get isAffordable() {
     if (!player.break && this.cost.gt(Decimal.NUMBER_MAX_VALUE)) return false;
     return Makers.currency.gte(this.cost);
   }
-  
+
   get rate() {
     if (this.tier > Makers.maxTier) return DC.D0;
     if (this.tier === Makers.maxTier) {
@@ -154,25 +153,25 @@ class MakerState {
     }
     return Maker(this.tier + 1).productionPerSecond.div(this.amount.clampMin(1)).div(2);
   }
-  
+
   add(amount, bought = false) {
     this.amount = this.amount.add(amount);
     if (bought) this.bought += amount;
   }
-  
+
   productionForDiff(diff) {
     return this.productionPerSecond.times(diff / 1e3);;
   }
-  
+
   get isAvailable() {
     return this.tier <= Makers.maxTier;
   }
-  
+
   reset() {
     this.bought = 0;
     this.amount = SimulationUpgrade.moneyMaker.effects.startingMaker.effectOrDefault(DC.D0);
   }
-  
+
   static createAccessor() {
     const index = Array.range(1, 9).map(tier => new this(tier));
     index.unshift(null);
@@ -187,27 +186,27 @@ export const Maker = MakerState.createAccessor();
 export const Makers = {
   /**@type {MakerState[]} */
   all: Maker.index.compact(),
-  
+
   get maxTier() {
     return Math.min(Stuffing.amount + 1, this.totalTier);
   },
-  
+
   get maxTierMaker() {
     return Maker(this.maxTier);
   },
-  
+
   get totalTier() {
     return 9;
   },
-  
+
   get currencyType() {
     return player.makerCurrencyType;
   },
-  
+
   set currencyType(value) {
     player.makerCurrencyType = value;
   },
-  
+
   get currency() {
     switch (this.currencyType) {
       case MAKER_CURRENCY.JIAOZI: 
@@ -216,7 +215,7 @@ export const Makers = {
         return Currency.money;
     }
   },
-  
+
   get currencyName() {
     switch (this.currencyType) {
       case MAKER_CURRENCY.JIAOZI: 
@@ -225,7 +224,7 @@ export const Makers = {
         return $t("money");
     }
   },
-  
+
   toggle() {
     if (!SimulationUpgrade.moneyMaker.isBought) return;
     this.currencyType = [
@@ -233,7 +232,7 @@ export const Makers = {
       MAKER_CURRENCY.MONEY
     ].nextSibling(this.currencyType);
   },
-  
+
   get buyOneMultiplier() {
     let multiplier = DC.D1_02;
     multiplier = multiplier.timesEffectsOf(
@@ -243,15 +242,15 @@ export const Makers = {
     multiplier = multiplier.powEffectOf(SimulationUpgrade.moneyMaker.effects.makerPow);
     return multiplier;
   },
-  
+
   tick(diff) {
     const hasCap = !player.break || Player.isInNormalChallenge;
     if (hasCap && Currency.jiaozi.gte(Player.steamerGoal)) return;
     this.all.forEach(m => m.tick(diff));
-    
+
     if (hasCap) Currency.jiaozi.dropTo(Player.steamerGoal);
   },
-  
+
   reset() {
     this.all.forEach(m => m.reset());
   }

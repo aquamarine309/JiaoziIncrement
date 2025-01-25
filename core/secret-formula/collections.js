@@ -20,7 +20,7 @@ export const collections = [
     key: 'iteration',
     rarity: COLLEACTION_RARITY.COMMON,
     description() {
-      return $t("C_1")
+      return $t("collection_1_description")
     },
     effectFn: amount => Decimal.pow(amount, 1.05).times(2).add(1).powEffectOf(SteamerUpgrade.commonPower),
     formatEffect: value => formatX(value, 2, 3),
@@ -31,7 +31,7 @@ export const collections = [
     key: 'dragon',
     rarity: COLLEACTION_RARITY.COMMON,
     description() {
-      return $t("C_2")
+      return $t("collection_2_description")
     },
     effectFn: x => {
       let amount = softCap(x, 1e7, 0.7);
@@ -48,7 +48,7 @@ export const collections = [
     key: 'antimatter',
     rarity: COLLEACTION_RARITY.UNCOMMON,
     description() {
-      return $t("C_3")
+      return $t("collection_3_description")
     },
     effectFn: amount => Decimal.pow(amount, 0.6).times(9).times(Decimal.pow(15, Math.pow(Math.log10(amount / 1e9 + 1), 2))).add(1),
     formatEffect: value => formatX(value, 2, 3),
@@ -59,7 +59,7 @@ export const collections = [
     key: 'cat',
     rarity: COLLEACTION_RARITY.UNCOMMON,
     description() {
-      return $t("C_4")
+      return $t("collection_4_description")
     },
     effectFn: x => {
       let amount = x;
@@ -75,7 +75,7 @@ export const collections = [
     id: 4,
     key: "golden",
     rarity: COLLEACTION_RARITY.RARE,
-    description() { return $t("C_5") },
+    description() { return $t("collection_5_description") },
     effectFn: amount => Decimal.pow(amount, 0.25).times(0.12).add(1),
     formatEffect: value => formatX(value, 2, 4),
     cappedAmount: () => (1500 + NormalChallenge(8).reward.effectOrDefault(0)) * Task.wrapper.reward.effectOrDefault(1),
@@ -86,7 +86,7 @@ export const collections = [
     key: 'fast',
     rarity: COLLEACTION_RARITY.RARE,
     description() {
-      return $t("C_6")
+      return $t("collection_6_description")
     },
     effectFn: amount => Decimal.pow(amount, 0.25).times(0.04).add(1),
     formatEffect: value => formatX(value, 2, 4),
@@ -97,7 +97,7 @@ export const collections = [
     id: 6,
     key: 'garcinol',
     rarity: COLLEACTION_RARITY.EPIC,
-    description() { return $t("C_7") },
+    description() { return $t("collection_7_description") },
     effectFn: amount => Decimal.pow(amount + 1, 0.5).times(0.01).add(0.99),
     formatEffect: value => formatPow(value, 2, 3),
     cappedAmount: () => 1200 * Task.steamer.reward.effectOrDefault(1),
@@ -108,7 +108,7 @@ export const collections = [
     key: "fire",
     rarity: COLLEACTION_RARITY.EPIC,
     description() {
-      return $t("C_8")
+      return $t("collection_8_description")
     },
     effectFn: amount => {
       return softCap(Currency.money.value.pow(0.028).times(Math.pow(amount, 0.5)).add(1), DC.E1000, 0.3)
@@ -121,7 +121,7 @@ export const collections = [
     key: 'adofai',
     rarity: COLLEACTION_RARITY.LEGENDARY,
     description() {
-      return $t("C_9", [quantifyInt($t("jiaozi"), 50)])
+      return $t("collection_9_description", [quantifyInt($t("jiaozi"), 50)])
     },
     effectFn: amount => Decimal.pow(10, Math.pow(softCap(amount, 1e10, 0.3), 0.2)),
     softcap: 1e10,

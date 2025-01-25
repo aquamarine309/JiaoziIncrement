@@ -5,20 +5,20 @@ export const simulationMilestones = {
     id: 0,
     key: "开端",
     cores: 1,
-    description: () => $t("SM_buyingMakerBoost", [formatPercents(0.1)]),
+    description: () => $t("simulation_milestone_buyingMakerBoost_description", [formatPercents(0.1)]),
     effect: 1.1
   },
   qols: {
     id: 1,
     key: "游戏体验",
     cores: 2,
-    description: () => $t("SM_qols")
+    description: () => $t("simulation_milestone_qols_description")
   },
   wrapperBoostFactories: {
     id: 2,
     key: "工厂饺子皮",
     cores: 3,
-    description: () => $t("SM_wrapperBoostFactories"),
+    description: () => $t("simulation_milestone_wrapperBoostFactories_description"),
     effect: () => Wrapper.power.pow(0.0055),
     formatEffect: value => formatX(value, 2, 3)
   },
@@ -26,19 +26,19 @@ export const simulationMilestones = {
     id: 3,
     key: "挑战稳定器",
     cores: 5,
-    description: () => $t("SM_keepChall")
+    description: () => $t("simulation_milestone_keepChall_description")
   },
   autoFactory: {
     id: 4,
     key: "流水线工厂",
     cores: 10,
-    description: () => $t("SM_autoFactory")
+    description: () => $t("simulation_milestone_autoFactory_description")
   },
   upgrades: {
     id: 5,
     key: "再次升级",
     cores: 15,
-    description: () => $t("SM_upgrades")
+    description: () => $t("simulation_milestone_upgrades_description")
   },
   qols2: {
     id: 11,

@@ -1122,7 +1122,6 @@ window.Vector = class Vector {
   }
 };
 
-
 window.Curve = class Curve {
   /**
    * @abstract

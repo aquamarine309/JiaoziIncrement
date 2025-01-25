@@ -133,7 +133,7 @@ export const GameUI = {
       EventHub.ui.dispatch(event[0], event[1]);
     }
     EventHub.ui.dispatch(GAME_EVENT.UPDATE);
-    
+
     this.events = [];
   },
   update() {

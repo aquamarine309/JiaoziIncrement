@@ -28,7 +28,7 @@ window.GlobalErrorHandler = {
     if (window.GameUI !== undefined && GameUI.initialized) {
       Modal.message.show(`${message}<br>Check the console for more details`, {}, 3);
     }
-    
+
     debugger
   }
 };

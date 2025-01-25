@@ -21,7 +21,7 @@ export const migrations = {
         maxMakerTier = Math.max(player.makers.findIndex(m => m.amount.eq(0)), player.stuffing);
       } else if (!steamerUnlocked) {
         maxMakerTier = 4;
-        
+
         //r22
         if (player.collections.every(c => c >= 1)) {
           player.achievementBits[1] |= 2;
@@ -30,42 +30,42 @@ export const migrations = {
         maxMakerTier = 5;
       } else {
         maxMakerTier = 8;
-        
+
         //r24
         player.achievementBits[1] |= 8;
       }
-      
+
       //r11 - r18
       for (let i = 0; i < maxMakerTier; i++) {
         player.achievementBits[0] |= (1 << i);
       }
-      
+
       //r21
       if (collectionUnlocked) {
         player.achievementBits[1] |= 1;
       }
-      
+
       //r22 and r23
       if (steamerUnlocked) {
         player.achievementBits[1] |= 2;
         player.achievementBits[1] |= 4;
       }
-      
+
       //r25
       if (player.break || simulationUnlocked) {
         player.achievementBits[1] |= 16;
       }
-      
+
       //27
       if ((player.challenge.normal.completedBits & 1) !== 0 || simulationUnlocked) {
         player.achievementBits[1] |= 64;
       }
-      
+
       //28
       if (player.challenge.normal.completedBits === 510 || simulationUnlocked) {
         player.achievementBits[1] |= 128;
       }
-      
+
       //r31 - r34
       if (player.factories[0].isUnlocked || simulationUnlocked) {
         player.achievementBits[2] |= 1;
@@ -79,17 +79,17 @@ export const migrations = {
       if (player.factories[7].isUnlocked || simulationUnlocked) {
         player.achievementBits[2] |= 8;
       }
-      
+
       player.options.languages = Languages.base.name;
       delete player.concludes;
       delete player.sauses;
-      
+
       for (let i = 0; i < 9; i++) {
         delete player.factories[i].cost;
       }
-      
+
       const records = player.records;
-      
+
       delete records.thisSimulation.bestSNmin;
       delete records.thisSimulation.bestSNminValue;
       delete player.GAME_VERSION;
@@ -102,7 +102,7 @@ export const migrations = {
     },
     8: player => {
       if (typeof player.simulation.upgrades.review[0] === "number") return;
-      
+
       delete player.simulation.upgrades.review.activeId;
       delete player.simulation.upgrades.review.purchases;
       delete player.simulation.upgrades.preview;
@@ -137,7 +137,7 @@ export const migrations = {
     }
     return player;
   },
-  
+
   patchPlayer(saveData) {
     return this.patch(saveData, Object.keys(migrations.patches).map(k => Number(k)).max() + 1);
   }

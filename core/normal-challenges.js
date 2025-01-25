@@ -12,7 +12,6 @@ class NormalChallengeRewardState extends GameMechanicState {
   }
 }
 
-
 class NormalChallengeState extends GameMechanicState {
   constructor(config) {
     super(config);
@@ -34,11 +33,11 @@ class NormalChallengeState extends GameMechanicState {
     }
     Modal.startNormalChallenge.show(this.id);
   }
-  
+
   get activeBits() {
     return player.challenge.normal.collectionSets[this.id];
   }
-  
+
   set activeBits(value) {
     player.challenge.normal.collectionSets[this.id] = value;
   }
@@ -72,7 +71,7 @@ class NormalChallengeState extends GameMechanicState {
   get isEffectActive() {
     return this.isRunning;
   }
-  
+
   get goal() {
     return Decimal.NUMBER_MAX_VALUE
   }
@@ -118,7 +117,6 @@ Object.defineProperty(NormalChallenge, "isRunning", {
   get: () => NormalChallenge.current !== undefined,
 });
 
-
 export const NormalChallenges = {
   /**
    * @type {NormalChallengeState[]}
@@ -136,7 +134,7 @@ export const NormalChallenges = {
   get completed() {
     return NormalChallenges.all.filter(c => c.isCompleted);
   },
-  
+
   get requirement() {
     return DC.E_YEAR;
   }

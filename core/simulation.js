@@ -34,7 +34,7 @@ export function totalCoresMult() {
 
 export function gainedCores() {
   const sc = Currency.steamerCoins.value.add(gainedSteamerCoins());
-  
+
   let cores = Decimal.pow(5, sc.log10() / 500 - 0.609324);
   cores = cores.times(GameCache.totalCoresMult.value);
   return cores.floor();
@@ -61,7 +61,6 @@ function giveSimulationRewards() {
 
 function simulationResetValues() {
   simulationUpdateStatistics()
-  
   Currency.jiaozi.reset();
   Currency.money.reset();
   Makers.reset();

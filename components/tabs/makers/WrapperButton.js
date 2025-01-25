@@ -79,8 +79,8 @@ export default {
       {{ pluralize(name, totalAmount, undefined, "") }}({{ amountText }})
     </h2>
     <button
-    :class="classObject"
-    @click="purchase"
+      :class="classObject"
+      @click="purchase"
     >
       <div v-if="canBeBought">
         {{ $t("wrapperDes", [formatX(base, 2, 3)]) }}
@@ -101,12 +101,12 @@ export default {
         </span>
       </div>
       <CostDisplay
-      :config="config"
-      :name='$t("money")'
+        :config="config"
+        :name='$t("money")'
       />
       <div
-      v-if="hasTutorial"
-      class="fas fa-circle-exclamation l-notification-icon"
+        v-if="hasTutorial"
+        class="fas fa-circle-exclamation l-notification-icon"
       />
   </button>
 </div>

@@ -10,7 +10,7 @@ export class SimulationAutobuyerState extends AutobuyerState {
   }
 
   maxIntervalForFree() {}
-  
+
   get isUnlocked() {
     return SimulationMilestone.qols2.isReached;
   }

@@ -2,27 +2,27 @@ export const SimulationAnimation = {
   get state() {
     return player.simulationAnimationState;
   },
-  
+
   set state(value) {
     player.simulationAnimationState = value;
   },
-  
+
   get isActive() {
     return player.isSimulationAnimationActive;
   },
-  
+
   set isActive(value) {
     player.isSimulationAnimationActive = value;
   },
-  
+
   get isReverse() {
     return player.isSimulationAnimationReverse;
   },
-  
+
   set isReverse(value) {
     player.isSimulationAnimationReverse = value;
   },
-  
+
   tick(diff) {
     if (!this.isActive) return false;
     if (this.isReverse) {
@@ -35,25 +35,25 @@ export const SimulationAnimation = {
       this.state = (this.state + 0.01) * Math.pow(1.3, diff / 1000);
     }
   },
-  
+
   reset() {
     if (!this.isActive) return;
     this.isActive = false;
     this.state = 0;
     this.isReverse = false;
   },
-  
+
   start() {
     if (this.isActive) return;
     if (!Player.canConclude) return;
     Modal.hideAll();
     this.isActive = true;
   },
-  
+
   reverse() {
     this.isReverse = true;
   },
-  
+
   get errors() {
     const currency = ["饺子", "饺子币", "饺子皮", "饺子馅"]
     const base = ["售出", "收集重置", "蒸笼重置"];

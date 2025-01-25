@@ -54,7 +54,7 @@ export function gainedSteamerCoins() {
 
 function gainedSteamerCount() {
   let count = DC.D1;
-  
+
   count = count.timesEffectOf(Achievement(24));
   return count;
 }
@@ -71,7 +71,7 @@ function giveSteamerRewards() {
 
 function steamerResetValues() {
   steamerUpdateStatistics();
-  
+
   Currency.jiaozi.reset();
   Currency.money.reset();
   Makers.reset();
@@ -79,15 +79,15 @@ function steamerResetValues() {
   Wrapper.amount = 0;
   Stuffing.amount = 0;
   Currency.bigResetCount.reset();
-  
+
   const allChallenge = NormalChallenges.all.every(c => c.isCompleted);
   if (allChallenge || SimulationMilestone.qols.isReached) return;
   player.collections = Array.repeat(0, 9);
   player.totalColls = 0;
-  
+
   if (SteamerUpgrade.keepCollections.isEffectActive) {
     const c1Eff = NormalChallenge(1).reward.effectOrDefault(9);
-    
+
     player.collections = Array.repeat(c1Eff / 9, 9);
     player.totalColls = c1Eff;
   }

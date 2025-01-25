@@ -37,11 +37,11 @@ class FactoryState {
   get cost() {
     return this.baseCost.times(Decimal.pow(this.costMultiplier, this.bought));
   }
-  
+
   get name() {
     return `${this.displayName}${$t("scape")}${$t("factory_min")}`;
   }
-  
+
    get data() { return this._getData()[this.tier - 1]; }
     /** @returns {Decimal} */
   get amount() { return this.data.amount; }
@@ -52,7 +52,7 @@ class FactoryState {
   get bought() { return this.data.bought; }
   /** @param {number} value */
   set bought(value) { this.data.bought = value; }
-  
+
   get productionPerRealSecond() {
     return this.productionPerSecond;
   }
@@ -78,7 +78,7 @@ class FactoryState {
     accessor.index = index;
     return accessor;
   }
-  
+
   get isUnlocked() {
     return this.data.isUnlocked;
   }
@@ -199,7 +199,7 @@ class FactoryState {
     if (!this.isAvailableForPurchase) return false;
 
     Currency.steamerCoins.purchase(this.cost);
-    
+
     this.amount = this.amount.plus(1);
     ++this.bought;
     return true;

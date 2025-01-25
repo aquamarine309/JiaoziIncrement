@@ -12,7 +12,6 @@ if (!String.prototype.includes) {
   };
 }
 
-
 if (!Array.prototype.includes) {
   Object.defineProperty(Array.prototype, 'includes', {
     value: function(searchElement, fromIndex) {

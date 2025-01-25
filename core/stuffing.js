@@ -4,7 +4,7 @@ export class Stuffing {
   static get name() {
     return  $t("stuffing");
   }
-  
+
   static get cost() {
     if (this.canBigReset) return DC.E50;
     if (this.canBigReset && this.simulationStuffingUnlocked) return DC.E1000.pow(this.amount - this.bigResetAmount).times(DC.E150);
@@ -13,16 +13,16 @@ export class Stuffing {
     cost = cost.timesEffectOf(NormalChallenge(3));
     return cost;
   }
-  
+
   /**@type {Number} */
   static get amount() {
     return player.stuffing;
   }
-  
+
   static set amount(value) {
     player.stuffing = value;
   }
-  
+
   static get cap() {
     if (NormalChallenge(6).isRunning) return 2;
     let cap = 4;
@@ -34,41 +34,41 @@ export class Stuffing {
     if (SteamerUpgrade.nextMaker4.isEffectActive) ++cap;
     return cap;
   }
-  
+
   static get bigResetAmount() {
     return this.cap - 1;
   }
-  
+
   static get canBeBought() {
     if (this.amount >= this.cap) return false;
     return true;
   }
-  
+
   static get simulationAmount() {
     return player.simulationStuffing;
   }
-  
+
   static simulationStuffingUnlocked() {
     return false;
   }
-  
+
   static unlockedText() {
     if (this.amount >= this.cap) return $t("capped");
     return $t("locked");
   }
-  
+
   static get isSatisfied() {
     return Currency.money.gte(this.cost) && (player.break || !Player.canFixSteamer);
   }
-  
+
   static add(amount) {
     this.amount = Math.min(amount + this.amount, this.bigResetAmount);
   }
-  
+
   static get canBigReset() {
     return this.bigResetAmount === this.amount;
   }
-  
+
   //最终判定
   static get bigResetCheck() {
     return (this.canBigReset || SteamerUpgrade.resetRequirement.isEffectActive) && Currency.money.gte(1e50) && (player.break || !Player.canFixSteamer);
@@ -89,7 +89,6 @@ function stuffingReset(tempBulk) {
   EventHub.dispatch(GAME_EVENT.STUFFING_AFTER, bulk);
 }
 
-
 export function manualRequestStuffing(bulk = 1) {
   if (!Stuffing.isSatisfied || !Stuffing.canBeBought) return;
   if (Stuffing.canBigReset) {
@@ -106,17 +105,18 @@ export function requestBigReset() {
 
 export function requestStuffing(bulk) {
   if (!Stuffing.isSatisfied || !Stuffing.canBeBought) return;
-  
+
   Tutorial.turnOffEffect(TUTORIAL_STATE.STUFFING);
   stuffingReset(bulk);
 }
 
 export function gainedCols() {
   if (Player.isInAnyChallenge) return 0;
-  if (player.money.lt(1e50)) return 1;
-  const amount = Math.max(1, 4 * Math.sqrt((player.money.add(1).log10() - 50) * 0.08) + 1);
-  let bulk = 1;
-  if (Collections.cat.isEffectActive) bulk = Math.floor(amount * bulk);
+  let bulk = (
+    Collections.cat.isEffectActive ?
+    Math.max(1, 4 * Math.sqrt((player.money.clampMin(DC.E50).add(1).log10() - 50) * 0.08) + 1) :
+    1
+  );
   bulk *= Effects.product(
     NormalChallenge(3).reward,
     SteamerUpgrade.collectionsMult,

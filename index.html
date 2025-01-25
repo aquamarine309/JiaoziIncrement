@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="icon.png">
   <meta name="description" content="This game is based on the game #Antimatter Dimensions#.">
-  <meta name="keywords" content="zongzi incremental, ？？增量">
+  <meta name="keywords" content="Jiaozi incremental, 饺子增量">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>？？增量</title>
+  <title>饺子增量</title>
   <link rel="stylesheet" type="text/css" href="./stylesheets/ad-slider-component.css">
   <link rel="stylesheet" href="./stylesheets/styles.css">
     <link rel="stylesheet" type="text/css" href="./stylesheets/fontawesome/css/all.css">
@@ -39,11 +39,13 @@
     document.getElementById("loading").style.display = "none";
     document.getElementById("browser-warning").style.display = "flex";
   }
+
+  window.errorMessages = [];
   window.addEventListener("error", function(e) {
-    console.warn(`${e.message}\n(at: ${e.filename}:${e.lineno}:${e.colno})
-    `);
-  })
-  
+    const errorMessage = `${e.message}\n(at: ${e.filename}:${e.lineno}:${e.colno})`;
+    console.warn(errorMessage);
+    window.errorMessages.push(errorMessage);
+  });
   </script>
   <script src="./main.js" type="module"></script>
 </body>

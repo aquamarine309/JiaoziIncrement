@@ -34,20 +34,19 @@ export function gainedMoney() {
 }
 
 export class Sale {
-  
+
   static get requirement() {
     if (NormalChallenge(4).isRunning) return 1e21;
     if (Collections.adofai.isEffectActive) return 50;
     return 1000;
   }
-  
+
   static get isAvailable() {
     return Currency.jiaozi.gte(this.requirement) && (player.break || !Player.canFixSteamer);
   }
-  
+
   static get unavailableText() {
     if (Currency.jiaozi.lt(this.requirement)) return $t("atLeast", [quantify($t("jiaozi"), this.requirement, 2)]);
     return $t("cannotSale");
   }
 }
-

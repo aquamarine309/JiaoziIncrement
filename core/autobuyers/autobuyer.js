@@ -83,7 +83,6 @@ export class AutobuyerState {
   }
 }
 
-
 /**
  * @abstract
  */
@@ -116,7 +115,6 @@ export class IntervaledAutobuyerState extends AutobuyerState {
   // eslint-disable-next-line no-empty-function
   reset() { }
 }
-
 
 /**
  * @abstract

@@ -22,7 +22,6 @@ import { GameKeyboard } from "./keyboard.js";
 // Free keys:
 // i, j, k, l, n, o, p, q, v, w, x
 
-
 export const shortcuts = [
  {
     name: "购买最大数量",
@@ -194,7 +193,6 @@ EventHub.logic.on(GAME_EVENT.ARROW_KEY_PRESSED, direction => {
     Tab[currentTab][subtabs[sub]].show(true);
   }
 });
-
 
 // Remember that Mousetrap handles the backend for GameKeyboard
 // Without this, Mousetrap become confused when the "up" key is pressed, as it is the starting key of a sequence

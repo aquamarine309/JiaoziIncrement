@@ -16,11 +16,11 @@ class SimulationRebuyableState extends RebuyableMechanicState {
     super(config);
     this.lastCost = new Lazy(() => this.cost);
   }
-  
+
   get currency() {
     return Currency.energy;
   }
-  
+
   get boughtAmount() {
     return player.simulation.upgrades.review[this.id];
   }
@@ -28,7 +28,7 @@ class SimulationRebuyableState extends RebuyableMechanicState {
   set boughtAmount(value) {
     player.simulation.upgrades.review[this.id] = value;
   }
-  
+
   onPurchased() {
     player.simulation.spentEnergy = player.simulation.spentEnergy.add(this.lastCost.value);
     GameCache.totalSimulationRebuyablesBought.invalidate();
@@ -40,48 +40,48 @@ class SimulationUpgradeState extends BitPurchasableMechanicState {
    get currency() {
     return Currency.cores;
   }
-  
+
   get isAffordable() {
     return this.currency.gte(this.cost + 15);
   }
-  
+
   get bits() {
     return player.simulation.upgrades.previewBits;
   }
-  
+
   set bits(value) {
     player.simulation.upgrades.previewBits = value;
   }
-  
+
   get bitIndex() {
     return this.id;
   }
-  
+
   get requirement() {
     return this.config.requirement();
   }
-  
+
   get isUnlocked() {
     return (player.simulation.upgrades.unlockedBits & (1 << this.bitIndex)) !== 0;
   }
-  
+
   get isAvailableForPurchase() {
     return this.isUnlocked;
   }
-  
+
   get canUnlock() {
     return this.config.checkRequirement() && !this.isUnlocked;
   }
-  
+
   tryUnlock() {
     if (!this.canUnlock) return;
     this.unlock();
   }
-  
+
   unlock() {
     player.simulation.upgrades.unlockedBits |= (1 << this.bitIndex);
   }
-  
+
   purchase() {
     if (!this.canBeBought) return false;
     if (SimulationMilestone.all.some(m => Currency.cores.value.minus(this.cost).lt(m.cores) && m.isReached)) {
@@ -109,7 +109,7 @@ export const SimulationUpgrade = mapGameDataToObject(
 
 export const SimulationRebuyableGroup = {
   upgrades: SimulationRebuyable.all,
-  
+
   get totalBought() {
     return GameCache.totalSimulationRebuyablesBought.value;
   }
