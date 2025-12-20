@@ -397,7 +397,7 @@ export const languages = {
       steamer_upgrade_scGen_effect: "每 $1 产生 $2 个",
       steamer_upgrade_collectionsMult: "获得 $1 倍的收集饺子",
       steamer_upgrade_commonPower: "普通收集饺子的效果 $1 ",
-      steamer_upgrade_keepFilling: "收集时保留所有饺子馅",
+      steamer_upgrade_keepStuffing: "收集时保留所有饺子馅",
       steamer_upgrade_resetRequirement: "收集不再需要购买所有饺子馅",
       steamer_upgrade_keepCollections_all: "修复蒸笼后保留所有收集饺子",
       steamer_upgrade_keepCollections: "修复蒸笼后保留每种饺子各 $1 个",
