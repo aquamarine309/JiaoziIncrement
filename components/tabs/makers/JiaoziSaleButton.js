@@ -37,9 +37,9 @@ export default {
   },
   template: `
     <PrimaryButton
-    :enabled='isAvailable'
-    @click='sale'
-    class='o-sale-btn'
+      :enabled='isAvailable'
+      @click='sale'
+      class='o-sale-btn'
     >
       <span>{{ text }}</span>
       <br v-if="showInfo">

@@ -79,9 +79,9 @@ export default {
       </div>
       <div class='o-buy-maker-container'>
         <PrimaryButton
-        :enabled='isAffordable'
-        @click='buySingle()'
-        :class='btnClass'
+          :enabled='isAffordable'
+          @click='buySingle()'
+          :class='btnClass'
         >
           <span v-if="isAvailable">
             {{ quantify(currencyName, cost, 2, 2) }}
@@ -90,8 +90,8 @@ export default {
             {{ $t("locked") }}
           </span>
           <div
-          v-if="hasTutorial"
-          class="fas fa-circle-exclamation l-notification-icon"
+            v-if="hasTutorial"
+            class="fas fa-circle-exclamation l-notification-icon"
           />
         </PrimaryButton>
       </div>

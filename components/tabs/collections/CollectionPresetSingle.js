@@ -94,39 +94,39 @@ export default {
       @click="createPreset"
     >
       <template v-if="isSet">
-      <div class="l-collection-preset-info">
-        <CollectionSetPreview
-          label=""
-          :activeBits="activeBits"
-        />
-        <input
-          class="o-collection-preset__name-input"
-          :value="displayName"
-          @change="handleChange"
-          @focus="handleFocus"
-          @input="handleInput"
-        />
-      </div>
-      <div class="l-collection-preset-info--btns">
-        <PrimaryButton
-          @click="save"
-          class="l-collection-preset-btn"
-        >
-          {{ $t("save") }}
-        </PrimaryButton>
-        <PrimaryButton
-          @click="load"
-          class="l-collection-preset-btn"
-        >
-          {{ $t("load") }}
-        </PrimaryButton>
-        <PrimaryButton
-          @click="deletePreset"
-          class="l-collection-preset-btn"
-        >
-          {{ $t("delete") }}
-        </PrimaryButton>
-      </div>
+        <div class="l-collection-preset-info">
+          <CollectionSetPreview
+            label=""
+            :activeBits="activeBits"
+          />
+          <input
+            class="o-collection-preset__name-input"
+            :value="displayName"
+            @change="handleChange"
+            @focus="handleFocus"
+            @input="handleInput"
+          />
+        </div>
+        <div class="l-collection-preset-info--btns">
+          <PrimaryButton
+            @click="save"
+            class="l-collection-preset-btn"
+          >
+            {{ $t("save") }}
+          </PrimaryButton>
+          <PrimaryButton
+            @click="load"
+            class="l-collection-preset-btn"
+          >
+            {{ $t("load") }}
+          </PrimaryButton>
+          <PrimaryButton
+            @click="deletePreset"
+            class="l-collection-preset-btn"
+          >
+            {{ $t("delete") }}
+          </PrimaryButton>
+        </div>
       </template>
       <template v-else>
         <i class="fas fa-square-plus" />

@@ -89,9 +89,7 @@ export default {
         {{ unlockedText }}
       </div>
       <div style='font-size: 1.1rem; width: 100%;'>
-        <EffectDisplay
-          :config="config"
-        />
+        <EffectDisplay :config="config" />
         <span v-if="canBeBought">
         <span>|</span>
         <EffectDisplay

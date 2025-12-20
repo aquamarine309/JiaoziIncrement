@@ -66,8 +66,8 @@ export default {
       {{ pluralize(name, amount, undefined, "") }}({{ formatInt(amount) }})
     </h2>
     <button
-    :class="classObject"
-    @click="purchase"
+      :class="classObject"
+      @click="purchase"
     >
       <div v-if='canBigReset'>
         {{ $t("bigResetDes", [quantify(collName, colAmount, 2), layerName]) }}
@@ -79,12 +79,12 @@ export default {
         {{ lockedText }}
       </div>
       <CostDisplay
-      :config="config"
-      :name='$t("money")'
+        :config="config"
+        :name='$t("money")'
       />
       <div
-      v-if="hasTutorial"
-      class="fas fa-circle-exclamation l-notification-icon"
+        v-if="hasTutorial"
+        class="fas fa-circle-exclamation l-notification-icon"
       />
   </button>
 </div>

@@ -200,25 +200,38 @@ window.quantifyInt = function quantifyInt(name, value) {
  * @param  {string[]} items - an array of items to enumerate
  * @return {string} - a string of {items}, separated by commas and/or and as needed.
  */
-window.makeEnumeration = function makeEnumeration(items) {
-  if (items.length === 0) return "";
-  if (items.length === 1) return items[0];
-  if (items.length === 2) return `${items[0]} ${$t("and")} ${items[1]}`;
-  const commaSeparated = items.slice(0, items.length - 1).join(", ");
-  const last = items[items.length - 1];
-  return `${commaSeparated}${$t("en_comma")}${$t("scape")}${$t("and")}${$t("scape")}${last}`;
-};
-
-window.$t = function $t(key, values, piural) {
+window.$t = function $t(key, values, plural) {
   const base = Languages.current.resources[key]?.(values);
   if (base === undefined) {
-    throw new Error(`${key} is not supported in this language.`)
+    if (typeof console !== 'undefined' && console.warn) {
+      console.warn(`${key} is not supported in this language.`);
+    }
+    return key;
   }
-  if (piural) return pluralize(base, 0, void 0, "");
+  
+  if (plural) return pluralize(base, 0, void 0, "");
   return base;
-}
+};
 
 window.addScape = function addScape(items) {
   if (Languages.current.name === "zh-CN") return items.join("");
   return items.join(" ");
+};
+
+window.makeEnumeration = function makeEnumeration(items) {
+  if (items.length === 0) return "";
+  if (items.length === 1) return items[0];
+  if (items.length === 2) return `${items[0]} ${$t("and")} ${items[1]}`;
+  
+  const comma = $t("en_comma");
+  const scape = $t("scape");
+  const and = $t("and");
+  
+  let result = "";
+  for (let i = 0; i < items.length - 1; i++) {
+    result += items[i];
+    if (i < items.length - 2) result += ", ";
+  }
+  
+  return `${result}${comma}${scape}${and}${scape}${items[items.length - 1]}`;
 };

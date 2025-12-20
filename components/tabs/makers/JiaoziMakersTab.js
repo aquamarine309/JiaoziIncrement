@@ -33,17 +33,14 @@ export default {
     <div>
       <MakerTabHeader />
       <BaoJiaoZaButton />
-      <div
-      class='o-makers-container'
-      >
+      <div class='o-makers-container'>
         <JiaoziMakersRow
-        v-for='tier in maxTier'
-        :key='tier'
-        :tier='tier' />
+          v-for='tier in maxTier'
+          :key='tier'
+          :tier='tier'
+        />
       </div>
-      <div
-      class='o-jiaozi-prestige-container'
-      >
+      <div class='o-jiaozi-prestige-container'>
         <WrapperButton />
         <StuffingButton />
       </div>

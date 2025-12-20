@@ -79,7 +79,7 @@ export default {
           </button>
           <p>重置升级时，你将保留{{ formatPercents(energyConversionEfficiency) }}的饺子能量。</p>
           <p>"知新"升级需要用核心饺子购买。</p>
-          <p>购买"知新"升级时，核心饺子的数量至少要比价格多{{ formatInt(15) }}，确保里程碑保持有效状态。</p>
+          <p>购买"知新"升级时，核心饺子的数量至少要比价格多{{ formatInt(15) }}，以确保里程碑保持有效状态。</p>
         </div>
       </div>
       <h2>{{ reviewText }}</h2>

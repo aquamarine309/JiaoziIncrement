@@ -55,18 +55,16 @@ export default {
   },
   template: `
   <div>
-  <div class="c-progress-bar">
-<div
-:style="progressBarStyle"
-class="c-progress-bar__fill"
->
-{{ displayPercents }}
-</div>
-</div>
-<div
-class="c-progress-bar__info"
->
-{{ $t("current") }}: {{ tooltip }}
-</div>
-</div>`
+    <div class="c-progress-bar">
+      <div
+        :style="progressBarStyle"
+        class="c-progress-bar__fill"
+      >
+        {{ displayPercents }}
+      </div>
+    </div>
+    <div class="c-progress-bar__info">
+      {{ $t("current") }}: {{ tooltip }}
+    </div>
+  </div>`
 }

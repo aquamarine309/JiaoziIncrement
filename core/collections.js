@@ -20,7 +20,7 @@ class CollectionState extends GameMechanicState {
   }
 
   get name() {
-    return Theme.currentName().isInverted ?
+    return Theme.current().isInverted ?
       $t(`collection_${this.key}_name_theme`) :
       $t(`collection_${this.key}_name`);
   }
