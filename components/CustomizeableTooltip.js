@@ -132,27 +132,28 @@ export default {
       return this.top ? "-" : "";
     },
   },
-  template: `<div class="l-custom-tooltip">
-<div
-class="c-main-content"
-:class="contentClass"
-:style="{ ...positionStyle, transform: contentTransform }"
-@mouseenter="hovering = true"
-@mouseleave="hovering = false"
->
-<slot name="mainContent" />
-</div>
-<div
-class="c-tooltip-content"
-:class="tooltipContentClass"
-:style="[tooltipContentStyle, positionStyle, { transform: tooltipTransform }]"
->
-<slot name="tooltipContent" />
-</div>
-<div
-class="c-tooltip-arrow"
-:class="tooltipArrowClass"
-:style="[tooltipArrowStyle, positionStyle, { transform: tooltipTransform }]"
-/>
-</div>`
+  template: `
+  <div class="l-custom-tooltip">
+    <div
+      class="c-main-content"
+      :class="contentClass"
+      :style="{ ...positionStyle, transform: contentTransform }"
+      @mouseenter="hovering = true"
+      @mouseleave="hovering = false"
+    >
+      <slot name="mainContent" />
+    </div>
+    <div
+      class="c-tooltip-content"
+      :class="tooltipContentClass"
+      :style="[tooltipContentStyle, positionStyle, { transform: tooltipTransform }]"
+    >
+      <slot name="tooltipContent" />
+    </div>
+    <div
+      class="c-tooltip-arrow"
+      :class="tooltipArrowClass"
+      :style="[tooltipArrowStyle, positionStyle, { transform: tooltipTransform }]"
+    />
+  </div>`
 }

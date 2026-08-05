@@ -128,7 +128,7 @@ export const Collections = {
     if (NormalChallenge(7).isRunning) return 1;
 
     let amount = 3;
-    if (NormalChallenge(2).isCompleted) amount++
+    if (NormalChallenge(2).isCompleted) amount++;
     amount += Task.collections.reward.effectOrDefault(0);
     return amount;
   },

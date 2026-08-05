@@ -7,6 +7,8 @@
   <meta name="description" content="This game is based on the game #Antimatter Dimensions#.">
   <meta name="keywords" content="Jiaozi incremental, 饺子增量">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline' 'unsafe-eval' ;">
   <title>饺子增量</title>
   <link rel="stylesheet" type="text/css" href="./stylesheets/ad-slider-component.css">
   <link rel="stylesheet" href="./stylesheets/styles.css">
@@ -45,24 +47,6 @@
     const errorMessage = `${e.message}\n(at: ${e.filename}:${e.lineno}:${e.colno})`;
     console.warn(errorMessage);
     window.errorMessages.push(errorMessage);
-  });
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      mutation.addedNodes.forEach((node) => {
-        if (node.nodeName === 'SCRIPT' &&
-          node.src &&
-          (node.src.includes('google') ||
-            node.src.includes('analytics.js'))) {
-          node.parentNode.removeChild(node);
-          console.log('Prevented loading from GA');
-        }
-      });
-    });
-  });
-  
-  observer.observe(document.documentElement, {
-    childList: true,
-    subtree: true
   });
   </script>
   <script src="./main.js" type="module"></script>

@@ -269,6 +269,18 @@ html {
   src: url("MonospaceTypewriter.ttf");
 }
 
+@font-face {
+  font-family: "Xia Lu Wen Kai";
+  src: url("XiaLuWenKai-Light.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Xia Lu Wen Kai";
+  src: url("XiaLuWenKai-Medium.ttf");
+  font-weight: bold;
+}
+
 *:focus {
   outline: none;
 }
@@ -278,7 +290,7 @@ body {
   width: 100%;
   height: 100%;
   text-align: center;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 1.1rem;
   font-weight: 300;
   line-height: 1.5;
@@ -294,7 +306,7 @@ body {
   height: 100%;
   justify-content: flex-start;
   align-items: stretch;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   background: none;
   margin: auto;
 }
@@ -325,7 +337,7 @@ button:focus {
 
 .o-primary-btn {
   height: 2.5rem;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 1.3rem;
   font-weight: bold;
   color: var(--color-text);
@@ -692,7 +704,7 @@ br {
 
 .o-notification {
   white-space: nowrap;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 1.3rem;
   font-weight: bold;
   color: black;
@@ -865,7 +877,7 @@ br {
 
 .o-tab-btn {
   white-space: nowrap;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--color-text);
@@ -1420,7 +1432,7 @@ br {
   width: 32rem;
   height: 8rem;
   border-radius: var(--var-border-radius, 0.75rem);
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 1.15rem;
   font-weight: bold;
   border: 0.2rem solid var(--color-bad);
@@ -1662,7 +1674,7 @@ br {
 
 .c-modal {
   text-align: center;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 1.4rem;
   color: var(--color-text);
   background-color: var(--color-base);
@@ -3193,7 +3205,7 @@ kbd {
   align-items: center;
   text-align: center;
   text-align-last: center;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 1rem;
   color: black;
   border-radius: var(--var-border-radius, 0.4rem);
@@ -3867,7 +3879,7 @@ screen and (max-width: 480px) {
 .o-prestige-button {
   width: 22rem;
   height: 7rem;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 1.1rem;
   border: var(--var-border-width, 0.2rem) solid;
   border-radius: var(--var-border-radius, 0.4rem);
@@ -4190,7 +4202,7 @@ o-tab-btn--collections .o-subtab__tooltip {
 .o-steamer-upgrade-btn {
   width: 19rem;
   height: 9rem;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 1rem;
   font-weight: bold;
   color: white;
@@ -4960,7 +4972,7 @@ o-tab-btn--collections .o-subtab__tooltip {
 .o-challenge-btn {
   width: 15rem;
   height: 3rem;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 1.2rem;
   font-weight: bold;
   border: var(--var-border-width, 0.3rem) solid #127a20;
@@ -5525,7 +5537,7 @@ o-tab-btn--collections .o-subtab__tooltip {
   height: 100%;
   font-size: 1.2rem;
   font-weight: bold;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   background: var(--color-background);
   border-style: solid;
   border-width: var(--var-border-width, 0.2rem);
@@ -5640,7 +5652,7 @@ o-tab-btn--collections .o-subtab__tooltip {
   box-shadow: 0.1rem 0.1rem 0.3rem #9cf;
   padding: 1.5rem 1rem;
   color: var(--color-text);
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   transition-duration: 0.2s;
 }
 
@@ -5705,7 +5717,7 @@ o-tab-btn--collections .o-subtab__tooltip {
   height: 9rem;
   position: relative;
   text-align: center;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 0.8rem;
   color: black;
   border: var(--var-border-width, 0.1rem) solid;
@@ -6250,7 +6262,7 @@ o-tab-btn--collections .o-subtab__tooltip {
 
 
 .o-conclude-simulation-btn {
-  font-family: monospace, serif;
+  font-family: monospace, "Xia Lu Wen Kai";
   color: var(--color-text);
   background-color: transparent;
   border: 0.5rem solid var(--color-simulation);
@@ -6295,7 +6307,7 @@ o-tab-btn--collections .o-subtab__tooltip {
   height: 3.4rem;
   justify-content: center;
   align-items: center;
-  font: 1rem Typewriter, serif;
+  font: 1rem Typewriter, "Xia Lu Wen Kai";
   font-weight: bold;
   color: var(--color-text);
   background-color: var(--color-text-inverted);
@@ -6418,7 +6430,7 @@ o-tab-btn--collections .o-subtab__tooltip {
 .general-tooltip .tooltip-inner {
   width: 20rem;
   text-align: center;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   font-size: 1.4rem;
   line-height: 1.2;
   color: white;
@@ -6691,7 +6703,7 @@ o-tab-btn--collections .o-subtab__tooltip {
   caret-color: var(--color-collection);
   color: white;
   text-align: center;
-  font-family: typewriter, serif;
+  font-family: typewriter, "Xia Lu Wen Kai";
   margin-top: 0.5rem;
   font-size: 1.5rem;
   width: 15rem;
@@ -6810,7 +6822,7 @@ o-tab-btn--collections .o-subtab__tooltip {
   font-size: 1rem;
   font-weight: bold;
   transition-duration: 0.2s;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   position: relative;
 }
 
@@ -6863,7 +6875,7 @@ o-tab-btn--collections .o-subtab__tooltip {
   padding: 1rem 0.5rem;
   margin: 1.2rem 0.3rem;
   border-radius: var(--var-border-radius, 0.4rem);
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
 }
 
 .t-s12 .c-reset-simulation-rebuyables {
@@ -6902,7 +6914,7 @@ code {
   background-color: rgba(107, 141, 255, 0.5);
   margin: 0.2rem;
   padding: 0.2rem;
-  font-family: Typewriter, serif;
+  font-family: Typewriter, "Xia Lu Wen Kai";
   border-radius: 0.5rem;
   color: white;
 }
