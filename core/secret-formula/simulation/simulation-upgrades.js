@@ -97,9 +97,9 @@ export const simulationUpgrades = {
       requirement: () => `拥有 ${format(1e18)} 个收集饺子`,
       checkRequirement: () => player.totalColls >= 1e18
     },
-    unlockNewMixture: {
+    unlockBH: {
       id: 3,
-      description: "Cannot read properties of undefined (reading 'description')",
+      description: "解锁饺子黑洞",
       cost: 3e7,
       formatCost,
       requirement: () => `In ${formatInt(5)} ${wordShift.wordCycle(["hours", "days", "weeks"])}`,
@@ -107,7 +107,7 @@ export const simulationUpgrades = {
     },
     unlockNewTask: {
       id: 4,
-      description: "获得免费的A.Squared Eternity",
+      description: "待定",
       cost: 4e10,
       formatCost,
       requirement: () => `In ${formatInt(5)} ${wordShift.wordCycle(["months", "years", "centuries"])}`,

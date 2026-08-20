@@ -126,6 +126,6 @@ export const collections = [
     effectFn: amount => Decimal.pow(10, Math.pow(softCap(amount, 1e10, 0.3), 0.2)),
     softcap: 1e10,
     formatEffect: value => `/${format(value, 2, 3)}`,
-    amplificationPoints: 4
+    amplificationPoints: 3
   }
 ]
